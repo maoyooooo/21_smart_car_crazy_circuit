@@ -35,11 +35,9 @@ typedef enum {
     PATH_TYPE_BRANCH        // 分支道路
 } Path_TypeDef;
 
-// 全局变量（新增分支检测缓存）
+// 全局变量
 extern unsigned char erzhihua[IMG_H][IMG_W]; // 二值化图像
 extern int path_center_x[IMG_H];
-
-
 extern int path_left_x[IMG_H];
 extern int path_right_x[IMG_H];
 extern int branch_valid_row_cnt;  // 分支有效行计数
@@ -47,9 +45,12 @@ extern int branch_valid_row_cnt;  // 分支有效行计数
 extern volatile float near_image_error; // 近距离图像偏差（FAR_ROI区域）
 extern volatile float far_image_error;  // 远距离图像偏差（FAR_ROI区域）
 
+// 新增：当前识别到的路径类型
+extern Path_TypeDef current_path_type;
+
 // 函数声明
 
-void Image_Processing_And_Get_Center(void);
+uint8_t Image_Processing_And_Get_Center(void);  // 返回1=处理了一帧，0=未处理
 void Calculate_All_Errors(void);        // 计算近远距离图像偏差，更新 near_image_error 和 far_image_error 全局变量
 Path_TypeDef recognize_path_type(unsigned char binary_img[IMG_H][IMG_W]);
 void Send_Image_To_ZF_Assistant(void); // 通过逐飞助手协议发送二值化图像和识别到的三条边线（调试用）

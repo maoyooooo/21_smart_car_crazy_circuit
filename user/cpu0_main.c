@@ -60,8 +60,8 @@ int core0_main(void)
         Image_Processing_And_Get_Center();
         Calculate_All_Errors();
         Send_Image_To_ZF_Assistant();
-        ips200_displayimage03x(mt9v03x_image_1, MT9V03X_1_W, MT9V03X_1_H); // 显示摄像头图像到屏幕上 仅调试用
-
+        //ips200_displayimage03x(mt9v03x_image_1, MT9V03X_1_W, MT9V03X_1_H); // 显示摄像头图像到屏幕上 仅调试用
+        Show_Image_On_IPS200(); // 显示二值化图像和边线到屏幕上 仅调试用
 
         // 此处编写需要循环执行的代码
     }

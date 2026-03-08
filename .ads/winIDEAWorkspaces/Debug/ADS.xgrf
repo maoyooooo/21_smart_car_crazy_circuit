@@ -13,7 +13,7 @@
        <EditorPersist>
         <__.0>
          <BookmarkList></BookmarkList>
-         <CaretPos>2122</CaretPos>
+         <CaretPos>2145</CaretPos>
          <Encoding>6</Encoding>
          <FileName>C:\Users\McGRADY\AURIX-v1.10.2-workspace\21_smart_car_crazy_circuit\user\cpu0_main.c</FileName>
          <FileType>1</FileType>
@@ -416,10 +416,6 @@
       </FindInFilesDialogData>
      </GlobalData>
      <History>
-      <ComboBox>
-       <ComboBoxes>
-       </ComboBoxes>
-      </ComboBox>
      </History>
      <Options>
       <CallstackWindow>
