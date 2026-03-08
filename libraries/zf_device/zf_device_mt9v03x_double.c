@@ -54,40 +54,37 @@
 #include "zf_driver_delay.h"
 #include "zf_driver_dma.h"
 #include "zf_driver_exti.h"
-#include "zf_common_fifo.h"
 #include "zf_driver_gpio.h"
-#include "zf_driver_uart.h"
 #include "zf_driver_timer.h"
 #include "zf_device_camera.h"
 #include "zf_device_config.h"
 #include "zf_device_mt9v03x_double.h"
-#include "zf_common_headfile.h"
 
 #pragma section all "cpu0_dsram"
 
             vuint8      mt9v03x_finish_flag_1;                          // 总钻风摄像头1 单幅图像采集完成标志位
+            vuint8      mt9v03x_finish_flag_2;                          // 总钻风摄像头2 单幅图像采集完成标志位
 IFX_ALIGN(4) uint8      mt9v03x_image_1[MT9V03X_1_H][MT9V03X_1_W];      // 总钻风摄像头1 图像数据存储数组
-            uint32      mt9v03x_fps_1;                                // 总钻风摄像头实际采集帧率
+IFX_ALIGN(4) uint8      mt9v03x_image_2[MT9V03X_2_H][MT9V03X_2_W];      // 总钻风摄像头2 图像数据存储数组
+            uint32      mt9v03x_fps[2];                                 // 总钻风摄像头实际采集帧率
 
 
 int16   time_out_1 = MT9V03X_1_INIT_TIMEOUT;                            // 定义超时溢出时长
+int16   time_out_2 = MT9V03X_2_INIT_TIMEOUT;                            // 定义超时溢出时长
 
-
-uint8   mt9v03x_lost_flag_1 = 1;                              
-uint8   mt9v03x_dma_int_num_1;                                
-uint8   mt9v03x_dma_init_flag_1;                              
 uint8   mt9v03x_link_list_num_1;                                        // 当前DMA链表数量
 
+uint8   mt9v03x_link_list_num_2;                                        // 当前DMA链表数量
 
-// mt9v03x_double_init_type_enum camera_work_type;                          // 当前摄像头工作类型
-/*
+m9v03x_double_init_type_enum camera_work_type;                          // 当前摄像头工作类型
+
 soft_iic_info_struct mt9v03x_iic_struct_1;
 soft_iic_info_struct mt9v03x_iic_struct_2;
 
 uint8   mt9v03x_dma_state[2];
 uint8   mt9v03x_gather_flag;
 uint32  mt9v03x_time[2];
-*/
+
 
 // 需要配置到摄像头的数据 不允许在这修改参数
  int16 mt9v03x_set_confing_buffer_1[MT9V03X_DOUBLE_CONFIG_FINISH][2]=
@@ -103,7 +100,7 @@ uint32  mt9v03x_time[2];
     {MT9V03X_DOUBLE_GAIN,              MT9V03X_1_GAIN_DEF},             // 图像增益      范围16-64     增益可以在曝光时间固定的情况下改变图像亮暗程度
     {MT9V03X_DOUBLE_PCLK_MODE,         MT9V03X_1_PCLK_MODE_DEF},        // 像素时钟模式   仅总钻风MT9V034 V2.0以及以上版本支持该命令
 };
-/*
+
  int16 mt9v03x_set_confing_buffer_2[MT9V03X_DOUBLE_CONFIG_FINISH][2]=
 {
     {MT9V03X_DOUBLE_INIT,              0},                              // 摄像头开始初始化
@@ -117,97 +114,9 @@ uint32  mt9v03x_time[2];
     {MT9V03X_DOUBLE_GAIN,              MT9V03X_2_GAIN_DEF},             // 图像增益      范围16-64     增益可以在曝光时间固定的情况下改变图像亮暗程度
     {MT9V03X_DOUBLE_PCLK_MODE,         MT9V03X_2_PCLK_MODE_DEF},        // 像素时钟模式   仅总钻风MT9V034 V2.0以及以上版本支持该命令
 };
-*/
+
 #pragma section all restore
 
-//-------------------------------------------------------------------------------------------------------------------
-// 函数简介     配置摄像头内部配置信息 (UART 方式)
-//-------------------------------------------------------------------------------------------------------------------
-static uint8 mt9v03x_set_config (int16 buff[MT9V03X_DOUBLE_CONFIG_FINISH][2])
-{
-    uint8  return_state = 1;
-    uint8  uart_buffer[4];
-    uint16 temp = 0;
-    uint16 timeout_count = 0;
-    uint32 loop_count = MT9V03X_DOUBLE_GAIN;
-    uint32 uart_buffer_index = 0;
-
-    for(; MT9V03X_DOUBLE_SET_DATA > loop_count; loop_count --)
-    {
-        uart_buffer[0] = 0xA5;
-        uart_buffer[1] = (uint8)buff[loop_count][0];
-        temp = buff[loop_count][1];
-        uart_buffer[2] = temp >> 8;
-        uart_buffer[3] = (uint8)temp;
-        mt9v03x_soft_uart_send_buff(uart_buffer, 4);
-        system_delay_ms(2);
-    }
-
-    do
-    {
-        if(3 <= fifo_used(&camera_receiver_fifo))
-        {
-            uart_buffer_index = 3;
-            fifo_read_buffer(&camera_receiver_fifo, uart_buffer, &uart_buffer_index, FIFO_READ_AND_CLEAN);
-            if((0xff == uart_buffer[1]) || (0xff == uart_buffer[2]))
-            {
-                return_state = 0;
-                break;
-            }
-        }
-        system_delay_ms(1);
-    }while(MT9V03X_1_INIT_TIMEOUT > timeout_count ++);
-    
-    return return_state;
-}
-
-//-------------------------------------------------------------------------------------------------------------------
-// 函数简介     获取摄像头固件版本 (验证串口连通性)
-//-------------------------------------------------------------------------------------------------------------------
-uint16 mt9v03x_get_version (void)
-{
-    uint16 temp;
-    uint8  uart_buffer[4];
-    uint16 timeout_count = 0;
-    uint16 return_value = 0;
-    uint32 uart_buffer_index = 0;
-
-    uart_buffer[0] = 0xA5;
-    uart_buffer[1] = MT9V03X_DOUBLE_GET_STATUS;
-    temp = MT9V03X_DOUBLE_GET_VERSION;
-    uart_buffer[2] = temp >> 8;
-    uart_buffer[3] = (uint8)temp;
-    mt9v03x_soft_uart_send_buff(uart_buffer, 4);
-
-    do
-    {
-        if(3 <= fifo_used(&camera_receiver_fifo))
-        {
-            uart_buffer_index = 3;
-            fifo_read_buffer(&camera_receiver_fifo, uart_buffer, &uart_buffer_index, FIFO_READ_AND_CLEAN);
-            return_value = uart_buffer[1] << 8 | uart_buffer[2];
-            break;
-        }
-        system_delay_ms(1);
-    }while(MT9V03X_1_INIT_TIMEOUT > timeout_count ++);
-    return return_value;
-}
-
-//-------------------------------------------------------------------------------------------------------------------
-//  函数简介      MT9V03X摄像头串口通信回调
-//-------------------------------------------------------------------------------------------------------------------
-static void mt9v03x_uart_handler (void)
-{
-    uint8 data = 0;
-    uart_query_byte(MT9V03X_COF_UART, &data);
-    if(0xA5 == data)
-    {
-        fifo_clear(&camera_receiver_fifo);
-    }
-    fifo_write_element(&camera_receiver_fifo, data);
-}
-
-/*
 //-------------------------------------------------------------------------------------------------------------------
 //  函数简介      MT9V03X 摄像头1 DMA 重置
 //  参数说明      void
@@ -226,11 +135,7 @@ static void mt9v03x_dma_restart_1(void)
              MT9V03X_1_IMAGE_SIZE);           // 如果超频到300M 倒数第二个参数请设置为FALLING
     dma_enable(MT9V03X_1_DMA_CH);
 }
-*/
 
-
-
-/*
 //-------------------------------------------------------------------------------------------------------------------
 //  函数简介      MT9V03X 摄像头2 DMA 重置
 //  参数说明      void
@@ -249,11 +154,7 @@ static void mt9v03x_dma_restart_2(void)
                MT9V03X_2_IMAGE_SIZE);           // 如果超频到300M 倒数第二个参数请设置为FALLING
     dma_enable(MT9V03X_2_DMA_CH);
 }
-*/
 
-
-
-/*
 //-------------------------------------------------------------------------------------------------------------------
 //  函数简介      MT9V03X摄像头场中断
 //  参数说明      void
@@ -330,44 +231,8 @@ static void mt9v03x_vsync_handler_1(void)
         }
     }
 }
-*/
 
 
-
-//-------------------------------------------------------------------------------------------------------------------
-//  函数简介      MT9V03X摄像头场中断 (已精简：剥离双摄交替逻辑，专注单摄 DMA)
-//-------------------------------------------------------------------------------------------------------------------
-static void mt9v03x_vsync_handler_1(void)
-{
-    exti_flag_clear(MT9V03X_1_VSYNC_PIN);
-    mt9v03x_dma_int_num_1 = 0;
-    
-    if(mt9v03x_dma_init_flag_1)
-    {
-        mt9v03x_dma_init_flag_1 = 0;
-        IfxDma_resetChannel(&MODULE_DMA, MT9V03X_1_DMA_CH);
-        mt9v03x_link_list_num_1 = dma_init(MT9V03X_1_DMA_CH,
-                                         MT9V03X_1_DATA_ADD,
-                                         mt9v03x_image_1[0],
-                                         MT9V03X_1_PCLK_PIN,
-                                         EXTI_TRIGGER_RISING,
-                                         MT9V03X_1_IMAGE_SIZE);
-        dma_enable(MT9V03X_1_DMA_CH);
-    }
-    else
-    {
-        if(1 == mt9v03x_link_list_num_1)
-        {
-            dma_set_destination(MT9V03X_1_DMA_CH, mt9v03x_image_1[0]);
-        }
-        dma_enable(MT9V03X_1_DMA_CH);
-    }
-    mt9v03x_lost_flag_1 = 1;
-}
-
-
-
-/*
 //-------------------------------------------------------------------------------------------------------------------
 //  函数简介      MT9V03X摄像头场中断
 //  参数说明      void
@@ -445,92 +310,7 @@ static void mt9v03x_vsync_handler_2(void)
         }
     }
 }
-*/
 
-
-
-//-------------------------------------------------------------------------------------------------------------------
-//  函数简介      MT9V03X摄像头DMA完成中断 (图像采集完毕)
-//-------------------------------------------------------------------------------------------------------------------
-static void mt9v03x_dma_handler_1(void)
-{
-    clear_dma_flag(MT9V03X_1_DMA_CH);
-
-    if(IfxDma_getChannelTransactionRequestLost(&MODULE_DMA, MT9V03X_1_DMA_CH))
-    {
-        mt9v03x_finish_flag_1 = 0;
-        dma_disable(MT9V03X_1_DMA_CH);
-        IfxDma_clearChannelTransactionRequestLost(&MODULE_DMA, MT9V03X_1_DMA_CH);
-        mt9v03x_dma_init_flag_1 = 1;
-    }
-    else
-    {
-        mt9v03x_dma_int_num_1++;
-        if(mt9v03x_dma_int_num_1 >= mt9v03x_link_list_num_1)
-        {
-            mt9v03x_dma_int_num_1 = 0;
-            mt9v03x_lost_flag_1   = 0;
-            mt9v03x_finish_flag_1 = 1;
-            dma_disable(MT9V03X_1_DMA_CH);
-        }
-    }
-}
-
-
-
-/*
-//-------------------------------------------------------------------------------------------------------------------
-// 函数简介     单独设置曝光时间 (UART 版本)
-// 参数说明     light           曝光时间，数越大图像越亮
-// 返回参数     uint8           0：配置成功 1：配置失败
-//-------------------------------------------------------------------------------------------------------------------
-uint8 mt9v03x_set_exposure_time(uint16 light)
-{
-    uint8 return_state = 0;
-    uint8  uart_buffer[4];
-    uint16 temp = 0;
-    uint16 timeout_count = 0;
-    uint32 uart_buffer_index = 0;
-
-    // 清空接收 FIFO 准备接收摄像头反馈
-    fifo_clear(&camera_receiver_fifo);
-
-    // 打包命令：设置曝光时间 (0xF0)
-    uart_buffer[0] = 0xA5;
-    uart_buffer[1] = MT9V03X_DOUBLE_SET_EXP_TIME;
-    temp = light;
-    uart_buffer[2] = temp >> 8;
-    uart_buffer[3] = (uint8)temp;
-    
-    // 使用模拟串口发送
-    mt9v03x_soft_uart_send_buff(uart_buffer, 4);
-
-    // 等待摄像头回复以确认设置成功
-    do
-    {
-        if(3 <= fifo_used(&camera_receiver_fifo))
-        {
-            uart_buffer_index = 3;
-            fifo_read_buffer(&camera_receiver_fifo, uart_buffer, &uart_buffer_index, FIFO_READ_AND_CLEAN);
-            temp = uart_buffer[1] << 8 | uart_buffer[2];
-            break;
-        }
-        system_delay_ms(1);
-    }while(MT9V03X_1_INIT_TIMEOUT > timeout_count ++);
-    
-    if((temp != light) || (MT9V03X_1_INIT_TIMEOUT <= timeout_count))
-    {
-        return_state = 1; // 配置失败或超时
-    }
-    
-    return return_state;
-}
-*/
-
-
-
-
-/*
 //-------------------------------------------------------------------------------------------------------------------
 // 函数简介     mt9v03x单独设置曝光时间
 // 参数说明     init_type       选择要设置的摄像头
@@ -567,12 +347,10 @@ uint8 mt9v03x_set_exposure_time_sccb(m9v03x_double_init_type_enum init_type,unsi
 
     return return_state;
     }
-*/
 
 
 
 
-/*
 //-------------------------------------------------------------------------------------------------------------------
 // 函数简介     MT9V03X 双摄像头初始化
 // 参数说明     init_type       初始化方式
@@ -689,83 +467,4 @@ uint8 mt9v03x_double_init(m9v03x_double_init_type_enum init_type)
     interrupt_global_enable(interrupt_state);     // 打开全局中断
 
     return return_state;
-}
-*/
-
-
-
-//-------------------------------------------------------------------------------------------------------------------
-// 函数简介     MT9V03X 摄像头初始化 (串口定制版)
-// 返回参数     uint8           1-失败 0-成功
-//-------------------------------------------------------------------------------------------------------------------
-uint8 mt9v03x_init(void)
-{
-    uint8 return_state = 0;
-    uint32 interrupt_state = interrupt_global_disable();
-    gpio_init(MT9V03X_SOFT_RX_PIN, GPO, GPIO_HIGH, GPO_PUSH_PULL);
-    system_delay_ms(300); // 等待摄像头上电稳定
-
-    // 1. 设置回调函数 (传入单摄的 Vsync, DMA, UART 接收处理函数)
-    set_camera_type(CAMERA_GRAYSCALE_1, mt9v03x_vsync_handler_1, mt9v03x_dma_handler_1, mt9v03x_uart_handler);
-    camera_fifo_init();
-
-    // 2. 初始化串口
-    uart_init(MT9V03X_COF_UART, MT9V03X_COF_BAUR, UART1_TX_P33_12, MT9V03X_COF_UART_RX);
-    uart_rx_interrupt(MT9V03X_COF_UART, 1);
-    fifo_clear(&camera_receiver_fifo);    // 3. 握手与配置
-    if(mt9v03x_get_version() == 0)
-    {
-        zf_log(0, "MT9V03X UART Handshake Failed! Check TX/RX.");
-        interrupt_global_enable(interrupt_state);
-        return 1;
-    }
-
-    if(mt9v03x_set_config(mt9v03x_set_confing_buffer_1))
-    {
-        zf_log(0, "MT9V03X set config error.");
-        uart_rx_interrupt(MT9V03X_COF_UART, 0);
-        set_camera_type(NO_CAMERE, NULL, NULL, NULL);
-        interrupt_global_enable(interrupt_state);
-        return 1;
-    }
-
-    // 4. 初始化图像采集 DMA
-    mt9v03x_link_list_num_1 = camera_init(MT9V03X_1_DATA_ADD, mt9v03x_image_1[0], MT9V03X_1_IMAGE_SIZE);
-
-    interrupt_global_enable(interrupt_state);
-    return return_state;
-}
-
-
-
-//-------------------------------------------------------------------------------------------------------------------
-// 函数简介     软件模拟串口发送一个字节 (Bit-Banging)
-// 参数说明     data ：待发送的数据
-//-------------------------------------------------------------------------------------------------------------------
-void mt9v03x_soft_uart_tx(uint8 data)
-{
-    uint8 i;
-    // 1. 起始位: 低电平
-    gpio_set_level(MT9V03X_SOFT_TX_PIN, 0);
-    system_delay_us(104); // 9600波特率 1bit时间
-
-    // 2. 数据位: 低位在前
-    for(i = 0; i < 8; i++)
-    {
-        gpio_set_level(MT9V03X_SOFT_TX_PIN, (data >> i) & 0x01);
-        system_delay_us(104);
-    }
-
-    // 3. 停止位: 高电平
-    gpio_set_level(MT9V03X_SOFT_TX_PIN, 1);
-    system_delay_us(104);
-}
-
-// 软件发送缓冲区
-void mt9v03x_soft_uart_send_buff(uint8 *buff, uint16 len)
-{
-    while(len--)
-    {
-        mt9v03x_soft_uart_tx(*buff++);
-    }
 }

@@ -3,9 +3,9 @@
 
 unsigned char huidu[IMG_H][IMG_W] = {0};    
 unsigned char erzhihua[IMG_H][IMG_W] = {0}; // 二值化图像
-int path_center_x[ROI_ROW_NUM] = {0};
-int path_left_x[ROI_ROW_NUM] = {0};
-int path_right_x[ROI_ROW_NUM] = {0};
+int path_center_x[IMG_H] = {0};
+int path_left_x[IMG_H] = {0};
+int path_right_x[IMG_H] = {0};
 int branch_valid_row_cnt = 0;
 uint8_t cam_capture_done = 0;
 
@@ -229,32 +229,45 @@ Path_TypeDef recognize_path_type(unsigned char binary_img[IMG_H][IMG_W])
     int row_y_buf[ROI_ROW_NUM] = {0};
     branch_valid_row_cnt = 0;
 
-    // 第一步：扫描ROI行，同时检测单边界（转弯）和多边界（分支）
-    for (int i = 0; i < ROI_ROW_NUM; i++)
+    // 第一步：清空全图边线记录（防止上一帧干扰）
+    for(int i = 0; i < IMG_H; i++) {
+        path_center_x[i] = -1;
+        path_left_x[i] = -1;
+        path_right_x[i] = -1;
+    }
+
+    // 第二步：扫描从FAR_ROI_START到ROI_ROW_END的行，计算单/多边界
+    // 注意：这里的范围决定了Calculate_All_Errors能取到多少数据
+    for (int row = FAR_ROI_START; row <= ROI_ROW_END; row++)
     {
-        int row = ROI_ROW_START + i;
         int left1, right1, left2, right2;
         
         // 先检测分支（多边界）
         uint8_t edge_cnt = scan_row_multi_boundary(row, binary_img, &left1, &right1, &left2, &right2);
-        if (edge_cnt >= BRANCH_EDGE_CNT)
+        
+        // 如果在近端ROI区间发现分支，则计入分支有效行
+        if (row >= ROI_ROW_START && row <= ROI_ROW_END) 
         {
-            branch_valid_row_cnt++; // 累计分支有效行
+            if (edge_cnt >= BRANCH_EDGE_CNT)
+            {
+                branch_valid_row_cnt++; // 累计分支有效行
+            }
+
+            // 只用近端数据来判定直/转弯
+            if (edge_cnt >= 1) 
+            {
+                center_x_buf[valid_row_cnt] = (left1 + right1) / 2;
+                row_y_buf[valid_row_cnt] = row;
+                valid_row_cnt++;
+            }
         }
 
-        // 单边界数据（用于直/转弯识别）
-        if (edge_cnt >= 1) // 至少有一组有效边界
+        // 无论远近，将边界数据保存到数组对应的行号
+        if (edge_cnt >= 1) 
         {
-            center_x_buf[valid_row_cnt] = (left1 + right1) / 2;
-            row_y_buf[valid_row_cnt] = row;
-            path_center_x[i] = center_x_buf[valid_row_cnt];
-            path_left_x[i] = left1;
-            path_right_x[i] = right1;
-            valid_row_cnt++;
-        }
-        else
-        {
-            path_center_x[i] = -1;
+            path_center_x[row] = (left1 + right1) / 2;
+            path_left_x[row] = left1;
+            path_right_x[row] = right1;
         }
     }
 
@@ -358,9 +371,9 @@ void Send_Image_To_ZF_Assistant(void)
     seekfree_assistant_camera_boundary_config(
         XY_BOUNDARY,              // 发送带有 XY 坐标的点集
         ROI_ROW_NUM,              // 你的数组长度 (31个点)
-        path_center_x,            // 中线 X 数组
-        path_left_x,              // 左线 X 数组
-        path_right_x,             // 右线 X 数组
+        &path_center_x[ROI_ROW_START],            // 中线 X 数组 (偏移到起始行)
+        &path_left_x[ROI_ROW_START],              // 左线 X 数组
+        &path_right_x[ROI_ROW_START],             // 右线 X 数组
         path_y_coords,            // 中线 Y 数组
         path_y_coords,            // 左线 Y 数组
         path_y_coords             // 右线 Y 数组
@@ -368,4 +381,37 @@ void Send_Image_To_ZF_Assistant(void)
 
     // 3. 执行物理发送 (底层会通过串口把上面配置的所有数据发出去)
     seekfree_assistant_camera_send();
+    seekfree_assistant_data_analysis(); // 解析接收到的数据（如果有需要处理上位机发来的数据，可以在这个函数里写逻辑）
+}
+
+/**
+ * @brief 在IPS200屏幕上显示二值化图像并画出中线、边线
+ */
+void Show_Image_On_IPS200(void)
+{
+    // 1. 显示二值化图像 
+    // erzhihua 数组里的值只有 0(黑) 和 255(白)，可以直接当成灰度图显示出来
+    ips200_show_gray_image(0, 0, &erzhihua[0][0], IMG_W, IMG_H, IMG_W, IMG_H, 0);
+
+    // 2. 遍历图像高度，画出三条边线
+    for (int row = 0; row < IMG_H; row++)
+    {
+        // 画左边界 (绿色)
+        if (path_left_x[row] != -1)
+        {
+            ips200_draw_point((uint16)path_left_x[row], (uint16)row, RGB565_GREEN);
+        }
+        
+        // 画右边界 (蓝色)
+        if (path_right_x[row] != -1)
+        {
+            ips200_draw_point((uint16)path_right_x[row], (uint16)row, RGB565_BLUE);
+        }
+
+        // 画中线 (红色)
+        if (path_center_x[row] != -1)
+        {
+            ips200_draw_point((uint16)path_center_x[row], (uint16)row, RGB565_RED);
+        }
+    }
 }

@@ -41,14 +41,16 @@
 // 本例程是开源库空工程 可用作移植或者测试各类内外设
 
 // **************************** 代码区域 ****************************
+#define IPS200_TYPE     (IPS200_TYPE_SPI)                                       // 排针 并口两寸屏 这里宏定义填写 IPS200_TYPE_PARALLEL8
+                                                                                      // 排针 SPI 两寸屏 这里宏定义填写 IPS200_TYPE_SPI
+
 int core0_main(void)
 {
     clock_init();                   // 获取时钟频率<务必保留>
     debug_init();                   // 初始化默认调试串口
     // 此处编写用户代码 例如外设初始化代码等
     zf_log(mt9v03x_double_init(mt9v03x_1), "mt9v03x init error");
-
-
+    ips200_init(IPS200_TYPE);
 
     // 此处编写用户代码 例如外设初始化代码等
     cpu_wait_event_ready();         // 等待所有核心初始化完毕
@@ -58,6 +60,7 @@ int core0_main(void)
         Image_Processing_And_Get_Center();
         Calculate_All_Errors();
         Send_Image_To_ZF_Assistant();
+        ips200_displayimage03x(mt9v03x_image_1, MT9V03X_1_W, MT9V03X_1_H); // 显示摄像头图像到屏幕上 仅调试用
 
 
         // 此处编写需要循环执行的代码

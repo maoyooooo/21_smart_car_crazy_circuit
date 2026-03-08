@@ -38,21 +38,11 @@
 
 #include "zf_common_typedef.h"
 #include "zf_device_type.h"
-#include "zf_driver_uart.h"
 
 //================================================定义 MT9V03X 双摄像头 基本配置================================================
-
-/*
 #define MT9V03X_1_COF_IIC_DELAY   (800)                                             // 总钻风摄像头1 IIC 延时
 #define MT9V03X_1_COF_IIC_SCL     (P33_13)                                          // 总钻风摄像头1 IIC-SCL 引脚
 #define MT9V03X_1_COF_IIC_SDA     (P32_4)                                           // 总钻风摄像头1 IIC-SDA 引脚
-*/
-
-#define MT9V03X_COF_UART        (UART_1)                                        // 配置摄像头使用 UART_1
-#define MT9V03X_COF_BAUR        (9600)                                          // 总钻风固件默认波特率
-#define MT9V03X_COF_UART_RX     (UART1_RX_P33_13)                               // 总钻风 UART-TX 引脚 要接在单片机 RX 上 
-//#define MT9V03X_COF_UART_RX     ()学习板引脚冲突暂且不用                               // 总钻风 UART-RX 引脚 要接在单片机 TX 上
-#define MT9V03X_SOFT_TX_PIN     (P32_4)                                          // 软件模拟IIC 的 TX 引脚 需要接在总钻风 IIC-SDA 上
 
 #define MT9V03X_1_DMA_CH          (IfxDma_ChannelId_7)
 
@@ -64,7 +54,7 @@
 
 #define MT9V03X_1_INIT_TIMEOUT    (0x0080)                                          // 总钻风摄像头1 默认的摄像头初始化超时时间 毫秒为单位
 
-/*
+
 #define MT9V03X_2_COF_IIC_DELAY   (800)                                             // 总钻风摄像头2 IIC 延时
 #define MT9V03X_2_COF_IIC_SCL     (P13_1)                                           // 总钻风摄像头2 IIC-SCL 引脚
 #define MT9V03X_2_COF_IIC_SDA     (P13_0)                                           // 总钻风摄像头2 IIC-SDA 引脚
@@ -78,7 +68,7 @@
 #define MT9V03X_2_DATA_ADD        (get_port_in_addr(MT9V03X_2_DATA_PIN))
 
 #define MT9V03X_2_INIT_TIMEOUT    (0x0080)                                          // 总钻风摄像头2 默认的摄像头初始化超时时间 毫秒为单位
-*/
+
 
 #define MT9V03X_INIT_INTV_DELAY    (0)                                            //摄像头初始化间隔延时,调节这个延时可增加高帧率运行时长。范围0-3（单位MS）
 
@@ -105,7 +95,7 @@
                                                                                     //                        通常都设置为0，如果使用CH32V307的DVP接口或STM32的DCMI接口采集需要设置为1
                                                                                     //                        仅总钻风 MT9V034 V1.5 以及以上版本支持该命令
 
-/*
+
 #define MT9V03X_2_W               (188)                                             // 总钻风摄像头2 图像宽度     范围 [1-752]
 #define MT9V03X_2_H               (120)                                             // 总钻风摄像头2 图像高度     范围 [1-480]
 
@@ -122,7 +112,7 @@
                                                                                     //                        摄像头收偏移数据后会自动计算最大偏移，如果超出则设置计算出来的最大偏移
 #define MT9V03X_2_GAIN_DEF        ( 32  )                                           // 总钻风摄像头2 图像增益       范围 [16-64]  增益可以在曝光时间固定的情况下改变图像亮暗程度
 #define MT9V03X_2_PCLK_MODE_DEF   ( 0   )                                           // 总钻风摄像头2 像素时钟模式     范围 [0-1]    默认：0 可选参数为：[0：不输出消隐信号,1：输出消隐信号]
-*/                                                                                  //                        通常都设置为0，如果使用CH32V307的DVP接口或STM32的DCMI接口采集需要设置为1
+                                                                                    //                        通常都设置为0，如果使用CH32V307的DVP接口或STM32的DCMI接口采集需要设置为1
                                                                                     //                        仅总钻风 MT9V034 V1.5 以及以上版本支持该命令
 //================================================定义 MT9V03X 双摄像头 参数配置================================================
 
@@ -151,7 +141,6 @@ typedef enum
 }m9v03x_double_cmd_enum;
 
 // 摄像头接口类型枚举
-/*
 typedef enum
 {
     mt9v03x_1,                                                                      // 仅初始化摄像头 1  将仅采集摄像头1
@@ -161,18 +150,17 @@ typedef enum
                                                                                     // 注意： 由于摄像头个体差异 双摄像头输出将逐渐重合 较长时间工作时 将导致出现上述情况
                                                                                     // 注意： 188*120分辨率情况下 若摄像头设置帧率超过135将100%重合导致实际帧率减半 可通过双摄初始化之间的延时来进行调节
 }m9v03x_double_init_type_enum;
-*/
+
 //================================================定义 MT9V03X 双摄像头 参数结构体===============================================
 
 //================================================声明 MT9V03X 全局变量================================================
-extern vuint8    mt9v03x_finish_flag_1;                                               // 总钻风摄像头1 单幅图像采集完成标志位
-//extern vuint8    mt9v03x_finish_flag_2;                                             // 总钻风摄像头2 单幅图像采集完成标志位
-extern uint8     mt9v03x_image_1[MT9V03X_1_H][MT9V03X_1_W];                           // 总钻风摄像头1 图像数据存储数组
-//extern uint8     mt9v03x_image_2[MT9V03X_2_H][MT9V03X_2_W];                         // 总钻风摄像头2 图像数据存储数组
-extern   uint32    mt9v03x_fps_1;                                                     // 总钻风摄像头1 实际采集帧率
-//extern uint32    mt9v03x_fps[2];                                                    // 总钻风摄像头实际采集帧率
-//extern  int16 mt9v03x_set_confing_buffer_1[MT9V03X_DOUBLE_CONFIG_FINISH][2];        
-//extern  int16 mt9v03x_set_confing_buffer_2[MT9V03X_DOUBLE_CONFIG_FINISH][2];
+extern vuint8    mt9v03x_finish_flag_1;                                             // 总钻风摄像头1 单幅图像采集完成标志位
+extern vuint8    mt9v03x_finish_flag_2;                                             // 总钻风摄像头2 单幅图像采集完成标志位
+extern uint8     mt9v03x_image_1[MT9V03X_1_H][MT9V03X_1_W];                         // 总钻风摄像头1 图像数据存储数组
+extern uint8     mt9v03x_image_2[MT9V03X_2_H][MT9V03X_2_W];                         // 总钻风摄像头2 图像数据存储数组
+extern uint32    mt9v03x_fps[2];                                                    // 总钻风摄像头实际采集帧率
+extern  int16 mt9v03x_set_confing_buffer_1[MT9V03X_DOUBLE_CONFIG_FINISH][2];
+extern  int16 mt9v03x_set_confing_buffer_2[MT9V03X_DOUBLE_CONFIG_FINISH][2];
 
 //================================================声明 MT9V03X 全局变量================================================
 
@@ -181,8 +169,8 @@ extern   uint32    mt9v03x_fps_1;                                               
 //-------------------该函数仅用于TC系列 V3.0 双摄主板 摄像头初始化----------------------
 //-------------------该函数仅用于TC系列 V3.0 双摄主板 摄像头初始化----------------------
 //-------------------该函数仅用于TC系列 V3.0 双摄主板 摄像头初始化----------------------
-uint8   mt9v03x_init(void);       
-uint16  mt9v03x_get_version(void);                  
+uint8            mt9v03x_double_init(m9v03x_double_init_type_enum init_mode);       // MT9V03X 摄像头初始化
+
 //-------------------------------------------------------------------------------------------------------------------
 // 函数简介     mt9v03x单独设置曝光时间
 // 参数说明     init_type       选择要设置的摄像头
@@ -191,8 +179,7 @@ uint16  mt9v03x_get_version(void);
 // 使用示例     mt9v03x_set_exposure_time_sccb(mt9v03x_1,100);
 //-------------------------------------------------------------------------------------------------------------------
 uint8 mt9v03x_set_exposure_time_sccb(m9v03x_double_init_type_enum init_type,unsigned short int light);
-void mt9v03x_soft_uart_tx(uint8 data);
-void mt9v03x_soft_uart_send_buff(uint8 *buff, uint16 len);
+
 //================================================声明 MT9V03X 基础函数================================================
 
 #endif
