@@ -8,7 +8,7 @@
 #define DIR_R1      P11_11
 #define PWM_L1      ATOM3_CH5_P11_10
 #define DIR_L1      P11_9
-#define DUTY        2000      // PWM占空比基准值 (对应 20%)
+#define DUTY        10000      // PWM占空比基准值 (对应 20%)
 
 // --- 控制参数 ---
 #define CONTROL_PERIOD_MS    10        // 控制周期 10ms
@@ -49,6 +49,6 @@ float PID_Calculate(PID_Controller *pid, float target, float current);
 void Set_Motor_PWM(float out_L, float out_R);
 float Get_Steering_Delta(float near_err, float far_err);
 void Motor_Steering_Control(float base_speed_rpm);
-
+void Encoder_test(void);
 
 #endif 

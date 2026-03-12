@@ -1,4 +1,4 @@
-/*********************************************************************************************************************
+/************************************************************************************************************************
 * TC264 Opensourec Library 即（TC264 开源库）是一个基于官方 SDK 接口的第三方开源库
 * Copyright (c) 2022 SEEKFREE 逐飞科技
 *
@@ -42,15 +42,22 @@
 
 
 
-
+IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
+{
+    interrupt_global_enable(0);                     // 开启中断嵌套
+    pit_clear_flag(CCU60_CH0);
+    
+    Motor_Control_Loop(600.0f, 600.0f); 
+    
+}
 
 IFX_INTERRUPT(cc60_pit_ch1_isr, 0, CCU6_0_CH1_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
     pit_clear_flag(CCU60_CH1);
 
-    imu660rb_get_acc();
-    imu660rb_get_gyro();
+    //imu660rb_get_acc();
+    //imu660rb_get_gyro();
 
 }
 
@@ -68,7 +75,7 @@ IFX_INTERRUPT(cc61_pit_ch1_isr, 0, CCU6_1_CH1_ISR_PRIORITY)
     interrupt_global_enable(0);                     // 开启中断嵌套
     pit_clear_flag(CCU61_CH1);
 
-    Motor_Steering_Control(0.0f);
+
     //printf("current_L_rpm: %f\r\n", current_L_rpm);
     //printf("current_R_rpm: %f\r\n", current_R_rpm);
 
@@ -287,3 +294,4 @@ IFX_INTERRUPT(uart3_er_isr, 0, UART3_ER_INT_PRIO)
     interrupt_global_enable(0);                     // 开启中断嵌套
     IfxAsclin_Asc_isrError(&uart3_handle);
 }
+

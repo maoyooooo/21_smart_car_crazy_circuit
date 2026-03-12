@@ -6,6 +6,7 @@ PID_Controller MotorL_PID, MotorR_PID;
 float current_L_rpm = 0.0f;
 float current_R_rpm = 0.0f;
 volatile float image_error = 0; // 全局变量，存储当前的图像偏差值
+#define RPM_FILTER_ALPHA 0.2f // 低通滤波系数 (0.0 - 1.0)，值越小平滑效果越强，但响应越慢
 
 
 
@@ -34,12 +35,12 @@ void Motor_Init(void)
     pwm_init(PWM_R1, 17000, 0);
     pwm_init(PWM_L1, 17000, 0);
 
-    // 3. 赋初始 PID 参数 (这些值需要你后期根据实车调试)
-    MotorL_PID.kp = 0.000f;           // 比例增益 (初始值，后续调试调整)
-    MotorL_PID.ki = 0.000f;             // 积分增益 (初始值，后续调试调整)
-    MotorL_PID.kd = 0.000f;             // 微分增益 (初始值，后续调试调整)
-    MotorL_PID.i_limit = 50.0f;         // 积分限幅 (防止积分过大导致系统不稳定)
-    MotorL_PID.out_limit = 100.0f;      // 输出限幅 (PWM 范围 -100 到 100)    
+    // 3. 赋初始 PID 参数 (保守值测试，防止烧毁)
+    MotorL_PID.kp = 0.015f;             // 比例增益 (加大，提供强劲起步动力)
+    MotorL_PID.ki = 0.012f;             // 积分增益 (加大，快速消除稳态误差)
+    MotorL_PID.kd = 0.110f;             // 微分增益 (继续保持关闭，避免噪声放大)
+    MotorL_PID.i_limit = 5000.0f;         // 积分限幅，防止积分风暴。
+    MotorL_PID.out_limit = 100.0f;       // 极重要：输出限幅，确保安全
 
     MotorR_PID = MotorL_PID;            // 右轮暂用相同参数
 }
@@ -53,24 +54,36 @@ float PID_Calculate(PID_Controller *pid, float target, float current)
 {
     pid->error = target - current;
     
-    // 积分累加并限幅 (抗饱和)
+    // 1. 正常累加积分
     pid->integral += pid->error;    
-    if (pid->integral > pid->i_limit)  pid->integral = pid->i_limit;
-    if (pid->integral < -pid->i_limit) pid->integral = -pid->i_limit;   
+    
+    // 2. 计算纯积分项的输出
+    float integral_out = pid->ki * pid->integral;
+
+    // 3. 动态积分限幅 (抗饱和) 适当放宽到 30.0f 防止正常爬升阶段积分受限导致起步肉
+    float max_i_out = 15.0f; 
+    if (integral_out > max_i_out) {
+        integral_out = max_i_out;
+        pid->integral = max_i_out / pid->ki; 
+    }
+    else if (integral_out < -max_i_out) {
+        integral_out = -max_i_out;
+        pid->integral = -max_i_out / pid->ki;
+    }
 
     float output = (pid->kp * pid->error) + 
-                   (pid->ki * pid->integral) + 
+                   integral_out +
                    (pid->kd * (pid->error - pid->last_error));
 
+    // 更新状态
     pid->last_error = pid->error;
 
-    // 总输出限幅
+    // 5. 总输出限幅 (限制在物理允许的占空比最大值)
     if (output > pid->out_limit)  output = pid->out_limit;
     if (output < -pid->out_limit) output = -pid->out_limit;
 
     return output;
 }
-
 
 /**
  * @brief 执行电机输出 (PWM + 方向)
@@ -81,20 +94,32 @@ void Set_Motor_PWM(float out_L, float out_R)
     // 左轮处理
     if (out_L >= 0) {
         gpio_set_level(DIR_L1, GPIO_LOW);
-        pwm_set_duty(PWM_L1, (uint32)(out_L * DUTY / 100));
+        pwm_set_duty(PWM_L1, (uint32)(out_L * (DUTY / 100)));
     } else {
         gpio_set_level(DIR_L1, GPIO_HIGH);
-        pwm_set_duty(PWM_L1, (uint32)(-out_L * DUTY / 100));
+        pwm_set_duty(PWM_L1, (uint32)(-out_L * (DUTY / 100)));
     }
 
     // 右轮处理
     if (out_R >= 0) {
         gpio_set_level(DIR_R1, GPIO_LOW);
-        pwm_set_duty(PWM_R1, (uint32)(out_R * DUTY / 100));
+        pwm_set_duty(PWM_R1, (uint32)(out_R * (DUTY / 100)));
     } else {
         gpio_set_level(DIR_R1, GPIO_HIGH);
-        pwm_set_duty(PWM_R1, (uint32)(-out_R * DUTY / 100));
+        pwm_set_duty(PWM_R1, (uint32)(-out_R * (DUTY / 100)));
     }
+}
+
+
+void Encoder_test(void)
+{
+    Encoder();
+    float raw_L = (Mf.Left_encoder * 6000.0f) / (ENCODER_LINES * 4.1f);
+    float raw_R = (Mf.Right_encoder * 6000.0f) / (ENCODER_LINES * 4.1f);
+    // 齿数比 41:10，所以传动比为 4.1
+    // 车轮 RPM = (脉冲 * 6000) / (编码器线数 * 传动比)
+    current_L_rpm = current_L_rpm * (1.0f - RPM_FILTER_ALPHA) + raw_L * RPM_FILTER_ALPHA;
+    current_R_rpm = current_R_rpm * (1.0f - RPM_FILTER_ALPHA) + raw_R * RPM_FILTER_ALPHA;
 }
 
 
@@ -104,18 +129,21 @@ void Set_Motor_PWM(float out_L, float out_R)
 //轮毂半径12.15 mm 周长 = 76.34 mm  1000 rpm = 1272.3 mm/s = 127.2 3 cm/s
 void Motor_Control_Loop(float target_L, float target_R)
 {
-    // 1. 更新编码器数据 (调用你 Motor_encoder.h 里的函数)
+    // 1. 获取原始数据
     Encoder();
-     //2. 将脉冲数转化为 RPM (转/分钟) RPM = (脉冲 / 线数 ) * (60s / 0.01s)
-    current_L_rpm = (Mf.Left_encoder * 6000.0f) / (ENCODER_LINES );
-    current_R_rpm = (Mf.Right_encoder * 6000.0f) / (ENCODER_LINES);
 
-    // 3. 计算 PID
+    float raw_L = (Mf.Left_encoder * 6000.0f) / (ENCODER_LINES * 4.1f);
+    float raw_R = (Mf.Right_encoder * 6000.0f) / (ENCODER_LINES * 4.1f);
+    // 齿数比 41:10，所以传动比为 4.1
+    // 车轮 RPM = (脉冲 * 6000) / (编码器线数 * 传动比)
+    current_L_rpm = current_L_rpm * (1.0f - RPM_FILTER_ALPHA) + raw_L * RPM_FILTER_ALPHA;
+    current_R_rpm = current_R_rpm * (1.0f - RPM_FILTER_ALPHA) + raw_R * RPM_FILTER_ALPHA;
+
+    // 4. 计算 PID (建议尝试 Kp=0.05, Ki=0.01, Kd=0)
     float out_l = PID_Calculate(&MotorL_PID, target_L, current_L_rpm);
     float out_r = PID_Calculate(&MotorR_PID, target_R, current_R_rpm);
 
-    // 4. 输出到硬件
-    Set_Motor_PWM(out_l, out_r);
+    Set_Motor_PWM(out_l , out_r);
 }
 
 

@@ -1,6 +1,6 @@
 	; Module start
 	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
-	.compiler_invocation	"ctc -f cc18704a --dep-file=motor.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc26xb -D__CPU_TC26XB__ --core=tc1.6.x --fp-model=+float -D__CPU__=tc26xb -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\code -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Configurations -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC26B -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC26B\\\\_Reg -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Asc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6 -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Timer -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\CStart -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Irq -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Dma -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12 -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\IncrEnc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\SpiMaster -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Adc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Impl -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib\\\\DataHandling -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_PinMap -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_common -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_components -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_device -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_driver -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\user -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o code/motor.src ../code/motor.c"
+	.compiler_invocation	"ctc -f cc27984a --dep-file=motor.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc26xb -D__CPU_TC26XB__ --core=tc1.6.x --fp-model=+float -D__CPU__=tc26xb -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\code -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Configurations -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC26B -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC26B\\\\_Reg -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Asc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6 -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Timer -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\CStart -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Irq -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Dma -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12 -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\IncrEnc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\SpiMaster -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Adc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Impl -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib\\\\DataHandling -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_PinMap -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_common -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_components -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_device -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_driver -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\user -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o code/motor.src ../code/motor.c"
 	.compiler_name		"ctc"
 	;source	'../code/motor.c'
 
@@ -13,95 +13,99 @@ $TC16X
 	
 	.global	Motor_Init
 ; Function Motor_Init
-.L14:
+.L15:
 Motor_Init:	.type	func
 	mov	d4,#363
-.L158:
-	mov	d5,#1
-.L159:
-	mov	d6,#1
-.L160:
-	mov	d7,#3
-	call	gpio_init
-.L161:
-	mov	d4,#361
-.L162:
-	mov	d5,#1
-.L163:
-	mov	d6,#1
-.L164:
-	mov	d7,#3
-	call	gpio_init
-.L165:
-	mov	d4,#131
-.L166:
-	mov	d5,#17000
-.L167:
-	mov	d6,#0
-	call	pwm_init
-.L168:
-	mov	d4,#162
-.L169:
-	mov	d5,#17000
-.L170:
-	mov	d6,#0
-	call	pwm_init
-.L171:
-	movh.a	a15,#@his(MotorL_PID)
-	lea	a15,[a15]@los(MotorL_PID)
-.L172:
-	mov	d15,#0
-.L173:
-	st.w	[a15],d15
-.L174:
-	movh.a	a15,#@his(MotorL_PID)
-	lea	a15,[a15]@los(MotorL_PID)
-.L175:
-	mov	d15,#0
-.L176:
-	st.w	[a15]4,d15
-.L177:
-	movh.a	a15,#@his(MotorL_PID)
-	lea	a15,[a15]@los(MotorL_PID)
-.L178:
-	mov	d15,#0
-.L179:
-	st.w	[a15]8,d15
-.L180:
-	movh.a	a15,#@his(MotorL_PID)
-	lea	a15,[a15]@los(MotorL_PID)
-.L181:
-	movh	d15,#16968
-.L182:
-	st.w	[a15]32,d15
-.L183:
-	movh.a	a15,#@his(MotorL_PID)
-	lea	a15,[a15]@los(MotorL_PID)
-.L184:
-	movh	d15,#17096
 .L185:
-	st.w	[a15]36,d15
+	mov	d5,#1
 .L186:
+	mov	d6,#1
+.L187:
+	mov	d7,#3
+	call	gpio_init
+.L188:
+	mov	d4,#361
+.L189:
+	mov	d5,#1
+.L190:
+	mov	d6,#1
+.L191:
+	mov	d7,#3
+	call	gpio_init
+.L192:
+	mov	d4,#131
+.L193:
+	mov	d5,#17000
+.L194:
+	mov	d6,#0
+	call	pwm_init
+.L195:
+	mov	d4,#162
+.L196:
+	mov	d5,#17000
+.L197:
+	mov	d6,#0
+	call	pwm_init
+.L198:
+	movh.a	a15,#@his(MotorL_PID)
+	lea	a15,[a15]@los(MotorL_PID)
+.L199:
+	mov.u	d15,#49807
+	addih	d15,d15,#15477
+.L200:
+	st.w	[a15],d15
+.L201:
+	movh.a	a15,#@his(MotorL_PID)
+	lea	a15,[a15]@los(MotorL_PID)
+.L202:
+	mov.u	d15,#39846
+	addih	d15,d15,#15428
+.L203:
+	st.w	[a15]4,d15
+.L204:
+	movh.a	a15,#@his(MotorL_PID)
+	lea	a15,[a15]@los(MotorL_PID)
+.L205:
+	mov	d15,#18350
+	addih	d15,d15,#15841
+.L206:
+	st.w	[a15]8,d15
+.L207:
+	movh.a	a15,#@his(MotorL_PID)
+	lea	a15,[a15]@los(MotorL_PID)
+.L208:
+	mov	d15,#16384
+	addih	d15,d15,#17820
+.L209:
+	st.w	[a15]32,d15
+.L210:
+	movh.a	a15,#@his(MotorL_PID)
+	lea	a15,[a15]@los(MotorL_PID)
+.L211:
+	movh	d15,#17096
+.L212:
+	st.w	[a15]36,d15
+.L213:
 	movh.a	a15,#@his(MotorR_PID)
 	lea	a15,[a15]@los(MotorR_PID)
-.L187:
+.L214:
 	movh.a	a2,#@his(MotorL_PID)
 	lea	a2,[a2]@los(MotorL_PID)
 	lea	a2,[a2]0
-.L188:
+.L215:
 	lea	a15,[a15]0
 	mov.a	a4,#9
 .L2:
 	ld.w	d15,[a2+]
 	st.w	[a15+],d15
 	loop	a4,.L2
-.L189:
+.L216:
 	ret
-.L81:
+.L89:
 	
 __Motor_Init_function_end:
 	.size	Motor_Init,__Motor_Init_function_end-Motor_Init
-.L33:
+.L36:
 	; End of function
 	
 	.sdecl	'.text.motor.PID_Calculate',code,cluster('PID_Calculate')
@@ -110,105 +114,110 @@ __Motor_Init_function_end:
 	
 	.global	PID_Calculate
 ; Function PID_Calculate
-.L16:
+.L17:
 PID_Calculate:	.type	func
 	sub.f	d15,d4,d5
-.L216:
+.L249:
 	st.w	[a4]20,d15
-.L217:
+.L250:
 	ld.w	d15,[a4]28
-.L218:
+.L251:
 	sub.f	d0,d4,d5
-.L219:
+.L252:
 	add.f	d15,d15,d0
 	st.w	[a4]28,d15
-.L220:
-	ld.w	d15,[a4]28
-.L221:
-	ld.w	d0,[a4]32
-.L222:
-	cmp.f	d15,d15,d0
-	extr.u	d15,d15,#2,#1
-.L223:
-	jeq	d15,#0,.L3
-.L224:
-	ld.w	d15,[a4]32
-.L225:
-	st.w	[a4]28,d15
-.L3:
+.L105:
+	ld.w	d15,[a4]4
+.L253:
 	ld.w	d0,[a4]28
-.L226:
-	ld.w	d15,[a4]32
-.L227:
-	insn.t	d15,d15:31,d15:31
-.L228:
-	cmp.f	d15,d0,d15
-	extr.u	d15,d15,#0,#1
-.L229:
-	jeq	d15,#0,.L4
-.L230:
-	ld.w	d15,[a4]32
-.L231:
-	insn.t	d15,d15:31,d15:31
-.L232:
+.L254:
+	mul.f	d2,d15,d0
+.L130:
+	movh	d0,#16752
+.L132:
+	cmp.f	d15,d2,d0
+	extr.u	d15,d15,#2,#1
+.L255:
+	jeq	d15,#0,.L3
+.L256:
+	mov	d2,d0
+.L257:
+	ld.w	d15,[a4]4
+.L258:
+	div.f	d15,d0,d15
+.L259:
 	st.w	[a4]28,d15
+.L260:
+	j	.L4
+.L3:
+	insn.t	d15,d0:31,d0:31
+.L261:
+	cmp.f	d15,d2,d15
+	extr.u	d15,d15,#0,#1
+.L262:
+	jeq	d15,#0,.L5
+.L263:
+	insn.t	d2,d0:31,d0:31
+.L264:
+	insn.t	d0,d0:31,d0:31
+.L133:
+	ld.w	d15,[a4]4
+.L265:
+	div.f	d15,d0,d15
+.L266:
+	st.w	[a4]28,d15
+.L5:
 .L4:
 	ld.w	d0,[a4]8
-.L233:
+.L267:
 	ld.w	d1,[a4]20
-.L234:
+.L268:
 	ld.w	d15,[a4]24
-.L235:
+.L269:
 	sub.f	d1,d1,d15
-.L236:
-	ld.w	d2,[a4]
-.L237:
-	ld.w	d3,[a4]20
-.L238:
-	ld.w	d4,[a4]4
-.L112:
-	ld.w	d15,[a4]28
-.L239:
-	mul.f	d15,d4,d15
-.L240:
-	madd.f	d15,d15,d2,d3
-.L241:
-	madd.f	d2,d15,d0,d1
-.L113:
+.L270:
+	ld.w	d3,[a4]
+.L271:
 	ld.w	d15,[a4]20
-.L242:
+.L272:
+	madd.f	d15,d2,d3,d15
+.L273:
+	madd.f	d2,d15,d0,d1
+.L131:
+	ld.w	d15,[a4]20
+.L274:
 	st.w	[a4]24,d15
-.L243:
+.L275:
 	ld.w	d15,[a4]36
-.L244:
+.L276:
 	cmp.f	d15,d2,d15
 	extr.u	d15,d15,#2,#1
-.L245:
-	jeq	d15,#0,.L5
-.L246:
+.L277:
+	jeq	d15,#0,.L6
+.L278:
 	ld.w	d2,[a4]36
-.L5:
+.L6:
 	ld.w	d15,[a4]36
-.L247:
+.L279:
 	insn.t	d15,d15:31,d15:31
-.L248:
+.L280:
 	cmp.f	d15,d2,d15
 	extr.u	d15,d15,#0,#1
-.L249:
-	jeq	d15,#0,.L6
-.L250:
+.L281:
+	jeq	d15,#0,.L7
+.L282:
 	ld.w	d15,[a4]36
-.L251:
+.L283:
 	insn.t	d2,d15:31,d15:31
-.L6:
-	j	.L7
 .L7:
+	j	.L8
+.L8:
 	ret
-.L89:
+.L100:
 	
 __PID_Calculate_function_end:
 	.size	PID_Calculate,__PID_Calculate_function_end-PID_Calculate
-.L43:
+.L46:
 	; End of function
 	
 	.sdecl	'.text.motor.Set_Motor_PWM',code,cluster('Set_Motor_PWM')
@@ -217,116 +226,188 @@ __PID_Calculate_function_end:
 	
 	.global	Set_Motor_PWM
 ; Function Set_Motor_PWM
-.L18:
+.L19:
 Set_Motor_PWM:	.type	func
 	mov	e8,d5,d4
-.L256:
+.L288:
 	mov	d15,#0
-.L116:
+.L136:
 	cmp.f	d15,d8,d15
-.L117:
+.L137:
 	and	d15,#6
 	ne	d15,d15,#0
-.L257:
-	jne	d15,#0,.L8
-.L258:
+.L289:
+	jne	d15,#0,.L9
+.L290:
 	mov	d4,#361
-.L114:
+.L134:
 	mov	d5,#1
-.L115:
+.L135:
 	call	gpio_set_level
-.L259:
+.L291:
 	mov	d4,#162
-.L118:
+.L138:
 	insn.t	d15,d8:31,d8:31
-.L119:
-	movh	d0,#17658
-.L260:
+.L139:
+	movh	d0,#17096
+.L292:
 	mul.f	d15,d15,d0
-.L261:
-	movh	d0,#17096
-.L262:
-	div.f	d15,d15,d0
-.L263:
+.L293:
 	ftouz	d5,d15
 	call	pwm_set_duty
-.L264:
-	j	.L9
-.L8:
-	mov	d4,#361
-.L120:
-	mov	d5,#0
-.L121:
-	call	gpio_set_level
-.L265:
-	mov	d4,#162
-.L266:
-	movh	d15,#17658
-.L122:
-	mul.f	d15,d8,d15
-.L123:
-	movh	d0,#17096
-.L267:
-	div.f	d15,d15,d0
-.L268:
-	ftouz	d5,d15
-	call	pwm_set_duty
+.L294:
+	j	.L10
 .L9:
+	mov	d4,#361
+.L140:
+	mov	d5,#0
+.L141:
+	call	gpio_set_level
+.L295:
+	mov	d4,#162
+.L296:
+	movh	d15,#17096
+.L142:
+	mul.f	d15,d8,d15
+.L143:
+	ftouz	d5,d15
+	call	pwm_set_duty
+.L10:
 	mov	d15,#0
-.L124:
+.L144:
 	cmp.f	d15,d9,d15
-.L125:
+.L145:
 	and	d15,#6
 	ne	d15,d15,#0
-.L269:
-	jne	d15,#0,.L10
-.L270:
+.L297:
+	jne	d15,#0,.L11
+.L298:
 	mov	d4,#363
-.L271:
+.L299:
 	mov	d5,#1
 	call	gpio_set_level
-.L272:
+.L300:
 	mov	d4,#131
-.L126:
+.L146:
 	insn.t	d15,d9:31,d9:31
-.L127:
-	movh	d0,#17658
-.L273:
-	mul.f	d15,d15,d0
-.L274:
+.L147:
 	movh	d0,#17096
-.L275:
-	div.f	d15,d15,d0
-.L276:
+.L301:
+	mul.f	d15,d15,d0
+.L302:
 	ftouz	d5,d15
 	call	pwm_set_duty
-.L277:
-	j	.L11
-.L10:
+.L303:
+	j	.L12
+.L11:
 	mov	d4,#363
-.L278:
+.L304:
 	mov	d5,#0
 	call	gpio_set_level
-.L279:
+.L305:
 	mov	d4,#131
-.L280:
-	movh	d15,#17658
-.L128:
+.L306:
+	movh	d15,#17096
+.L148:
 	mul.f	d15,d9,d15
-.L129:
-	movh	d0,#17096
-.L281:
-	div.f	d15,d15,d0
-.L282:
+.L149:
 	ftouz	d5,d15
 	call	pwm_set_duty
-.L11:
+.L12:
 	ret
-.L95:
+.L109:
 	
 __Set_Motor_PWM_function_end:
 	.size	Set_Motor_PWM,__Set_Motor_PWM_function_end-Set_Motor_PWM
-.L48:
+.L51:
+	; End of function
+	
+	.sdecl	'.text.motor.Encoder_test',code,cluster('Encoder_test')
+	.sect	'.text.motor.Encoder_test'
+	.align	2
+	
+	.global	Encoder_test
+; Function Encoder_test
+.L21:
+Encoder_test:	.type	func
+	call	Encoder
+.L125:
+	movh.a	a15,#@his(Mf)
+	lea	a15,[a15]@los(Mf)
+.L330:
+	ld.w	d15,[a15]4
+	itof	d15,d15
+.L331:
+	mov.u	d0,#32768
+	addih	d0,d0,#17851
+.L332:
+	mul.f	d15,d15,d0
+.L333:
+	mov	d0,#13107
+	addih	d0,d0,#17795
+.L334:
+	div.f	d15,d15,d0
+.L150:
+	movh.a	a15,#@his(Mf)
+	lea	a15,[a15]@los(Mf)
+.L335:
+	ld.w	d0,[a15]
+	itof	d0,d0
+.L336:
+	mov.u	d1,#32768
+	addih	d1,d1,#17851
+.L337:
+	mul.f	d0,d0,d1
+.L338:
+	mov	d1,#13107
+	addih	d1,d1,#17795
+.L339:
+	div.f	d0,d0,d1
+.L152:
+	movh.a	a15,#@his(current_L_rpm)
+	lea	a15,[a15]@los(current_L_rpm)
+.L340:
+	movh.a	a2,#@his(current_L_rpm)
+	lea	a2,[a2]@los(current_L_rpm)
+	ld.w	d1,[a2]
+.L341:
+	mov.u	d2,#52429
+	addih	d2,d2,#16204
+.L342:
+	mov.u	d3,#52429
+	addih	d3,d3,#15948
+.L343:
+	mul.f	d15,d15,d3
+.L151:
+	madd.f	d15,d15,d1,d2
+.L344:
+	st.w	[a15],d15
+.L345:
+	movh.a	a15,#@his(current_R_rpm)
+	lea	a15,[a15]@los(current_R_rpm)
+.L346:
+	movh.a	a2,#@his(current_R_rpm)
+	lea	a2,[a2]@los(current_R_rpm)
+	ld.w	d15,[a2]
+.L347:
+	mov.u	d1,#52429
+	addih	d1,d1,#16204
+.L348:
+	mov.u	d2,#52429
+	addih	d2,d2,#15948
+.L349:
+	mul.f	d0,d0,d2
+.L153:
+	madd.f	d15,d0,d15,d1
+.L350:
+	st.w	[a15],d15
+.L351:
+	ret
+.L124:
+	
+__Encoder_test_function_end:
+	.size	Encoder_test,__Encoder_test_function_end-Encoder_test
+.L66:
 	; End of function
 	
 	.sdecl	'.text.motor.Motor_Control_Loop',code,cluster('Motor_Control_Loop')
@@ -335,85 +416,115 @@ __Set_Motor_PWM_function_end:
 	
 	.global	Motor_Control_Loop
 ; Function Motor_Control_Loop
-.L20:
+.L23:
 Motor_Control_Loop:	.type	func
 	mov	e8,d5,d4
-.L194:
+.L221:
 	call	Encoder
-.L130:
-	movh.a	a2,#@his(current_L_rpm)
-	lea	a2,[a2]@los(current_L_rpm)
-.L195:
+.L94:
 	movh.a	a15,#@his(Mf)
 	lea	a15,[a15]@los(Mf)
-.L196:
+.L222:
 	ld.w	d15,[a15]4
 	itof	d15,d15
-.L197:
+.L223:
 	mov.u	d0,#32768
 	addih	d0,d0,#17851
-.L198:
+.L224:
 	mul.f	d15,d15,d0
-.L199:
-	movh	d0,#17536
-.L200:
+.L225:
+	mov	d0,#13107
+	addih	d0,d0,#17795
+.L226:
 	div.f	d15,d15,d0
-.L201:
-	st.w	[a2],d15
-.L202:
+.L154:
+	movh.a	a15,#@his(Mf)
+	lea	a15,[a15]@los(Mf)
+.L227:
+	ld.w	d0,[a15]
+	itof	d0,d0
+.L228:
+	mov.u	d1,#32768
+	addih	d1,d1,#17851
+.L229:
+	mul.f	d0,d0,d1
+.L230:
+	mov	d1,#13107
+	addih	d1,d1,#17795
+.L231:
+	div.f	d0,d0,d1
+.L156:
+	movh.a	a15,#@his(current_L_rpm)
+	lea	a15,[a15]@los(current_L_rpm)
+.L232:
+	movh.a	a2,#@his(current_L_rpm)
+	lea	a2,[a2]@los(current_L_rpm)
+	ld.w	d1,[a2]
+.L233:
+	mov.u	d2,#52429
+	addih	d2,d2,#16204
+.L234:
+	mov.u	d3,#52429
+	addih	d3,d3,#15948
+.L235:
+	mul.f	d15,d15,d3
+.L155:
+	madd.f	d15,d15,d1,d2
+.L236:
+	st.w	[a15],d15
+.L237:
 	movh.a	a15,#@his(current_R_rpm)
 	lea	a15,[a15]@los(current_R_rpm)
-.L203:
-	movh.a	a2,#@his(Mf)
-	lea	a2,[a2]@los(Mf)
-.L204:
+.L238:
+	movh.a	a2,#@his(current_R_rpm)
+	lea	a2,[a2]@los(current_R_rpm)
 	ld.w	d15,[a2]
-	itof	d15,d15
-.L205:
-	mov.u	d0,#32768
-	addih	d0,d0,#17851
-.L206:
-	mul.f	d15,d15,d0
-.L207:
-	movh	d0,#17536
-.L208:
-	div.f	d15,d15,d0
-.L209:
+.L239:
+	mov.u	d1,#52429
+	addih	d1,d1,#16204
+.L240:
+	mov.u	d2,#52429
+	addih	d2,d2,#15948
+.L241:
+	mul.f	d0,d0,d2
+.L157:
+	madd.f	d15,d0,d15,d1
+.L242:
 	st.w	[a15],d15
-.L86:
+.L97:
 	movh.a	a4,#@his(MotorL_PID)
 	lea	a4,[a4]@los(MotorL_PID)
-.L210:
+.L243:
 	movh.a	a15,#@his(current_L_rpm)
 	lea	a15,[a15]@los(current_L_rpm)
 	ld.w	d5,[a15]
-.L131:
+.L158:
 	mov	d4,d8
-.L132:
+.L159:
 	call	PID_Calculate
-.L133:
+.L160:
 	mov	d15,d2
-.L135:
+.L162:
 	movh.a	a4,#@his(MotorR_PID)
 	lea	a4,[a4]@los(MotorR_PID)
-.L211:
+.L244:
 	movh.a	a15,#@his(current_R_rpm)
 	lea	a15,[a15]@los(current_R_rpm)
 	ld.w	d5,[a15]
-.L136:
+.L163:
 	mov	d4,d9
-.L137:
+.L164:
 	call	PID_Calculate
-.L134:
+.L161:
 	mov	e4,d2,d15
 	call	Set_Motor_PWM
-.L138:
+.L165:
 	ret
-.L82:
+.L90:
 	
 __Motor_Control_Loop_function_end:
 	.size	Motor_Control_Loop,__Motor_Control_Loop_function_end-Motor_Control_Loop
-.L38:
+.L41:
 	; End of function
 	
 	.sdecl	'.text.motor.Get_Steering_Delta',code,cluster('Get_Steering_Delta')
@@ -422,60 +533,60 @@ __Motor_Control_Loop_function_end:
 	
 	.global	Get_Steering_Delta
 ; Function Get_Steering_Delta
-.L22:
+.L25:
 Get_Steering_Delta:	.type	func
 	movh.a	a15,#@his(icm_data)
 	lea	a15,[a15]@los(icm_data)
-.L287:
+.L311:
 	ld.w	d15,[a15]8
-.L139:
+.L166:
 	movh.a	a15,#@his(Steer_Kp)
 	lea	a15,[a15]@los(Steer_Kp)
 	ld.w	d0,[a15]
-.L288:
+.L312:
 	movh.a	a15,#@his(last_image_error)
 	lea	a15,[a15]@los(last_image_error)
 	ld.w	d1,[a15]
-.L289:
+.L313:
 	sub.f	d1,d4,d1
-.L290:
+.L314:
 	movh.a	a15,#@his(Steer_Kd)
 	lea	a15,[a15]@los(Steer_Kd)
 	ld.w	d2,[a15]
-.L291:
+.L315:
 	mul.f	d1,d1,d2
-.L292:
+.L316:
 	madd.f	d0,d1,d4,d0
-.L141:
+.L168:
 	movh.a	a15,#@his(Steer_Preview_Kp)
 	lea	a15,[a15]@los(Steer_Preview_Kp)
 	ld.w	d1,[a15]
-.L293:
+.L317:
 	mul.f	d1,d5,d1
-.L294:
+.L318:
 	sub.f	d15,d1,d15
-.L140:
+.L167:
 	movh.a	a15,#@his(Steer_Gkd)
 	lea	a15,[a15]@los(Steer_Gkd)
 	ld.w	d1,[a15]
-.L295:
+.L319:
 	mul.f	d15,d15,d1
-.L142:
+.L169:
 	add.f	d2,d0,d15
-.L143:
+.L170:
 	movh.a	a15,#@his(last_image_error)
 	lea	a15,[a15]@los(last_image_error)
-.L296:
+.L320:
 	st.w	[a15],d4
-.L297:
-	j	.L12
-.L12:
+.L321:
+	j	.L13
+.L13:
 	ret
-.L98:
+.L112:
 	
 __Get_Steering_Delta_function_end:
 	.size	Get_Steering_Delta,__Get_Steering_Delta_function_end-Get_Steering_Delta
-.L53:
+.L56:
 	; End of function
 	
 	.sdecl	'.text.motor.Motor_Steering_Control',code,cluster('Motor_Steering_Control')
@@ -484,31 +595,31 @@ __Get_Steering_Delta_function_end:
 	
 	.global	Motor_Steering_Control
 ; Function Motor_Steering_Control
-.L24:
+.L27:
 Motor_Steering_Control:	.type	func
 	mov	d15,d4
-.L145:
+.L172:
 	movh.a	a15,#@his(near_image_error)
 	lea	a15,[a15]@los(near_image_error)
 	ld.w	d4,[a15]
-.L144:
+.L171:
 	movh.a	a15,#@his(far_image_error)
 	lea	a15,[a15]@los(far_image_error)
 	ld.w	d5,[a15]
 	call	Get_Steering_Delta
-.L146:
+.L173:
 	add.f	d4,d15,d2
-.L148:
+.L175:
 	sub.f	d5,d15,d2
-.L149:
+.L176:
 	call	Motor_Control_Loop
-.L147:
+.L174:
 	ret
-.L105:
+.L119:
 	
 __Motor_Steering_Control_function_end:
 	.size	Motor_Steering_Control,__Motor_Steering_Control_function_end-Motor_Steering_Control
-.L58:
+.L61:
 	; End of function
 	
 	.sdecl	'.bss.motor.MotorL_PID',data,cluster('MotorL_PID')
@@ -592,6 +703,7 @@ Steer_Preview_Kp:	.type	object
 	.calls	'Motor_Init','pwm_init'
 	.calls	'Set_Motor_PWM','gpio_set_level'
 	.calls	'Set_Motor_PWM','pwm_set_duty'
+	.calls	'Encoder_test','Encoder'
 	.calls	'Motor_Control_Loop','Encoder'
 	.calls	'Motor_Control_Loop','PID_Calculate'
 	.calls	'Motor_Control_Loop','Set_Motor_PWM'
@@ -600,6 +712,7 @@ Steer_Preview_Kp:	.type	object
 	.calls	'Motor_Init','',0
 	.calls	'PID_Calculate','',0
 	.calls	'Set_Motor_PWM','',0
+	.calls	'Encoder_test','',0
 	.calls	'Motor_Control_Loop','',0
 	.calls	'Get_Steering_Delta','',0
 	.extern	gpio_set_level
@@ -614,17 +727,17 @@ Steer_Preview_Kp:	.type	object
 	.calls	'Motor_Steering_Control','',0
 	.sdecl	'.debug_info',debug
 	.sect	'.debug_info'
-.L26:
+.L29:
 	.word	144567
 	.half	3
-	.word	.L27
+	.word	.L30
 	.byte	4
-.L25:
+.L28:
 	.byte	1
 	.byte	'../code/motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1
-	.word	.L28
+	.word	.L31
 	.byte	2,1,1,3
 	.word	186
 	.byte	4
@@ -633,7 +746,7 @@ Steer_Preview_Kp:	.type	object
 	.word	189
 	.byte	6,0,7
 	.byte	'__fract',0,4,128,1
-.L83:
+.L91:
 	.byte	7
 	.byte	'float',0,4,4,8
 	.byte	'Ifx__float_to_fract',0,3,1,152,2,18
@@ -6457,7 +6570,7 @@ Steer_Preview_Kp:	.type	object
 	.word	32796
 	.byte	6,0,27
 	.byte	'Encoder',0,22,25,6,1,1,1
-.L110:
+.L128:
 	.byte	20,23,18,9,40,13
 	.byte	'kp',0
 	.word	246
@@ -6489,7 +6602,7 @@ Steer_Preview_Kp:	.type	object
 	.byte	'out_limit',0
 	.word	246
 	.byte	4,2,35,36,0
-.L90:
+.L101:
 	.byte	3
 	.word	39290
 	.byte	28
@@ -20103,13 +20216,13 @@ Steer_Preview_Kp:	.type	object
 	.byte	1,1,28
 	.byte	'PID_Controller',0,23,29,1
 	.word	39290
-.L111:
+.L129:
 	.byte	14
 	.word	246
 	.byte	0
 	.sdecl	'.debug_abbrev',debug
 	.sect	'.debug_abbrev'
-.L27:
+.L30:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,21,0,54,15,39,12,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32,13
 	.byte	58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,36,0,3,8,11,15,62
 	.byte	15,0,0,8,46,1,3,8,32,13,58,15,59,15,57,15,73,19,54,15,39,12,0,0,9,59,0,3,8,0,0,10,19,1,3,8,58,15,59,15
@@ -20122,12 +20235,12 @@ Steer_Preview_Kp:	.type	object
 	.byte	1,73,19,54,15,39,12,0,0,34,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
 	.sdecl	'.debug_line',debug
 	.sect	'.debug_line'
-.L28:
-	.word	.L151-.L150
-.L150:
+.L31:
+	.word	.L178-.L177
+.L177:
 	.half	3
-	.word	.L153-.L152
-.L152:
+	.word	.L180-.L179
+.L179:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
 	.byte	'C:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC26B\\\\_Reg',0
 	.byte	'C:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_driver',0
@@ -20215,879 +20328,922 @@ Steer_Preview_Kp:	.type	object
 	.byte	'seekfree_assistant.h',0,10,0,0
 	.byte	'kalman.h',0,3,0,0
 	.byte	'image_process.h',0,3,0,0,0
-.L153:
-.L151:
+.L180:
+.L178:
 	.sdecl	'.debug_info',debug,cluster('Motor_Init')
 	.sect	'.debug_info'
-.L29:
+.L32:
 	.word	232
 	.half	3
-	.word	.L30
+	.word	.L33
 	.byte	4,1
 	.byte	'../code/motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1
-	.word	.L32,.L31
+	.word	.L35,.L34
 	.byte	2
-	.word	.L25
+	.word	.L28
 	.byte	3
-	.byte	'Motor_Init',0,1,27,6,1,1,1
-	.word	.L14,.L81,.L13
+	.byte	'Motor_Init',0,1,28,6,1,1,1
+	.word	.L15,.L89,.L14
 	.byte	4
-	.word	.L14,.L81
+	.word	.L15,.L89
 	.byte	0,0
 	.sdecl	'.debug_abbrev',debug,cluster('Motor_Init')
 	.sect	'.debug_abbrev'
-.L30:
+.L33:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
 	.sdecl	'.debug_line',debug,cluster('Motor_Init')
 	.sect	'.debug_line'
-.L31:
-	.word	.L155-.L154
-.L154:
+.L34:
+	.word	.L182-.L181
+.L181:
 	.half	3
-	.word	.L157-.L156
-.L156:
+	.word	.L184-.L183
+.L183:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../code/motor.c',0,0,0,0,0
-.L157:
+.L184:
 	.byte	5,15,7,0,5,2
-	.word	.L14
-	.byte	3,29,1,5,23,9
-	.half	.L158-.L14
+	.word	.L15
+	.byte	3,30,1,5,23,9
+	.half	.L185-.L15
 	.byte	1,5,28,9
-	.half	.L159-.L158
-	.byte	1,5,39,9
-	.half	.L160-.L159
-	.byte	1,5,15,9
-	.half	.L161-.L160
-	.byte	3,1,1,5,23,9
-	.half	.L162-.L161
-	.byte	1,5,28,9
-	.half	.L163-.L162
-	.byte	1,5,39,9
-	.half	.L164-.L163
-	.byte	1,5,14,9
-	.half	.L165-.L164
-	.byte	3,3,1,5,22,9
-	.half	.L166-.L165
-	.byte	1,5,29,9
-	.half	.L167-.L166
-	.byte	1,5,14,9
-	.half	.L168-.L167
-	.byte	3,1,1,5,22,9
-	.half	.L169-.L168
-	.byte	1,5,29,9
-	.half	.L170-.L169
-	.byte	1,5,5,9
-	.half	.L171-.L170
-	.byte	3,3,1,5,21,9
-	.half	.L172-.L171
-	.byte	1,5,19,9
-	.half	.L173-.L172
-	.byte	1,5,5,9
-	.half	.L174-.L173
-	.byte	3,1,1,5,21,9
-	.half	.L175-.L174
-	.byte	1,5,19,9
-	.half	.L176-.L175
-	.byte	1,5,5,9
-	.half	.L177-.L176
-	.byte	3,1,1,5,21,9
-	.half	.L178-.L177
-	.byte	1,5,19,9
-	.half	.L179-.L178
-	.byte	1,5,5,9
-	.half	.L180-.L179
-	.byte	3,1,1,5,26,9
-	.half	.L181-.L180
-	.byte	1,5,24,9
-	.half	.L182-.L181
-	.byte	1,5,5,9
-	.half	.L183-.L182
-	.byte	3,1,1,5,28,9
-	.half	.L184-.L183
-	.byte	1,5,26,9
-	.half	.L185-.L184
-	.byte	1,5,5,9
 	.half	.L186-.L185
-	.byte	3,2,1,5,18,9
+	.byte	1,5,39,9
 	.half	.L187-.L186
-	.byte	1,5,16,9
+	.byte	1,5,15,9
 	.half	.L188-.L187
-	.byte	1,5,1,9
+	.byte	3,1,1,5,23,9
 	.half	.L189-.L188
+	.byte	1,5,28,9
+	.half	.L190-.L189
+	.byte	1,5,39,9
+	.half	.L191-.L190
+	.byte	1,5,14,9
+	.half	.L192-.L191
+	.byte	3,3,1,5,22,9
+	.half	.L193-.L192
+	.byte	1,5,29,9
+	.half	.L194-.L193
+	.byte	1,5,14,9
+	.half	.L195-.L194
+	.byte	3,1,1,5,22,9
+	.half	.L196-.L195
+	.byte	1,5,29,9
+	.half	.L197-.L196
+	.byte	1,5,5,9
+	.half	.L198-.L197
+	.byte	3,3,1,5,21,9
+	.half	.L199-.L198
+	.byte	1,5,19,9
+	.half	.L200-.L199
+	.byte	1,5,5,9
+	.half	.L201-.L200
+	.byte	3,1,1,5,21,9
+	.half	.L202-.L201
+	.byte	1,5,19,9
+	.half	.L203-.L202
+	.byte	1,5,5,9
+	.half	.L204-.L203
+	.byte	3,1,1,5,21,9
+	.half	.L205-.L204
+	.byte	1,5,19,9
+	.half	.L206-.L205
+	.byte	1,5,5,9
+	.half	.L207-.L206
+	.byte	3,1,1,5,26,9
+	.half	.L208-.L207
+	.byte	1,5,24,9
+	.half	.L209-.L208
+	.byte	1,5,5,9
+	.half	.L210-.L209
+	.byte	3,1,1,5,28,9
+	.half	.L211-.L210
+	.byte	1,5,26,9
+	.half	.L212-.L211
+	.byte	1,5,5,9
+	.half	.L213-.L212
+	.byte	3,2,1,5,18,9
+	.half	.L214-.L213
+	.byte	1,5,16,9
+	.half	.L215-.L214
+	.byte	1,5,1,9
+	.half	.L216-.L215
 	.byte	3,1,1,7,9
-	.half	.L33-.L189
+	.half	.L36-.L216
 	.byte	0,1,1
-.L155:
+.L182:
 	.sdecl	'.debug_ranges',debug,cluster('Motor_Init')
 	.sect	'.debug_ranges'
-.L32:
-	.word	-1,.L14,0,.L33-.L14,0,0
+.L35:
+	.word	-1,.L15,0,.L36-.L15,0,0
 	.sdecl	'.debug_info',debug,cluster('Motor_Control_Loop')
 	.sect	'.debug_info'
-.L34:
-	.word	329
+.L37:
+	.word	382
 	.half	3
-	.word	.L35
+	.word	.L38
 	.byte	4,1
 	.byte	'../code/motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1
-	.word	.L37,.L36
+	.word	.L40,.L39
 	.byte	2
-	.word	.L25
+	.word	.L28
 	.byte	3
-	.byte	'Motor_Control_Loop',0,1,105,6,1,1,1
-	.word	.L20,.L82,.L19
+	.byte	'Motor_Control_Loop',0,1,130,1,6,1,1,1
+	.word	.L23,.L90,.L22
 	.byte	4
-	.byte	'target_L',0,1,105,31
-	.word	.L83,.L84
+	.byte	'target_L',0,1,130,1,31
+	.word	.L91,.L92
 	.byte	4
-	.byte	'target_R',0,1,105,47
-	.word	.L83,.L85
+	.byte	'target_R',0,1,130,1,47
+	.word	.L91,.L93
 	.byte	5
-	.word	.L20,.L82
+	.word	.L23,.L90
 	.byte	5
-	.word	.L86,.L82
+	.word	.L94,.L90
 	.byte	6
-	.byte	'out_l',0,1,114,11
-	.word	.L83,.L87
+	.byte	'raw_L',0,1,135,1,11
+	.word	.L91,.L95
 	.byte	6
-	.byte	'out_r',0,1,115,11
-	.word	.L83,.L88
-	.byte	0,0,0,0
+	.byte	'raw_R',0,1,136,1,11
+	.word	.L91,.L96
+	.byte	5
+	.word	.L97,.L90
+	.byte	6
+	.byte	'out_l',0,1,143,1,11
+	.word	.L91,.L98
+	.byte	6
+	.byte	'out_r',0,1,144,1,11
+	.word	.L91,.L99
+	.byte	0,0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('Motor_Control_Loop')
 	.sect	'.debug_abbrev'
-.L35:
+.L38:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
 	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
 	.sdecl	'.debug_line',debug,cluster('Motor_Control_Loop')
 	.sect	'.debug_line'
-.L36:
-	.word	.L191-.L190
-.L190:
+.L39:
+	.word	.L218-.L217
+.L217:
 	.half	3
-	.word	.L193-.L192
-.L192:
+	.word	.L220-.L219
+.L219:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../code/motor.c',0,0,0,0,0
-.L193:
+.L220:
 	.byte	5,6,7,0,5,2
-	.word	.L20
-	.byte	3,232,0,1,5,12,9
-	.half	.L194-.L20
-	.byte	3,3,1,5,5,9
-	.half	.L130-.L194
+	.word	.L23
+	.byte	3,129,1,1,5,12,9
+	.half	.L221-.L23
+	.byte	3,3,1,5,20,9
+	.half	.L94-.L221
 	.byte	3,2,1,5,22,9
-	.half	.L195-.L130
-	.byte	1,5,24,9
-	.half	.L196-.L195
-	.byte	1,5,40,9
-	.half	.L197-.L196
+	.half	.L222-.L94
 	.byte	1,5,38,9
-	.half	.L198-.L197
-	.byte	1,5,52,9
-	.half	.L199-.L198
-	.byte	1,5,49,9
-	.half	.L200-.L199
-	.byte	1,5,19,9
-	.half	.L201-.L200
-	.byte	1,5,5,9
-	.half	.L202-.L201
+	.half	.L223-.L222
+	.byte	1,5,36,9
+	.half	.L224-.L223
+	.byte	1,5,64,9
+	.half	.L225-.L224
+	.byte	1,5,47,9
+	.half	.L226-.L225
+	.byte	1,5,20,9
+	.half	.L154-.L226
 	.byte	3,1,1,5,22,9
-	.half	.L203-.L202
-	.byte	1,5,24,9
-	.half	.L204-.L203
-	.byte	1,5,41,9
-	.half	.L205-.L204
+	.half	.L227-.L154
 	.byte	1,5,39,9
-	.half	.L206-.L205
-	.byte	1,5,53,9
-	.half	.L207-.L206
-	.byte	1,5,50,9
-	.half	.L208-.L207
+	.half	.L228-.L227
+	.byte	1,5,37,9
+	.half	.L229-.L228
+	.byte	1,5,65,9
+	.half	.L230-.L229
+	.byte	1,5,48,9
+	.half	.L231-.L230
+	.byte	1,5,5,9
+	.half	.L156-.L231
+	.byte	3,3,1,5,21,9
+	.half	.L232-.L156
+	.byte	1,5,43,9
+	.half	.L233-.L232
+	.byte	1,5,73,9
+	.half	.L234-.L233
+	.byte	1,5,71,9
+	.half	.L235-.L234
+	.byte	1,5,63,9
+	.half	.L155-.L235
 	.byte	1,5,19,9
-	.half	.L209-.L208
+	.half	.L236-.L155
+	.byte	1,5,5,9
+	.half	.L237-.L236
+	.byte	3,1,1,5,21,9
+	.half	.L238-.L237
+	.byte	1,5,43,9
+	.half	.L239-.L238
+	.byte	1,5,73,9
+	.half	.L240-.L239
+	.byte	1,5,71,9
+	.half	.L241-.L240
+	.byte	1,5,63,9
+	.half	.L157-.L241
+	.byte	1,5,19,9
+	.half	.L242-.L157
 	.byte	1,5,34,9
-	.half	.L86-.L209
+	.half	.L97-.L242
 	.byte	3,3,1,5,56,9
-	.half	.L210-.L86
+	.half	.L243-.L97
 	.byte	1,5,17,9
-	.half	.L133-.L210
+	.half	.L160-.L243
 	.byte	1,5,34,9
-	.half	.L135-.L133
+	.half	.L162-.L160
 	.byte	3,1,1,5,56,9
-	.half	.L211-.L135
-	.byte	1,5,26,9
-	.half	.L134-.L211
-	.byte	3,3,1,5,1,9
-	.half	.L138-.L134
+	.half	.L244-.L162
+	.byte	1,5,27,9
+	.half	.L161-.L244
+	.byte	3,2,1,5,1,9
+	.half	.L165-.L161
 	.byte	3,1,1,7,9
-	.half	.L38-.L138
+	.half	.L41-.L165
 	.byte	0,1,1
-.L191:
+.L218:
 	.sdecl	'.debug_ranges',debug,cluster('Motor_Control_Loop')
 	.sect	'.debug_ranges'
-.L37:
-	.word	-1,.L20,0,.L38-.L20,0,0
+.L40:
+	.word	-1,.L23,0,.L41-.L23,0,0
 	.sdecl	'.debug_info',debug,cluster('PID_Calculate')
 	.sect	'.debug_info'
-.L39:
-	.word	324
+.L42:
+	.word	381
 	.half	3
-	.word	.L40
+	.word	.L43
 	.byte	4,1
 	.byte	'../code/motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1
-	.word	.L42,.L41
+	.word	.L45,.L44
 	.byte	2
-	.word	.L25
+	.word	.L28
 	.byte	3
-	.byte	'PID_Calculate',0,1,52,7
-	.word	.L83
+	.byte	'PID_Calculate',0,1,53,7
+	.word	.L91
 	.byte	1,1,1
-	.word	.L16,.L89,.L15
+	.word	.L17,.L100,.L16
 	.byte	4
-	.byte	'pid',0,1,52,37
-	.word	.L90,.L91
+	.byte	'pid',0,1,53,37
+	.word	.L101,.L102
 	.byte	4
-	.byte	'target',0,1,52,48
-	.word	.L83,.L92
+	.byte	'target',0,1,53,48
+	.word	.L91,.L103
 	.byte	4
-	.byte	'current',0,1,52,62
-	.word	.L83,.L93
+	.byte	'current',0,1,53,62
+	.word	.L91,.L104
 	.byte	5
-	.word	.L16,.L89
+	.word	.L17,.L100
 	.byte	5
-	.word	.L4,.L89
+	.word	.L105,.L100
 	.byte	6
-	.byte	'output',0,1,61,11
-	.word	.L83,.L94
-	.byte	0,0,0,0
+	.byte	'integral_out',0,1,61,11
+	.word	.L91,.L106
+	.byte	6
+	.byte	'max_i_out',0,1,64,11
+	.word	.L91,.L107
+	.byte	5
+	.word	.L4,.L100
+	.byte	6
+	.byte	'output',0,1,74,11
+	.word	.L91,.L108
+	.byte	0,0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('PID_Calculate')
 	.sect	'.debug_abbrev'
-.L40:
+.L43:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
 	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
 	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
 	.sdecl	'.debug_line',debug,cluster('PID_Calculate')
 	.sect	'.debug_line'
-.L41:
-	.word	.L213-.L212
-.L212:
+.L44:
+	.word	.L246-.L245
+.L245:
 	.half	3
-	.word	.L215-.L214
-.L214:
+	.word	.L248-.L247
+.L247:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../code/motor.c',0,0,0,0,0
-.L215:
+.L248:
 	.byte	5,25,7,0,5,2
-	.word	.L16
-	.byte	3,53,1,5,16,9
-	.half	.L216-.L16
+	.word	.L17
+	.byte	3,54,1,5,16,9
+	.half	.L249-.L17
 	.byte	1,5,8,9
-	.half	.L217-.L216
-	.byte	3,3,1,5,25,9
-	.half	.L218-.L217
-	.byte	1,5,19,9
-	.half	.L219-.L218
-	.byte	1,5,12,9
-	.half	.L220-.L219
-	.byte	3,1,1,5,28,9
-	.half	.L221-.L220
-	.byte	1,5,23,9
-	.half	.L222-.L221
-	.byte	1,5,5,9
-	.half	.L223-.L222
-	.byte	1,5,59,7,9
-	.half	.L224-.L223
-	.byte	1,5,54,9
-	.half	.L225-.L224
-	.byte	1,5,12,9
-	.half	.L3-.L225
-	.byte	3,1,1,5,29,9
-	.half	.L226-.L3
-	.byte	1,5,25,9
-	.half	.L227-.L226
-	.byte	1,5,23,9
-	.half	.L228-.L227
-	.byte	1,5,5,9
-	.half	.L229-.L228
-	.byte	1,5,60,7,9
-	.half	.L230-.L229
-	.byte	1,5,56,9
-	.half	.L231-.L230
-	.byte	1,5,54,9
-	.half	.L232-.L231
-	.byte	1,5,24,9
-	.half	.L4-.L232
-	.byte	3,4,1,5,35,9
-	.half	.L233-.L4
-	.byte	1,5,48,9
-	.half	.L234-.L233
-	.byte	1,5,43,9
-	.half	.L235-.L234
-	.byte	1,5,24,9
-	.half	.L236-.L235
-	.byte	3,126,1,5,34,9
-	.half	.L237-.L236
-	.byte	1,5,24,9
-	.half	.L238-.L237
-	.byte	3,1,1,5,34,9
-	.half	.L112-.L238
-	.byte	1,5,29,9
-	.half	.L239-.L112
-	.byte	1,5,43,9
-	.half	.L240-.L239
-	.byte	3,127,1,5,46,9
-	.half	.L241-.L240
-	.byte	3,1,1,5,26,9
-	.half	.L113-.L241
-	.byte	3,3,1,5,21,9
-	.half	.L242-.L113
-	.byte	1,9
-	.half	.L243-.L242
-	.byte	3,3,1,5,16,9
-	.half	.L244-.L243
-	.byte	1,5,5,9
-	.half	.L245-.L244
-	.byte	1,5,47,7,9
-	.half	.L246-.L245
-	.byte	1,5,22,9
-	.half	.L5-.L246
-	.byte	3,1,1,5,18,9
-	.half	.L247-.L5
-	.byte	1,5,16,9
-	.half	.L248-.L247
-	.byte	1,5,5,9
-	.half	.L249-.L248
-	.byte	1,5,48,7,9
 	.half	.L250-.L249
-	.byte	1,5,44,9
+	.byte	3,3,1,5,25,9
 	.half	.L251-.L250
+	.byte	1,5,19,9
+	.half	.L252-.L251
+	.byte	1,5,29,9
+	.half	.L105-.L252
+	.byte	3,3,1,5,39,9
+	.half	.L253-.L105
+	.byte	1,5,34,9
+	.half	.L254-.L253
+	.byte	1,5,23,9
+	.half	.L130-.L254
+	.byte	3,3,1,5,22,9
+	.half	.L132-.L130
+	.byte	3,1,1,5,5,9
+	.half	.L255-.L132
+	.byte	1,5,22,7,9
+	.half	.L256-.L255
+	.byte	3,1,1,5,40,9
+	.half	.L257-.L256
+	.byte	3,1,1,5,35,9
+	.half	.L258-.L257
+	.byte	1,5,23,9
+	.half	.L259-.L258
+	.byte	1,5,33,9
+	.half	.L260-.L259
+	.byte	3,127,1,5,29,9
+	.half	.L3-.L260
+	.byte	3,3,1,5,27,9
+	.half	.L261-.L3
+	.byte	1,5,10,9
+	.half	.L262-.L261
+	.byte	1,5,24,7,9
+	.half	.L263-.L262
+	.byte	3,1,1,5,25,9
+	.half	.L264-.L263
+	.byte	3,1,1,5,41,9
+	.half	.L133-.L264
+	.byte	1,5,36,9
+	.half	.L265-.L133
+	.byte	1,5,23,9
+	.half	.L266-.L265
+	.byte	1,5,24,9
+	.half	.L4-.L266
+	.byte	3,5,1,5,35,9
+	.half	.L267-.L4
+	.byte	1,5,48,9
+	.half	.L268-.L267
+	.byte	1,5,43,9
+	.half	.L269-.L268
+	.byte	1,5,24,9
+	.half	.L270-.L269
+	.byte	3,126,1,5,34,9
+	.half	.L271-.L270
+	.byte	1,5,43,9
+	.half	.L272-.L271
+	.byte	1,5,33,9
+	.half	.L273-.L272
+	.byte	3,1,1,5,26,9
+	.half	.L131-.L273
+	.byte	3,4,1,5,21,9
+	.half	.L274-.L131
+	.byte	1,9
+	.half	.L275-.L274
+	.byte	3,3,1,5,16,9
+	.half	.L276-.L275
 	.byte	1,5,5,9
-	.half	.L6-.L251
+	.half	.L277-.L276
+	.byte	1,5,47,7,9
+	.half	.L278-.L277
+	.byte	1,5,22,9
+	.half	.L6-.L278
+	.byte	3,1,1,5,18,9
+	.half	.L279-.L6
+	.byte	1,5,16,9
+	.half	.L280-.L279
+	.byte	1,5,5,9
+	.half	.L281-.L280
+	.byte	1,5,48,7,9
+	.half	.L282-.L281
+	.byte	1,5,44,9
+	.half	.L283-.L282
+	.byte	1,5,5,9
+	.half	.L7-.L283
 	.byte	3,2,1,5,1,9
-	.half	.L7-.L6
+	.half	.L8-.L7
 	.byte	3,1,1,7,9
-	.half	.L43-.L7
+	.half	.L46-.L8
 	.byte	0,1,1
-.L213:
+.L246:
 	.sdecl	'.debug_ranges',debug,cluster('PID_Calculate')
 	.sect	'.debug_ranges'
-.L42:
-	.word	-1,.L16,0,.L43-.L16,0,0
+.L45:
+	.word	-1,.L17,0,.L46-.L17,0,0
 	.sdecl	'.debug_info',debug,cluster('Set_Motor_PWM')
 	.sect	'.debug_info'
-.L44:
+.L47:
 	.word	271
 	.half	3
-	.word	.L45
+	.word	.L48
 	.byte	4,1
 	.byte	'../code/motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1
-	.word	.L47,.L46
+	.word	.L50,.L49
 	.byte	2
-	.word	.L25
+	.word	.L28
 	.byte	3
-	.byte	'Set_Motor_PWM',0,1,79,6,1,1,1
-	.word	.L18,.L95,.L17
+	.byte	'Set_Motor_PWM',0,1,92,6,1,1,1
+	.word	.L19,.L109,.L18
 	.byte	4
-	.byte	'out_L',0,1,79,26
-	.word	.L83,.L96
+	.byte	'out_L',0,1,92,26
+	.word	.L91,.L110
 	.byte	4
-	.byte	'out_R',0,1,79,39
-	.word	.L83,.L97
+	.byte	'out_R',0,1,92,39
+	.word	.L91,.L111
 	.byte	5
-	.word	.L18,.L95
+	.word	.L19,.L109
 	.byte	0,0
 	.sdecl	'.debug_abbrev',debug,cluster('Set_Motor_PWM')
 	.sect	'.debug_abbrev'
-.L45:
+.L48:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
 	.sdecl	'.debug_line',debug,cluster('Set_Motor_PWM')
 	.sect	'.debug_line'
-.L46:
-	.word	.L253-.L252
-.L252:
+.L49:
+	.word	.L285-.L284
+.L284:
 	.half	3
-	.word	.L255-.L254
-.L254:
+	.word	.L287-.L286
+.L286:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../code/motor.c',0,0,0,0,0
-.L255:
+.L287:
 	.byte	5,6,7,0,5,2
-	.word	.L18
-	.byte	3,206,0,1,5,18,9
-	.half	.L256-.L18
+	.word	.L19
+	.byte	3,219,0,1,5,18,9
+	.half	.L288-.L19
 	.byte	3,3,1,5,15,9
-	.half	.L116-.L256
+	.half	.L136-.L288
 	.byte	1,5,5,9
-	.half	.L257-.L116
+	.half	.L289-.L136
 	.byte	1,5,24,7,9
-	.half	.L258-.L257
+	.half	.L290-.L289
 	.byte	3,4,1,5,32,9
-	.half	.L114-.L258
+	.half	.L134-.L290
 	.byte	1,5,22,9
-	.half	.L259-.L114
+	.half	.L291-.L134
 	.byte	3,1,1,5,39,9
-	.half	.L118-.L259
-	.byte	1,5,48,9
-	.half	.L119-.L118
-	.byte	1,5,46,9
-	.half	.L260-.L119
-	.byte	1,5,55,9
-	.half	.L261-.L260
-	.byte	1,5,53,9
-	.half	.L262-.L261
-	.byte	1,5,30,9
-	.half	.L263-.L262
-	.byte	1,5,41,9
-	.half	.L264-.L263
-	.byte	3,124,1,5,24,9
-	.half	.L8-.L264
-	.byte	1,5,32,9
-	.half	.L120-.L8
-	.byte	1,5,22,9
-	.half	.L265-.L120
-	.byte	3,1,1,5,47,9
-	.half	.L266-.L265
-	.byte	1,5,45,9
-	.half	.L122-.L266
+	.half	.L138-.L291
 	.byte	1,5,54,9
-	.half	.L123-.L122
-	.byte	1,5,52,9
-	.half	.L267-.L123
+	.half	.L139-.L138
+	.byte	1,5,46,9
+	.half	.L292-.L139
 	.byte	1,5,30,9
-	.half	.L268-.L267
+	.half	.L293-.L292
+	.byte	1,5,41,9
+	.half	.L294-.L293
+	.byte	3,124,1,5,24,9
+	.half	.L9-.L294
+	.byte	1,5,32,9
+	.half	.L140-.L9
+	.byte	1,5,22,9
+	.half	.L295-.L140
+	.byte	3,1,1,5,53,9
+	.half	.L296-.L295
+	.byte	1,5,45,9
+	.half	.L142-.L296
+	.byte	1,5,30,9
+	.half	.L143-.L142
 	.byte	1,5,18,9
-	.half	.L9-.L268
+	.half	.L10-.L143
 	.byte	3,7,1,5,15,9
-	.half	.L124-.L9
+	.half	.L144-.L10
 	.byte	1,5,5,9
-	.half	.L269-.L124
+	.half	.L297-.L144
 	.byte	1,5,24,7,9
-	.half	.L270-.L269
+	.half	.L298-.L297
 	.byte	3,4,1,5,32,9
-	.half	.L271-.L270
+	.half	.L299-.L298
 	.byte	1,5,22,9
-	.half	.L272-.L271
+	.half	.L300-.L299
 	.byte	3,1,1,5,39,9
-	.half	.L126-.L272
-	.byte	1,5,48,9
-	.half	.L127-.L126
-	.byte	1,5,46,9
-	.half	.L273-.L127
-	.byte	1,5,55,9
-	.half	.L274-.L273
-	.byte	1,5,53,9
-	.half	.L275-.L274
-	.byte	1,5,30,9
-	.half	.L276-.L275
-	.byte	1,5,41,9
-	.half	.L277-.L276
-	.byte	3,124,1,5,24,9
-	.half	.L10-.L277
-	.byte	1,5,32,9
-	.half	.L278-.L10
-	.byte	1,5,22,9
-	.half	.L279-.L278
-	.byte	3,1,1,5,47,9
-	.half	.L280-.L279
-	.byte	1,5,45,9
-	.half	.L128-.L280
+	.half	.L146-.L300
 	.byte	1,5,54,9
-	.half	.L129-.L128
-	.byte	1,5,52,9
-	.half	.L281-.L129
+	.half	.L147-.L146
+	.byte	1,5,46,9
+	.half	.L301-.L147
 	.byte	1,5,30,9
-	.half	.L282-.L281
+	.half	.L302-.L301
+	.byte	1,5,41,9
+	.half	.L303-.L302
+	.byte	3,124,1,5,24,9
+	.half	.L11-.L303
+	.byte	1,5,32,9
+	.half	.L304-.L11
+	.byte	1,5,22,9
+	.half	.L305-.L304
+	.byte	3,1,1,5,53,9
+	.half	.L306-.L305
+	.byte	1,5,45,9
+	.half	.L148-.L306
+	.byte	1,5,30,9
+	.half	.L149-.L148
 	.byte	1,5,1,9
-	.half	.L11-.L282
+	.half	.L12-.L149
 	.byte	3,5,1,7,9
-	.half	.L48-.L11
+	.half	.L51-.L12
 	.byte	0,1,1
-.L253:
+.L285:
 	.sdecl	'.debug_ranges',debug,cluster('Set_Motor_PWM')
 	.sect	'.debug_ranges'
-.L47:
-	.word	-1,.L18,0,.L48-.L18,0,0
+.L50:
+	.word	-1,.L19,0,.L51-.L19,0,0
 	.sdecl	'.debug_info',debug,cluster('Get_Steering_Delta')
 	.sect	'.debug_info'
-.L49:
+.L52:
 	.word	382
 	.half	3
-	.word	.L50
+	.word	.L53
 	.byte	4,1
 	.byte	'../code/motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1
-	.word	.L52,.L51
+	.word	.L55,.L54
 	.byte	2
-	.word	.L25
+	.word	.L28
 	.byte	3
-	.byte	'Get_Steering_Delta',0,1,134,1,7
-	.word	.L83
+	.byte	'Get_Steering_Delta',0,1,162,1,7
+	.word	.L91
 	.byte	1,1,1
-	.word	.L22,.L98,.L21
+	.word	.L25,.L112,.L24
 	.byte	4
-	.byte	'near_err',0,1,134,1,32
-	.word	.L83,.L99
+	.byte	'near_err',0,1,162,1,32
+	.word	.L91,.L113
 	.byte	4
-	.byte	'far_err',0,1,134,1,48
-	.word	.L83,.L100
+	.byte	'far_err',0,1,162,1,48
+	.word	.L91,.L114
 	.byte	5
-	.word	.L22,.L98
+	.word	.L25,.L112
 	.byte	6
-	.byte	'turn_value',0,1,136,1,11
-	.word	.L83,.L101
+	.byte	'turn_value',0,1,164,1,11
+	.word	.L91,.L115
 	.byte	6
-	.byte	'gyro_z',0,1,140,1,11
-	.word	.L83,.L102
+	.byte	'gyro_z',0,1,168,1,11
+	.word	.L91,.L116
 	.byte	6
-	.byte	'base_term',0,1,148,1,11
-	.word	.L83,.L103
+	.byte	'base_term',0,1,176,1,11
+	.word	.L91,.L117
 	.byte	6
-	.byte	'preview_term',0,1,152,1,11
-	.word	.L83,.L104
+	.byte	'preview_term',0,1,180,1,11
+	.word	.L91,.L118
 	.byte	0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('Get_Steering_Delta')
 	.sect	'.debug_abbrev'
-.L50:
+.L53:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
 	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
 	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
 	.sdecl	'.debug_line',debug,cluster('Get_Steering_Delta')
 	.sect	'.debug_line'
-.L51:
-	.word	.L284-.L283
-.L283:
+.L54:
+	.word	.L308-.L307
+.L307:
 	.half	3
-	.word	.L286-.L285
-.L285:
+	.word	.L310-.L309
+.L309:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../code/motor.c',0,0,0,0,0
-.L286:
+.L310:
 	.byte	5,20,7,0,5,2
-	.word	.L22
-	.byte	3,139,1,1,5,28,9
-	.half	.L287-.L22
+	.word	.L25
+	.byte	3,167,1,1,5,28,9
+	.half	.L311-.L25
 	.byte	1,5,35,9
-	.half	.L139-.L287
+	.half	.L166-.L311
 	.byte	3,8,1,5,60,9
-	.half	.L288-.L139
+	.half	.L312-.L166
 	.byte	1,5,58,9
-	.half	.L289-.L288
+	.half	.L313-.L312
 	.byte	1,5,80,9
-	.half	.L290-.L289
+	.half	.L314-.L313
 	.byte	1,5,78,9
-	.half	.L291-.L290
+	.half	.L315-.L314
 	.byte	1,5,45,9
-	.half	.L292-.L291
+	.half	.L316-.L315
 	.byte	1,5,37,9
-	.half	.L141-.L292
+	.half	.L168-.L316
 	.byte	3,4,1,5,35,9
-	.half	.L293-.L141
+	.half	.L317-.L168
 	.byte	1,5,54,9
-	.half	.L294-.L293
+	.half	.L318-.L317
 	.byte	1,5,66,9
-	.half	.L140-.L294
+	.half	.L167-.L318
 	.byte	1,5,64,9
-	.half	.L295-.L140
+	.half	.L319-.L167
 	.byte	1,5,28,9
-	.half	.L142-.L295
+	.half	.L169-.L319
 	.byte	3,2,1,5,5,9
-	.half	.L143-.L142
+	.half	.L170-.L169
 	.byte	3,3,1,5,22,9
-	.half	.L296-.L143
+	.half	.L320-.L170
 	.byte	1,5,5,9
-	.half	.L297-.L296
+	.half	.L321-.L320
 	.byte	3,2,1,5,1,9
-	.half	.L12-.L297
+	.half	.L13-.L321
 	.byte	3,1,1,7,9
-	.half	.L53-.L12
+	.half	.L56-.L13
 	.byte	0,1,1
-.L284:
+.L308:
 	.sdecl	'.debug_ranges',debug,cluster('Get_Steering_Delta')
 	.sect	'.debug_ranges'
-.L52:
-	.word	-1,.L22,0,.L53-.L22,0,0
+.L55:
+	.word	-1,.L25,0,.L56-.L25,0,0
 	.sdecl	'.debug_info',debug,cluster('Motor_Steering_Control')
 	.sect	'.debug_info'
-.L54:
+.L57:
 	.word	350
 	.half	3
-	.word	.L55
+	.word	.L58
 	.byte	4,1
 	.byte	'../code/motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1
-	.word	.L57,.L56
+	.word	.L60,.L59
 	.byte	2
-	.word	.L25
+	.word	.L28
 	.byte	3
-	.byte	'Motor_Steering_Control',0,1,173,1,6,1,1,1
-	.word	.L24,.L105,.L23
+	.byte	'Motor_Steering_Control',0,1,201,1,6,1,1,1
+	.word	.L27,.L119,.L26
 	.byte	4
-	.byte	'base_speed_rpm',0,1,173,1,35
-	.word	.L83,.L106
+	.byte	'base_speed_rpm',0,1,201,1,35
+	.word	.L91,.L120
 	.byte	5
-	.word	.L24,.L105
+	.word	.L27,.L119
 	.byte	6
-	.byte	'steering_rpm_delta',0,1,179,1,11
-	.word	.L83,.L107
+	.byte	'steering_rpm_delta',0,1,207,1,11
+	.word	.L91,.L121
 	.byte	6
-	.byte	'target_L',0,1,182,1,11
-	.word	.L83,.L108
+	.byte	'target_L',0,1,210,1,11
+	.word	.L91,.L122
 	.byte	6
-	.byte	'target_R',0,1,183,1,11
-	.word	.L83,.L109
+	.byte	'target_R',0,1,211,1,11
+	.word	.L91,.L123
 	.byte	0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('Motor_Steering_Control')
 	.sect	'.debug_abbrev'
-.L55:
+.L58:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
 	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
 	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
 	.sdecl	'.debug_line',debug,cluster('Motor_Steering_Control')
 	.sect	'.debug_line'
-.L56:
-	.word	.L299-.L298
-.L298:
+.L59:
+	.word	.L323-.L322
+.L322:
 	.half	3
-	.word	.L301-.L300
-.L300:
+	.word	.L325-.L324
+.L324:
 	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
 	.byte	'../code/motor.c',0,0,0,0,0
-.L301:
+.L325:
 	.byte	5,6,7,0,5,2
-	.word	.L24
-	.byte	3,172,1,1,5,51,9
-	.half	.L145-.L24
+	.word	.L27
+	.byte	3,200,1,1,5,51,9
+	.half	.L172-.L27
 	.byte	3,6,1,5,69,9
-	.half	.L144-.L145
+	.half	.L171-.L172
 	.byte	1,5,37,9
-	.half	.L146-.L144
+	.half	.L173-.L171
 	.byte	3,3,1,9
-	.half	.L148-.L146
+	.half	.L175-.L173
 	.byte	3,1,1,5,34,9
-	.half	.L149-.L148
+	.half	.L176-.L175
 	.byte	3,3,1,5,1,9
-	.half	.L147-.L149
+	.half	.L174-.L176
 	.byte	3,1,1,7,9
-	.half	.L58-.L147
+	.half	.L61-.L174
 	.byte	0,1,1
-.L299:
+.L323:
 	.sdecl	'.debug_ranges',debug,cluster('Motor_Steering_Control')
 	.sect	'.debug_ranges'
-.L57:
-	.word	-1,.L24,0,.L58-.L24,0,0
+.L60:
+	.word	-1,.L27,0,.L61-.L27,0,0
+	.sdecl	'.debug_info',debug,cluster('Encoder_test')
+	.sect	'.debug_info'
+.L62:
+	.word	281
+	.half	3
+	.word	.L63
+	.byte	4,1
+	.byte	'../code/motor.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1
+	.word	.L65,.L64
+	.byte	2
+	.word	.L28
+	.byte	3
+	.byte	'Encoder_test',0,1,114,6,1,1,1
+	.word	.L21,.L124,.L20
+	.byte	4
+	.word	.L21,.L124
+	.byte	4
+	.word	.L125,.L124
+	.byte	5
+	.byte	'raw_L',0,1,117,11
+	.word	.L91,.L126
+	.byte	5
+	.byte	'raw_R',0,1,118,11
+	.word	.L91,.L127
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Encoder_test')
+	.sect	'.debug_abbrev'
+.L63:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Encoder_test')
+	.sect	'.debug_line'
+.L64:
+	.word	.L327-.L326
+.L326:
+	.half	3
+	.word	.L329-.L328
+.L328:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../code/motor.c',0,0,0,0,0
+.L329:
+	.byte	5,12,7,0,5,2
+	.word	.L21
+	.byte	3,243,0,1,5,20,9
+	.half	.L125-.L21
+	.byte	3,1,1,5,22,9
+	.half	.L330-.L125
+	.byte	1,5,38,9
+	.half	.L331-.L330
+	.byte	1,5,36,9
+	.half	.L332-.L331
+	.byte	1,5,64,9
+	.half	.L333-.L332
+	.byte	1,5,47,9
+	.half	.L334-.L333
+	.byte	1,5,20,9
+	.half	.L150-.L334
+	.byte	3,1,1,5,22,9
+	.half	.L335-.L150
+	.byte	1,5,39,9
+	.half	.L336-.L335
+	.byte	1,5,37,9
+	.half	.L337-.L336
+	.byte	1,5,65,9
+	.half	.L338-.L337
+	.byte	1,5,48,9
+	.half	.L339-.L338
+	.byte	1,5,5,9
+	.half	.L152-.L339
+	.byte	3,3,1,5,21,9
+	.half	.L340-.L152
+	.byte	1,5,43,9
+	.half	.L341-.L340
+	.byte	1,5,73,9
+	.half	.L342-.L341
+	.byte	1,5,71,9
+	.half	.L343-.L342
+	.byte	1,5,63,9
+	.half	.L151-.L343
+	.byte	1,5,19,9
+	.half	.L344-.L151
+	.byte	1,5,5,9
+	.half	.L345-.L344
+	.byte	3,1,1,5,21,9
+	.half	.L346-.L345
+	.byte	1,5,43,9
+	.half	.L347-.L346
+	.byte	1,5,73,9
+	.half	.L348-.L347
+	.byte	1,5,71,9
+	.half	.L349-.L348
+	.byte	1,5,63,9
+	.half	.L153-.L349
+	.byte	1,5,19,9
+	.half	.L350-.L153
+	.byte	1,5,1,9
+	.half	.L351-.L350
+	.byte	3,1,1,7,9
+	.half	.L66-.L351
+	.byte	0,1,1
+.L327:
+	.sdecl	'.debug_ranges',debug,cluster('Encoder_test')
+	.sect	'.debug_ranges'
+.L65:
+	.word	-1,.L21,0,.L66-.L21,0,0
 	.sdecl	'.debug_info',debug,cluster('current_L_rpm')
 	.sect	'.debug_info'
-.L59:
-	.word	213
-	.half	3
-	.word	.L60
-	.byte	4,1
-	.byte	'../code/motor.c',0
-	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
-	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
-	.word	.L25
-	.byte	3
-	.byte	'current_L_rpm',0,24,6,7
-	.word	.L83
-	.byte	1,5,3
-	.word	current_L_rpm
-	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('current_L_rpm')
-	.sect	'.debug_abbrev'
-.L60:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
-	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('current_R_rpm')
-	.sect	'.debug_info'
-.L61:
-	.word	213
-	.half	3
-	.word	.L62
-	.byte	4,1
-	.byte	'../code/motor.c',0
-	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
-	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
-	.word	.L25
-	.byte	3
-	.byte	'current_R_rpm',0,24,7,7
-	.word	.L83
-	.byte	1,5,3
-	.word	current_R_rpm
-	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('current_R_rpm')
-	.sect	'.debug_abbrev'
-.L62:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
-	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('MotorL_PID')
-	.sect	'.debug_info'
-.L63:
-	.word	210
-	.half	3
-	.word	.L64
-	.byte	4,1
-	.byte	'../code/motor.c',0
-	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
-	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
-	.word	.L25
-	.byte	3
-	.byte	'MotorL_PID',0,24,4,16
-	.word	.L110
-	.byte	1,5,3
-	.word	MotorL_PID
-	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('MotorL_PID')
-	.sect	'.debug_abbrev'
-.L64:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
-	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('MotorR_PID')
-	.sect	'.debug_info'
-.L65:
-	.word	210
-	.half	3
-	.word	.L66
-	.byte	4,1
-	.byte	'../code/motor.c',0
-	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
-	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
-	.word	.L25
-	.byte	3
-	.byte	'MotorR_PID',0,24,4,28
-	.word	.L110
-	.byte	1,5,3
-	.word	MotorR_PID
-	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('MotorR_PID')
-	.sect	'.debug_abbrev'
-.L66:
-	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
-	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('image_error')
-	.sect	'.debug_info'
 .L67:
-	.word	211
+	.word	213
 	.half	3
 	.word	.L68
 	.byte	4,1
 	.byte	'../code/motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
-	.word	.L25
+	.word	.L28
 	.byte	3
-	.byte	'image_error',0,24,8,16
-	.word	.L111
+	.byte	'current_L_rpm',0,24,6,7
+	.word	.L91
 	.byte	1,5,3
-	.word	image_error
+	.word	current_L_rpm
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('image_error')
+	.sdecl	'.debug_abbrev',debug,cluster('current_L_rpm')
 	.sect	'.debug_abbrev'
 .L68:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('Steer_Kp')
+	.sdecl	'.debug_info',debug,cluster('current_R_rpm')
 	.sect	'.debug_info'
 .L69:
-	.word	208
+	.word	213
 	.half	3
 	.word	.L70
 	.byte	4,1
 	.byte	'../code/motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
-	.word	.L25
+	.word	.L28
 	.byte	3
-	.byte	'Steer_Kp',0,24,13,7
-	.word	.L83
+	.byte	'current_R_rpm',0,24,7,7
+	.word	.L91
 	.byte	1,5,3
-	.word	Steer_Kp
+	.word	current_R_rpm
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('Steer_Kp')
+	.sdecl	'.debug_abbrev',debug,cluster('current_R_rpm')
 	.sect	'.debug_abbrev'
 .L70:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('Steer_Gkd')
+	.sdecl	'.debug_info',debug,cluster('MotorL_PID')
 	.sect	'.debug_info'
 .L71:
-	.word	209
+	.word	210
 	.half	3
 	.word	.L72
 	.byte	4,1
 	.byte	'../code/motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
-	.word	.L25
+	.word	.L28
 	.byte	3
-	.byte	'Steer_Gkd',0,24,16,7
-	.word	.L83
+	.byte	'MotorL_PID',0,24,4,16
+	.word	.L128
 	.byte	1,5,3
-	.word	Steer_Gkd
+	.word	MotorL_PID
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('Steer_Gkd')
+	.sdecl	'.debug_abbrev',debug,cluster('MotorL_PID')
 	.sect	'.debug_abbrev'
 .L72:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('Steer_Preview_Kp')
+	.sdecl	'.debug_info',debug,cluster('MotorR_PID')
 	.sect	'.debug_info'
 .L73:
-	.word	217
+	.word	210
 	.half	3
 	.word	.L74
 	.byte	4,1
 	.byte	'../code/motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
-	.word	.L25
+	.word	.L28
 	.byte	3
-	.byte	'Steer_Preview_Kp',0,24,132,1,7
-	.word	.L83
+	.byte	'MotorR_PID',0,24,4,28
+	.word	.L128
 	.byte	1,5,3
-	.word	Steer_Preview_Kp
+	.word	MotorR_PID
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('Steer_Preview_Kp')
+	.sdecl	'.debug_abbrev',debug,cluster('MotorR_PID')
 	.sect	'.debug_abbrev'
 .L74:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('Steer_Kp2')
+	.sdecl	'.debug_info',debug,cluster('image_error')
 	.sect	'.debug_info'
 .L75:
-	.word	209
+	.word	211
 	.half	3
 	.word	.L76
 	.byte	4,1
 	.byte	'../code/motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
-	.word	.L25
+	.word	.L28
 	.byte	3
-	.byte	'Steer_Kp2',0,24,14,7
-	.word	.L83
+	.byte	'image_error',0,24,8,16
+	.word	.L129
 	.byte	1,5,3
-	.word	Steer_Kp2
+	.word	image_error
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('Steer_Kp2')
+	.sdecl	'.debug_abbrev',debug,cluster('image_error')
 	.sect	'.debug_abbrev'
 .L76:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('Steer_Kd')
+	.sdecl	'.debug_info',debug,cluster('Steer_Kp')
 	.sect	'.debug_info'
 .L77:
 	.word	208
@@ -21097,227 +21253,352 @@ Steer_Preview_Kp:	.type	object
 	.byte	'../code/motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
-	.word	.L25
+	.word	.L28
 	.byte	3
-	.byte	'Steer_Kd',0,24,15,7
-	.word	.L83
+	.byte	'Steer_Kp',0,24,14,7
+	.word	.L91
 	.byte	1,5,3
-	.word	Steer_Kd
+	.word	Steer_Kp
 	.byte	0
-	.sdecl	'.debug_abbrev',debug,cluster('Steer_Kd')
+	.sdecl	'.debug_abbrev',debug,cluster('Steer_Kp')
 	.sect	'.debug_abbrev'
 .L78:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_info',debug,cluster('last_image_error')
+	.sdecl	'.debug_info',debug,cluster('Steer_Gkd')
 	.sect	'.debug_info'
 .L79:
-	.word	216
+	.word	209
 	.half	3
 	.word	.L80
 	.byte	4,1
 	.byte	'../code/motor.c',0
 	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
-	.word	.L25
+	.word	.L28
 	.byte	3
-	.byte	'last_image_error',0,24,18,7
-	.word	.L83
+	.byte	'Steer_Gkd',0,24,17,7
+	.word	.L91
+	.byte	1,5,3
+	.word	Steer_Gkd
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Steer_Gkd')
+	.sect	'.debug_abbrev'
+.L80:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Steer_Preview_Kp')
+	.sect	'.debug_info'
+.L81:
+	.word	217
+	.half	3
+	.word	.L82
+	.byte	4,1
+	.byte	'../code/motor.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
+	.word	.L28
+	.byte	3
+	.byte	'Steer_Preview_Kp',0,24,160,1,7
+	.word	.L91
+	.byte	1,5,3
+	.word	Steer_Preview_Kp
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Steer_Preview_Kp')
+	.sect	'.debug_abbrev'
+.L82:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Steer_Kp2')
+	.sect	'.debug_info'
+.L83:
+	.word	209
+	.half	3
+	.word	.L84
+	.byte	4,1
+	.byte	'../code/motor.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
+	.word	.L28
+	.byte	3
+	.byte	'Steer_Kp2',0,24,15,7
+	.word	.L91
+	.byte	1,5,3
+	.word	Steer_Kp2
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Steer_Kp2')
+	.sect	'.debug_abbrev'
+.L84:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Steer_Kd')
+	.sect	'.debug_info'
+.L85:
+	.word	208
+	.half	3
+	.word	.L86
+	.byte	4,1
+	.byte	'../code/motor.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
+	.word	.L28
+	.byte	3
+	.byte	'Steer_Kd',0,24,16,7
+	.word	.L91
+	.byte	1,5,3
+	.word	Steer_Kd
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Steer_Kd')
+	.sect	'.debug_abbrev'
+.L86:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('last_image_error')
+	.sect	'.debug_info'
+.L87:
+	.word	216
+	.half	3
+	.word	.L88
+	.byte	4,1
+	.byte	'../code/motor.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
+	.word	.L28
+	.byte	3
+	.byte	'last_image_error',0,24,19,7
+	.word	.L91
 	.byte	1,5,3
 	.word	last_image_error
 	.byte	0
 	.sdecl	'.debug_abbrev',debug,cluster('last_image_error')
 	.sect	'.debug_abbrev'
-.L80:
+.L88:
 	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
 	.byte	0,0,0
-	.sdecl	'.debug_loc',debug,cluster('Get_Steering_Delta')
+	.sdecl	'.debug_loc',debug,cluster('Encoder_test')
 	.sect	'.debug_loc'
-.L21:
-	.word	-1,.L22,0,.L98-.L22
+.L20:
+	.word	-1,.L21,0,.L124-.L21
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L103:
-	.word	-1,.L22,.L141-.L22,.L98-.L22
+.L126:
+	.word	-1,.L21,.L150-.L21,.L151-.L21
+	.half	1
+	.byte	95
+	.word	0,0
+.L127:
+	.word	-1,.L21,.L152-.L21,.L153-.L21
 	.half	5
 	.byte	144,32,157,32,0
 	.word	0,0
-.L100:
-	.word	-1,.L22,0,.L98-.L22
+	.sdecl	'.debug_loc',debug,cluster('Get_Steering_Delta')
+	.sect	'.debug_loc'
+.L24:
+	.word	-1,.L25,0,.L112-.L25
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L117:
+	.word	-1,.L25,.L168-.L25,.L112-.L25
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L114:
+	.word	-1,.L25,0,.L112-.L25
 	.half	1
 	.byte	85
 	.word	0,0
-.L102:
-	.word	-1,.L22,.L139-.L22,.L140-.L22
+.L116:
+	.word	-1,.L25,.L166-.L25,.L167-.L25
 	.half	1
 	.byte	95
 	.word	0,0
-.L99:
-	.word	-1,.L22,0,.L98-.L22
+.L113:
+	.word	-1,.L25,0,.L112-.L25
 	.half	1
 	.byte	84
 	.word	0,0
-.L104:
-	.word	-1,.L22,.L142-.L22,.L98-.L22
+.L118:
+	.word	-1,.L25,.L169-.L25,.L112-.L25
 	.half	1
 	.byte	95
 	.word	0,0
-.L101:
-	.word	-1,.L22,.L143-.L22,.L98-.L22
+.L115:
+	.word	-1,.L25,.L170-.L25,.L112-.L25
 	.half	1
 	.byte	82
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('Motor_Control_Loop')
 	.sect	'.debug_loc'
-.L19:
-	.word	-1,.L20,0,.L82-.L20
+.L22:
+	.word	-1,.L23,0,.L90-.L23
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L87:
-	.word	-1,.L20,.L133-.L20,.L134-.L20
+.L98:
+	.word	-1,.L23,.L160-.L23,.L161-.L23
 	.half	1
 	.byte	82
-	.word	.L135-.L20,.L82-.L20
+	.word	.L162-.L23,.L90-.L23
 	.half	1
 	.byte	95
 	.word	0,0
-.L88:
-	.word	-1,.L20,.L134-.L20,.L138-.L20
+.L99:
+	.word	-1,.L23,.L161-.L23,.L165-.L23
 	.half	1
 	.byte	82
 	.word	0,0
-.L84:
-	.word	-1,.L20,0,.L130-.L20
+.L95:
+	.word	-1,.L23,.L154-.L23,.L155-.L23
+	.half	1
+	.byte	95
+	.word	0,0
+.L96:
+	.word	-1,.L23,.L156-.L23,.L157-.L23
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L92:
+	.word	-1,.L23,0,.L94-.L23
 	.half	1
 	.byte	84
-	.word	.L131-.L20,.L132-.L20
+	.word	.L158-.L23,.L159-.L23
 	.half	1
 	.byte	88
-	.word	.L132-.L20,.L133-.L20
+	.word	.L159-.L23,.L160-.L23
 	.half	1
 	.byte	84
 	.word	0,0
-.L85:
-	.word	-1,.L20,0,.L130-.L20
+.L93:
+	.word	-1,.L23,0,.L94-.L23
 	.half	1
 	.byte	85
-	.word	.L136-.L20,.L137-.L20
+	.word	.L163-.L23,.L164-.L23
 	.half	1
 	.byte	89
-	.word	.L137-.L20,.L134-.L20
+	.word	.L164-.L23,.L161-.L23
 	.half	1
 	.byte	84
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('Motor_Init')
 	.sect	'.debug_loc'
-.L13:
-	.word	-1,.L14,0,.L81-.L14
+.L14:
+	.word	-1,.L15,0,.L89-.L15
 	.half	2
 	.byte	138,0
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('Motor_Steering_Control')
 	.sect	'.debug_loc'
-.L23:
-	.word	-1,.L24,0,.L105-.L24
+.L26:
+	.word	-1,.L27,0,.L119-.L27
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L106:
-	.word	-1,.L24,0,.L144-.L24
+.L120:
+	.word	-1,.L27,0,.L171-.L27
 	.half	1
 	.byte	84
-	.word	.L145-.L24,.L105-.L24
+	.word	.L172-.L27,.L119-.L27
 	.half	1
 	.byte	95
 	.word	0,0
-.L107:
-	.word	-1,.L24,.L146-.L24,.L147-.L24
+.L121:
+	.word	-1,.L27,.L173-.L27,.L174-.L27
 	.half	1
 	.byte	82
 	.word	0,0
-.L108:
-	.word	-1,.L24,.L148-.L24,.L147-.L24
+.L122:
+	.word	-1,.L27,.L175-.L27,.L174-.L27
 	.half	1
 	.byte	84
 	.word	0,0
-.L109:
-	.word	-1,.L24,.L149-.L24,.L147-.L24
+.L123:
+	.word	-1,.L27,.L176-.L27,.L174-.L27
 	.half	1
 	.byte	85
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('PID_Calculate')
 	.sect	'.debug_loc'
-.L15:
-	.word	-1,.L16,0,.L89-.L16
+.L16:
+	.word	-1,.L17,0,.L100-.L17
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L93:
-	.word	-1,.L16,0,.L89-.L16
+.L104:
+	.word	-1,.L17,0,.L100-.L17
 	.half	1
 	.byte	85
 	.word	0,0
-.L94:
-	.word	-1,.L16,.L113-.L16,.L89-.L16
+.L106:
+	.word	-1,.L17,.L130-.L17,.L131-.L17
 	.half	1
 	.byte	82
 	.word	0,0
-.L91:
-	.word	-1,.L16,0,.L89-.L16
+.L107:
+	.word	-1,.L17,.L132-.L17,.L133-.L17
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L108:
+	.word	-1,.L17,.L131-.L17,.L100-.L17
+	.half	1
+	.byte	82
+	.word	0,0
+.L102:
+	.word	-1,.L17,0,.L100-.L17
 	.half	1
 	.byte	100
 	.word	0,0
-.L92:
-	.word	-1,.L16,0,.L112-.L16
+.L103:
+	.word	-1,.L17,0,.L100-.L17
 	.half	1
 	.byte	84
 	.word	0,0
 	.sdecl	'.debug_loc',debug,cluster('Set_Motor_PWM')
 	.sect	'.debug_loc'
-.L17:
-	.word	-1,.L18,0,.L95-.L18
+.L18:
+	.word	-1,.L19,0,.L109-.L19
 	.half	2
 	.byte	138,0
 	.word	0,0
-.L96:
-	.word	-1,.L18,0,.L114-.L18
+.L110:
+	.word	-1,.L19,0,.L134-.L19
 	.half	1
 	.byte	84
-	.word	.L116-.L18,.L117-.L18
+	.word	.L136-.L19,.L137-.L19
 	.half	1
 	.byte	88
-	.word	.L118-.L18,.L119-.L18
+	.word	.L138-.L19,.L139-.L19
 	.half	1
 	.byte	88
-	.word	.L8-.L18,.L120-.L18
+	.word	.L9-.L19,.L140-.L19
 	.half	1
 	.byte	84
-	.word	.L122-.L18,.L123-.L18
+	.word	.L142-.L19,.L143-.L19
 	.half	1
 	.byte	88
 	.word	0,0
-.L97:
-	.word	-1,.L18,0,.L115-.L18
+.L111:
+	.word	-1,.L19,0,.L135-.L19
 	.half	1
 	.byte	85
-	.word	.L8-.L18,.L121-.L18
+	.word	.L9-.L19,.L141-.L19
 	.half	1
 	.byte	85
-	.word	.L124-.L18,.L125-.L18
+	.word	.L144-.L19,.L145-.L19
 	.half	1
 	.byte	89
-	.word	.L126-.L18,.L127-.L18
+	.word	.L146-.L19,.L147-.L19
 	.half	1
 	.byte	89
-	.word	.L128-.L18,.L129-.L18
+	.word	.L148-.L19,.L149-.L19
 	.half	1
 	.byte	89
 	.word	0,0
 	.sdecl	'.debug_frame',debug
 	.sect	'.debug_frame'
-.L302:
+.L352:
 	.word	48
 	.word	-1
 	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,30,8,29,8,28,8,16,8,17,8,24,8,25,8,31,8,32,8,33,8,34,8,35,8,36,8,37,8,38
@@ -21325,27 +21606,31 @@ Steer_Preview_Kp:	.type	object
 	.sdecl	'.debug_frame',debug,cluster('Motor_Init')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L302,.L14,.L81-.L14
+	.word	.L352,.L15,.L89-.L15
 	.sdecl	'.debug_frame',debug,cluster('PID_Calculate')
 	.sect	'.debug_frame'
 	.word	24
-	.word	.L302,.L16,.L89-.L16
+	.word	.L352,.L17,.L100-.L17
 	.byte	8,18,8,19,8,21,8,22,8,23,0,0
 	.sdecl	'.debug_frame',debug,cluster('Set_Motor_PWM')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L302,.L18,.L95-.L18
+	.word	.L352,.L19,.L109-.L19
+	.sdecl	'.debug_frame',debug,cluster('Encoder_test')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L352,.L21,.L124-.L21
 	.sdecl	'.debug_frame',debug,cluster('Motor_Control_Loop')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L302,.L20,.L82-.L20
+	.word	.L352,.L23,.L90-.L23
 	.sdecl	'.debug_frame',debug,cluster('Get_Steering_Delta')
 	.sect	'.debug_frame'
 	.word	24
-	.word	.L302,.L22,.L98-.L22
+	.word	.L352,.L25,.L112-.L25
 	.byte	8,18,8,19,8,20,8,21,8,22,8,23
 	.sdecl	'.debug_frame',debug,cluster('Motor_Steering_Control')
 	.sect	'.debug_frame'
 	.word	12
-	.word	.L302,.L24,.L105-.L24
+	.word	.L352,.L27,.L119-.L27
 	; Module end
