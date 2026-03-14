@@ -9,12 +9,11 @@ volatile float image_error = 0; // 全局变量，存储当前的图像偏差值
 #define RPM_FILTER_ALPHA 0.2f // 低通滤波系数 (0.0 - 1.0)，值越小平滑效果越强，但响应越慢
 
 
-
 //----转向控制参数--------------------------------------------------
-float Steer_Kp  = 0.00f;   // 基础比例（提供基础回正力）
+float Steer_Kp  = 0.15f;   // 基础比例（提供基础回正力）
 float Steer_Kp2 = 0.00f;  // 非线性比例（偏差越大，转向力呈指数级增强）
-float Steer_Kd  = 0.00f;   // 微分（预测弯道，防止过冲）
-float Steer_Gkd = 0.00f;   // 陀螺仪微分（专门用于抑制车体震荡）
+float Steer_Kd  = 0.05f;   // 微分（预测弯道，防止过冲）
+float Steer_Gkd = 0.2f;   // 陀螺仪微分（专门用于抑制车体震荡）
 
 float last_image_error = 0; // 记录上一次的图像偏差
 //-------------------------------------------------------------------
@@ -36,8 +35,8 @@ void Motor_Init(void)
     pwm_init(PWM_L1, 17000, 0);
 
     // 3. 赋初始 PID 参数 (保守值测试，防止烧毁)
-    MotorL_PID.kp = 0.015f;             // 比例增益 (加大，提供强劲起步动力)
-    MotorL_PID.ki = 0.012f;             // 积分增益 (加大，快速消除稳态误差)
+    MotorL_PID.kp = 0.011f;             // 比例增益 (加大，提供强劲起步动力)
+    MotorL_PID.ki = 0.007f;             // 积分增益 (加大，快速消除稳态误差)
     MotorL_PID.kd = 0.110f;             // 微分增益 (继续保持关闭，避免噪声放大)
     MotorL_PID.i_limit = 5000.0f;         // 积分限幅，防止积分风暴。
     MotorL_PID.out_limit = 100.0f;       // 极重要：输出限幅，确保安全
@@ -61,7 +60,7 @@ float PID_Calculate(PID_Controller *pid, float target, float current)
     float integral_out = pid->ki * pid->integral;
 
     // 3. 动态积分限幅 (抗饱和) 适当放宽到 30.0f 防止正常爬升阶段积分受限导致起步肉
-    float max_i_out = 15.0f; 
+    float max_i_out = 20.0f; 
     if (integral_out > max_i_out) {
         integral_out = max_i_out;
         pid->integral = max_i_out / pid->ki; 
@@ -157,7 +156,7 @@ void Motor_Control_Loop(float target_L, float target_R)
 *   - 这是最基本的比例控制，根据当前的图像偏差直接提供一个转向调整值。
 ****************************************************************************************************************** 
 */
-float Steer_Preview_Kp = 0.05f;      // 初始预瞄比例增益 (需要根据实车调试调整)过高可能导致过度转向，过低可能反应不足
+float Steer_Preview_Kp = 0.5; // 初始预瞄比例增益 (需要根据实车调试调整)过高可能导致过度转向，过低可能反应不足
 
 float Get_Steering_Delta(float near_err, float far_err)
 {
@@ -165,7 +164,7 @@ float Get_Steering_Delta(float near_err, float far_err)
 
     // 获取 Z 轴角速度 (Yaw轴旋转速度)
     // 注意：如果后面发现陀螺仪加进去反而震荡更厉害，说明极性反了，给 gyro_z 前面加个负号即可
-    float gyro_z = icm_data.gyro_z; 
+    float gyro_z =  icm_data.gyro_z; 
 
     /* 预瞄航向角逻辑：
        1. 基于远端偏差 far_err 计算出“期望的角速度” (Target Yaw Rate)
@@ -198,18 +197,75 @@ float Get_Steering_Delta(float near_err, float far_err)
 *@note 该函数不能在主循环中调用！！！！！过于频繁，建议每 10ms 调用一次，以保持控制的稳定性和响应速度。
 *@note 放到pit中断里面每10ms调用一次
 */
+// 在 motor.c 顶部定义转向参数
+
+
 void Motor_Steering_Control(float base_speed_rpm)
 {
+    switch (current_path_type)
+    {
+        case PATH_TYPE_STRAIGHT:
+        {   
+            float Steer_Kp  = 0.5f;   // 基础比例（提供基础回正力）
+            float Steer_Kp2 = 0.00f;  // 非线性比例（偏差越大，转向力呈指数级增强）
+            float Steer_Kd  = 0.15f;   // 微分（预测弯道，防止过冲）
+            float Steer_Gkd = 0.3f;   // 陀螺仪微分（专门用于抑制车体震荡）
+            angle_Z = 0.0f; // 直行时不考虑车体角度，直接用图像偏差计算转向调整
+            float steer_delta = Get_Steering_Delta(near_image_error, far_image_error); // 这里暂时用同一个偏差，后续可以改成近远端不同的偏差
+            float target_L = base_speed_rpm + steer_delta;
+            float target_R = base_speed_rpm - steer_delta;
+            Motor_Control_Loop(target_L, target_R);
+            break;
+        }    
+        case PATH_TYPE_TURN_LEFT:
+        {   
+            /*
+            float Steer_Kp  = 0.5f;   // 基础比例（提供基础回正力）
+            float Steer_Kp2 = 0.00f;  // 非线性比例（偏差越大，转向力呈指数级增强）
+            float Steer_Kd  = 0.25f;   // 微分（预测弯道，防止过冲）
+            float Steer_Gkd = 0.01f;   // 陀螺仪微分（专门用于抑制车体震荡）
+            if(angle_Z >= 85.0f | angle_Z <= 90.0f) angle_Z = 90.0f; // 左转时如果车体角度接近90度，强制设为90度，避免过度修正导致震荡            
+            float steer_angle = Get_Steering_Delta(90.0f + angle_Z , 0); // 这里直接用近端偏差计算转向角度，后续可以改成更复杂的逻辑
+            float target_L = base_speed_rpm - steer_angle;
+            float target_R = base_speed_rpm + steer_angle;
+            Motor_Control_Loop(target_L, target_R);            
+            */
+           Motor_Control_Loop(0.0f, 0.0f); 
+            break;
+        }
 
-//[暂定，准备分开两个核搞，有没有懂的]    Image_Processing_And_Get_Center(); // 获取图像并处理，更新 path_center_x 数组
+        case PATH_TYPE_TURN_RIGHT:
+        {   
+            /*
+            if(angle_Z >= 85.0f | angle_Z <= 90.0f) angle_Z = 90.0f; // 左转时如果车体角度接近90度，强制设为90度，避免过度修正导致震荡            
+            float steer_angle = Get_Steering_Delta(90.0f - angle_Z , 0); // 这里直接用近端偏差计算转向角度，后续可以改成更复杂的逻辑
+            float target_L = base_speed_rpm + steer_angle;
+            float target_R = base_speed_rpm - steer_angle;
+            Motor_Control_Loop(target_L, target_R);
+            */      
+            Motor_Control_Loop(0.0f, 0.0f);      
+            break;
+        }
+        case PATH_TYPE_BRANCH:
+        {
+            Steer_Kp = 0.25f;   // 分叉口时进一步增加比例增益，确保快速响应复杂路径
+            Steer_Kd = 0.15f;   // 增加微分增益，帮助稳定通过分叉口
+            Motor_Control_Loop(0.0f, 0.0f); 
+            break;
+        }
+        case PATH_TYPE_CROSSROAD:
+        {
+            Steer_Kp = 0.25f;   // 路口时进一步增加比例增益，确保快速响应复杂路径
+            Steer_Kd = 0.15f;   // 增加微分增益，帮助稳定通过路口
+            Motor_Control_Loop(0.0f, 0.0f);
+            break;
+        }
+        default:
+        {   
+            Motor_Control_Loop(0.0f, 0.0f ); // 未知路径保持直行
+            break;
+        }
+    }
+    
 
-
-    float steering_rpm_delta = Get_Steering_Delta(near_image_error, far_image_error); // 获取转向调整值（单位：RPM）
-
-    // 根据转向调整值修改左右轮速度
-    float target_L = base_speed_rpm + steering_rpm_delta;
-    float target_R = base_speed_rpm - steering_rpm_delta;
-
-    // 调用主控制循环
-    Motor_Control_Loop(target_L, target_R);
 }

@@ -11,22 +11,22 @@
 - 该代码假设IMU数据已经通过imu660ra_get_acc()和imu 660ra_get_gyro()函数获取，并存储在相应的变量中
 */
 
-#define delta_T     0.002f
+#define delta_T     0.005f  
 
 float I_ex, I_ey, I_ez;
 
 quater_param_t Q_info = {1, 0, 0};
-euler_param_t eulerAngle;
+volatile euler_param_t eulerAngle;
 
-icm_param_t icm_data;
+volatile icm_param_t icm_data;
 gyro_param_t GyroOffset;
 
-bool GyroOffset_init = 0;
+ volatile bool GyroOffset_init = 0;
 
 float param_Kp = 0.0000;
 float param_Ki = 0.0000;
 
-float angle_Z = 0,angle_R = 0,angle_P = 0;
+volatile float angle_Z = 0,angle_R = 0,angle_P = 0;
 
 float fast_sqrt(float x) {
     float halfx = 0.5f * x;

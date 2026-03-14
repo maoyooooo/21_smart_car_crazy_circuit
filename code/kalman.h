@@ -51,11 +51,11 @@ gyro_param_t;
 extern float param_Kp;
 extern float param_Ki;
 
-extern euler_param_t eulerAngle;
-extern float angle_Z,angle_R,angle_P;
-extern icm_param_t icm_data;   
+extern volatile euler_param_t eulerAngle;
+extern volatile float angle_Z,angle_R,angle_P;
+extern volatile icm_param_t icm_data;   
 
-extern bool GyroOffset_init;
+extern volatile bool GyroOffset_init;
 void gyroOffset_init(void);
 
 float fast_sqrt(float x);

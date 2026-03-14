@@ -128,48 +128,103 @@ void Calculate_All_Errors(void)
     interrupt_global_enable(cpu_status);
 }
 
-/**
- * 辅助函数：单行边界扫描（已优化边界扫描逻辑）
- */
-static uint8_t scan_row_boundary(uint16_t row, unsigned char binary_img[IMG_H][IMG_W],
-                                 int* left_x, int* right_x)       
+
+
+// 优化的中心扩散与边缘跟踪算法
+static uint8_t scan_row_tracking(uint16_t row, unsigned char binary_img[IMG_H][IMG_W],
+                                 int* left_x, int* right_x, int last_left, int last_right)       
 {
     *left_x = -1;
     *right_x = -1;
+    
+    // 如果上一行没有有效边界，退回到屏幕中间开始向两边扩散搜索
+    int start_l = (last_left != -1) ? last_left : (IMG_W / 2);
+    int start_r = (last_right != -1) ? last_right : (IMG_W / 2);
 
-    // 左边界：连续EDGE_CONTINUE_CNT个目标像素
-    for (int x = 0; x < IMG_W - EDGE_CONTINUE_CNT; )
+    // 搜索左边界 (允许最多跨越 3 像素的黑色元器件噪点)
+    int black_noise_cnt = 0;
+    for (int x = start_l; x >= 0; x--)
     {
-        int i;
-        for (i = 0; i < EDGE_CONTINUE_CNT; i++)
+        if (binary_img[row][x] <= PATH_THRESHOLD) 
         {
-            if (binary_img[row][x + i] <= PATH_THRESHOLD) break;  
+            black_noise_cnt++;
+            if (black_noise_cnt > 3) // 真正的黑色边界
+            {
+                *left_x = x + 3; // 补偿容错像素
+                break;
+            }
+        } else {
+            black_noise_cnt = 0; // 遇到白色，清零噪点计数
         }
-        if (i >= EDGE_CONTINUE_CNT)
-        {
-            *left_x = x + EDGE_CONTINUE_CNT / 2;
-            break;
-        }
-        x += (i + 1);  // 加速跳过已扫描的非路径像素
     }
 
-    // 右边界
-    for (int x = IMG_W - 1; x >= EDGE_CONTINUE_CNT; )
+    // 搜索右边界同理...
+    black_noise_cnt = 0;
+    for (int x = start_r; x < IMG_W; x++)
     {
-        int i;
-        for (i = 0; i < EDGE_CONTINUE_CNT; i++)
+        if (binary_img[row][x] <= PATH_THRESHOLD) 
         {
-            if (binary_img[row][x - i] <= PATH_THRESHOLD) break;  
+            black_noise_cnt++;
+            if (black_noise_cnt > 3) 
+            {
+                *right_x = x - 3; 
+                break;
+            }
+        } else {
+            black_noise_cnt = 0; 
         }
-        if (i >= EDGE_CONTINUE_CNT)
-        {
-            *right_x = x - EDGE_CONTINUE_CNT / 2;
-            break;
-        }
-        x -= (i + 1);
     }
 
     return (*left_x != -1 && *right_x != -1 && (*right_x - *left_x) >= PATH_WIDTH_MIN) ? 1 : 0;
+}
+
+/**
+ * @brief 环形边框交点统计函数定义
+ * 请确保该函数名与 recognize_path_type 中调用的名称完全一致
+ */
+static uint8_t count_box_intersections_fixed(unsigned char bin_img[IMG_H][IMG_W], int cx, int cy, int size)
+{
+    int half = size / 2;
+    int l = cx - half, r = cx + half, t = cy - half, b = cy + half;
+    
+    // 边界限幅保护，防止坐标超出数组范围导致硬件异常
+    if (l < 0) l = 0; if (r >= IMG_W) r = IMG_W - 1;
+    if (t < 0) t = 0; if (b >= IMG_H) b = IMG_H - 1;
+
+    uint8_t jumps = 0;
+    // 判定逻辑：由于是二值化图，直接判断是否等于255（白色）
+    uint8_t last = (bin_img[t][l] == 255);
+    uint8_t first = last;
+
+    // 1. 顶边扫描 (左->右)
+    for (int x = l + 1; x <= r; x++) { 
+        uint8_t c = (bin_img[t][x] == 255); 
+        if (c && !last) jumps++; 
+        last = c; 
+    }
+    // 2. 右边扫描 (上->下)
+    for (int y = t + 1; y <= b; y++) { 
+        uint8_t c = (bin_img[y][r] == 255); 
+        if (c && !last) jumps++; 
+        last = c; 
+    }
+    // 3. 底边扫描 (右->左)
+    for (int x = r - 1; x >= l; x--) { 
+        uint8_t c = (bin_img[b][x] == 255); 
+        if (c && !last) jumps++; 
+        last = c; 
+    }
+    // 4. 左边扫描 (下->上)
+    for (int y = b - 1; y > t; y--)  { 
+        uint8_t c = (bin_img[y][l] == 255); 
+        if (c && !last) jumps++; 
+        last = c; 
+    }
+    
+    // 环形闭合检测
+    if (first && !last) jumps++;
+    
+    return jumps;
 }
 
 /**
@@ -259,101 +314,118 @@ float calculate_center_slope(int* center_x, int* row_y, int cnt)
 }
 
 /**
- * 核心函数：识别路径类型并提取中线
+/**
+ * @brief 最终优化版识别函数
  */
 Path_TypeDef recognize_path_type(unsigned char binary_img[IMG_H][IMG_W])
 {
-    int valid_row_cnt = 0;
-    int center_x_buf[ROI_ROW_NUM] = {0};
-    int row_y_buf[ROI_ROW_NUM] = {0};
-    branch_valid_row_cnt = 0;
-
-    for(int i = 0; i < IMG_H; i++) {
-        path_center_x[i] = -1;
-        path_left_x[i] = -1;
-        path_right_x[i] = -1;
-    }
-
-    for (int row = FAR_ROI_START; row <= ROI_ROW_END; row++)      
-    {
-        int left1, right1, left2, right2;
-        uint8_t edge_cnt = scan_row_multi_boundary(row, binary_img, &left1, &right1, &left2, &right2);
-
-        if (row >= ROI_ROW_START && row <= ROI_ROW_END)
-        {
-            if (edge_cnt >= BRANCH_EDGE_CNT)
-            {
-                branch_valid_row_cnt++;
-            }
-
-            if (edge_cnt >= 1)
-            {
-                center_x_buf[valid_row_cnt] = (left1 + right1) / 2;
-                row_y_buf[valid_row_cnt] = row;
-                valid_row_cnt++;
-            }
-        }
-
-        if (edge_cnt >= 1)
-        {
-            path_center_x[row] = (left1 + right1) / 2;
-            path_left_x[row] = left1;
-            path_right_x[row] = right1;
-        }
-    }
-
-    if (branch_valid_row_cnt >= BRANCH_VALID_ROW)
-    {
-        return PATH_TYPE_BRANCH;
-    }
-
-    if (valid_row_cnt < ROI_ROW_NUM / 2)
-    {
-        return PATH_TYPE_UNKNOWN;
-    }
-
-    int filtered_cnt = 0;
-    int filtered_x[ROI_ROW_NUM] = {0};
-    int filtered_y[ROI_ROW_NUM] = {0};
-    int center_mean = 0;
-    for (int i = 0; i < valid_row_cnt; i++)
-    {
-        center_mean += center_x_buf[i];
-    }
-    center_mean /= valid_row_cnt;
+    uint8_t th = otsu_threshold();
+    int valid_cnt = 0;
+    int buf_x[ROI_ROW_NUM], buf_y[ROI_ROW_NUM];
     
-    for (int i = 0; i < valid_row_cnt; i++)
+    int seed_x = IMG_W / 2;
+        // 如果底行中心是黑色的（车子偏了），向两边扫描找白色的赛道
+        if (binary_img[ROI_ROW_END][seed_x] <= PATH_THRESHOLD) {
+            for (int i = 1; i < IMG_W / 2; i++) {
+                if (binary_img[ROI_ROW_END][seed_x + i] > PATH_THRESHOLD) { seed_x = seed_x + i; break; }
+                if (binary_img[ROI_ROW_END][seed_x - i] > PATH_THRESHOLD) { seed_x = seed_x - i; break; }
+            }
+        }
+        // 将找到的白点作为追踪的初始起点
+        int last_l = seed_x;
+        int last_r = seed_x;
+
+    // 1. 局部二值化与带噪点容错的边界追踪 (从近处往远处扫)
+    for (int y = ROI_ROW_END; y >= FAR_ROI_START; y--) 
     {
-        if (abs(center_x_buf[i] - center_mean) <= OUTLIER_THRESHOLD)
+        // 仅对 ROI 涉及的行进行二值化，提升 TC264 效率
+        for (int x = 0; x < IMG_W; x++) {
+            erzhihua[y][x] = (mt9v03x_image_1[y][x] > th) ? 255 : 0;
+        }
+
+        // 调用升级方案中的 scan_row_tracking，跳过元器件噪点
+        if (scan_row_tracking(y, erzhihua, &path_left_x[y], &path_right_x[y], last_l, last_r)) 
         {
-            filtered_x[filtered_cnt] = center_x_buf[i];
-            filtered_y[filtered_cnt] = row_y_buf[i];
-            filtered_cnt++;
+            path_center_x[y] = (path_left_x[y] + path_right_x[y]) / 2;
+            last_l = path_center_x[y];
+            last_r = path_center_x[y];
+            if (y >= ROI_ROW_START && y <= ROI_ROW_END) {
+                buf_x[valid_cnt] = path_center_x[y];
+                buf_y[valid_cnt] = y;
+                valid_cnt++;
+            }
+        } else {
+            path_left_x[y] = -1; path_right_x[y] = -1; path_center_x[y] = -1;
         }
     }
-    if (filtered_cnt < valid_row_cnt / 2)
-    {
-        return PATH_TYPE_UNKNOWN;
+
+    // 2. 增强型特殊路口识别
+    int inf_x = -1, inf_y = -1;
+    // 在近处寻找明显的拐点（突变阈值增加到 15，防止因元器件边缘产生细微抖动误判）
+    for (int y = ROI_ROW_END; y > ROI_ROW_START + 5; y--) {
+        if (path_left_x[y] != -1 && path_left_x[y-3] != -1) {
+            if (abs(path_left_x[y-3] - path_left_x[y]) > 15) { 
+                inf_x = path_left_x[y]; inf_y = y; break; 
+            }
+        }
     }
 
-    float slope = calculate_center_slope(filtered_x, filtered_y, filtered_cnt);
+    if (inf_x != -1) {
+        // 使用修正后的环形扫描
+        uint8_t branches = count_box_intersections_fixed(erzhihua, inf_x, inf_y, 20);
+        if (branches >= 4) return PATH_TYPE_CROSSROAD;
+        if (branches == 3) return PATH_TYPE_BRANCH;
+    }
 
-    if (fabs(slope) < TURN_SLOPE_LOW)
+    // 3. 常规路径判定
+    if (valid_cnt < 8) return PATH_TYPE_UNKNOWN; // 增加有效行要求，防止误判
+    float slope = calculate_center_slope(buf_x, buf_y, valid_cnt);
+
+        // --- 偏差计算逻辑开始 ---
+    float n_sum = 0, f_sum = 0;
+    int n_cnt = 0, f_cnt = 0;
+
+    // 遍历从远端起始到近端结束的所有行
+    for (int y = FAR_ROI_START; y <= ROI_ROW_END; y++) 
     {
-        return PATH_TYPE_STRAIGHT;
+        // 只有当这一行成功识别到了中线时才参与计算
+        if (path_center_x[y] != -1) 
+        {
+            // 计算当前行偏差：(实际中心 - 图像理论中心)
+            // 图像宽度为 188，所以中心是 94。
+            // 结果 > 0 说明线在右边，小车应向右修正；< 0 说明线在左边。
+            float current_row_err = (float)path_center_x[y] - (IMG_W / 2.0f);
+
+            // 归入近端误差 (ROI: 80-110行)
+            if (y >= ROI_ROW_START && y <= ROI_ROW_END) {
+                n_sum += current_row_err;
+                n_cnt++;
+            }
+            // 归入远端误差 (FAR_ROI: 40-60行)
+            if (y >= FAR_ROI_START && y <= FAR_ROI_END) {
+                f_sum += current_row_err;
+                f_cnt++;
+            }
+        }
     }
-    else if (slope < -TURN_SLOPE_LOW)
-    {
-        return PATH_TYPE_TURN_LEFT;
-    }
-    else if (slope > TURN_SLOPE_LOW)
-    {
-        return PATH_TYPE_TURN_RIGHT;
-    }
-    else
-    {
-        return PATH_TYPE_UNKNOWN;
-    }
+
+    // 计算平均值，防止除以0
+    // 如果某区域完全没识别到线（cnt==0），建议保持 0 或上一次的值
+    if (n_cnt > 0) near_image_error = n_sum / (float)n_cnt;
+     
+
+    if (f_cnt > 0) far_image_error = f_sum / (float)f_cnt;
+    
+    // --- 偏差计算逻辑结束 ---
+    
+    ips200_show_int(120, 200, current_path_type,1);
+    ips200_show_float(120, 220, near_image_error, 3, 1);
+    ips200_show_float(120, 240, far_image_error, 3, 1);
+
+    if (fabs(slope) < TURN_SLOPE_LOW) return PATH_TYPE_STRAIGHT;
+    return (slope < 0) ? PATH_TYPE_TURN_RIGHT : PATH_TYPE_TURN_LEFT;
+    
+
 }
 
 /**

@@ -37,6 +37,7 @@
 #pragma section all "cpu1_dsram"
 // 将本语句与#pragma section all restore语句之间的全局变量都放在CPU1的RAM中
 
+
 // **************************** 代码区域 ****************************
 
 // 本例程是开源库空工程 可用作移植或者测试各类内外设
@@ -47,31 +48,42 @@ void core1_main(void)
 {
     disable_Watchdog();                     // 关闭看门狗
     interrupt_global_enable(0);             // 打开全局中断
-    // 此处编写用户代码 例如外设初始化代码等
-    //gyroOffset_init();                // 陀螺仪校准
-    //Motor_Init();                     // 电机初始化
-    //EncoderInit();                    // 编码器初始化
-    //imu660rb_init();                  // 初始化 IMU660RB
-    //while(!GyroOffset_init) system_delay_ms(10);   //等待陀螺仪校准完成
-    //pit_ms_init(CCU60_CH0, 1);
+    /*
+    zf_log(mt9v03x_double_init(mt9v03x_1), "mt9v03x init error");
+    //wireless_uart_init();
+    ips200_init(IPS200_TYPE_SPI);                 // 初始化IPS200屏幕
+    ips200_clear();  
+    ips200_set_color(RGB565_BLACK, RGB565_WHITE);                   // 设置IPS
+    imu660rb_init();                  // 初始化 IMU660RB
+    gyroOffset_init();                // 陀螺仪校准
+    Motor_Init();                     // 电机初始化
+    EncoderInit();                    // 编码器初始化
+    while(!GyroOffset_init) system_delay_ms(10);   //等待陀螺仪校准完成
+    system_delay_ms(10);
+    */      
+    //pit_ms_init(CCU60_CH0, 10);
     //pit_ms_init(CCU60_CH1, 2);
-    //pit_ms_init(CCU61_CH0, 10);       // 10ms 间隔执行一次电机控制
-
-
+    //pit_ms_init(CCU61_CH0, 5);
 
     // 此处编写用户代码 例如外设初始化代码等
     cpu_wait_event_ready();                 // 等待所有核心初始化完毕
     while (TRUE)
     {
-        // 此处编写需要循环执行的代码
-
-        //system_delay_ms(100);
-        //ips200_show_float(8*sizeof("current_L_rpm"),20*5,current_L_rpm,4,4);
-        //ips200_show_float(8*sizeof("current_R_rpm"),20*7,current_R_rpm,4,4);
-
-
+        //Image_Processing_And_Get_Center();
+        //Calculate_All_Errors();
+        //Send_Image_To_ZF_Assistant();
+        //ips200_displayimage03x(mt9v03x_image_1, MT9V03X_1_W, MT9V03X_1_H); // 显示处理后的图像到IPS200屏幕上（调试用）        printf("Type: %d, Inflection: [%d, %d]\n", current_path_type, inf_x, inf_y);
+        //Show_Image_On_IPS200(); // 显示处理后的图像到IPS200屏幕上（调试用）
+        //ips200_show_string(0, 180, "angle_Z:");
+        //ips200_show_float(120,180,angle_Z,3,1);
+        //ips200_show_string(0, 200, "Path Type:");
+        //ips200_show_string(0, 220, "Near Error:");
+        //ips200_show_string(0, 240, "Far Error:");
+        //ips200_show_string(0, 260, "Gyro Z:");
+        //ips200_show_float(120,260,icm_data.gyro_z,3,1);
         // 此处编写需要循环执行的代码
     }
 }
 #pragma section all restore
 // **************************** 代码区域 ****************************
+

@@ -26,7 +26,8 @@ typedef struct
     float i_limit;          // 积分限幅
     float out_limit;        // 输出限幅 (通常设为 100)
 } 
-PID_Controller;     
+PID_Controller; 
+
 
 // --- 电机当前转速（在 motor.c 中定义） ---
 extern float current_L_rpm;

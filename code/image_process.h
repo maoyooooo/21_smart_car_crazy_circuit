@@ -32,7 +32,8 @@ typedef enum {
     PATH_TYPE_STRAIGHT,     // 直线路径
     PATH_TYPE_TURN_LEFT,    // 左转弯
     PATH_TYPE_TURN_RIGHT,   // 右转弯
-    PATH_TYPE_BRANCH        // 分支道路
+    PATH_TYPE_BRANCH,       // T型路口 / 分支
+    PATH_TYPE_CROSSROAD     // 十字路口 [新增]
 } Path_TypeDef;
 
 // 全局变量
@@ -60,7 +61,5 @@ void Show_Image_On_IPS200(void);
 // 摄像头采集标志
 extern uint8_t cam_capture_done;
 // 摄像头初始化&采集函数声明
-uint8_t TC264_CAM_Init(void);
-void TC264_CAM_Capture_Frame(void);
 
 #endif // IMAGE_PROCESS_H

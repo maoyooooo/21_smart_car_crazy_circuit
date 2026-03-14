@@ -41,38 +41,58 @@
 // 鏈緥绋嬫槸寮�婧愬簱绌哄伐绋� 鍙敤浣滅Щ妞嶆垨鑰呮祴璇曞悇绫诲唴澶栬
 
 // **************************** 浠ｇ爜鍖哄煙 ****************************
-#define IPS200_TYPE     (IPS200_TYPE_SPI)                                       // 鎺掗拡 骞跺彛涓ゅ灞� 杩欓噷瀹忓畾涔夊～鍐� IPS200_TYPE_PARALLEL8
                                                                                       // 鎺掗拡 SPI 涓ゅ灞� 杩欓噷瀹忓畾涔夊～鍐� IPS200_TYPE_SPI
+#define IPS200_TYPE     (IPS200_TYPE_SPI)                                       // 鎺掗拡 骞跺彛涓ゅ?灞? 杩欓噷瀹忓畾涔夊～鍐? IPS200_TYPE_PARALLEL8
 
 int core0_main(void)
 {
     clock_init();                   // 鑾峰彇鏃堕挓棰戠巼<鍔″繀淇濈暀>
     debug_init();                   // 鍒濆鍖栭粯璁よ皟璇曚覆鍙�
     // 姝ゅ缂栧啓鐢ㄦ埛浠ｇ爜 渚嬪澶栬鍒濆鍖栦唬鐮佺瓑
-    //zf_log(mt9v03x_double_init(mt9v03x_1), "mt9v03x init error");
-    //ips200_init(IPS200_TYPE);
+    zf_log(mt9v03x_double_init(mt9v03x_1), "mt9v03x init error");
     //wireless_uart_init();
-    Motor_Init();              // 鐢垫満鍒濆鍖�
-    EncoderInit();            // 缂栫爜鍣ㄥ垵濮嬪寲
+    ips200_init(IPS200_TYPE_SPI);                 // 初始化IPS200屏幕
+    ips200_clear();  
+    ips200_set_color(RGB565_BLACK, RGB565_WHITE);                   // 设置IPS
+    imu660rb_init();                  // 初始化 IMU660RB
+    gyroOffset_init();                // 陀螺仪校准
+    Motor_Init();                     // 电机初始化
+    EncoderInit();                    // 编码器初始化
+    while(!GyroOffset_init) system_delay_ms(10);   //等待陀螺仪校准完成
+    system_delay_ms(10);
+    pit_ms_init(CCU60_CH0, 10);
+    pit_ms_init(CCU60_CH1, 2);
+    pit_ms_init(CCU61_CH0, 5);
         
-        
-    pit_ms_init(CCU60_CH0, 10); // 鍒濆鍖� PIT 瀹氭椂鍣� 10ms 涓柇涓�娆�
     // 姝ゅ缂栧啓鐢ㄦ埛浠ｇ爜 渚嬪澶栬鍒濆鍖栦唬鐮佺瓑
-    cpu_wait_event_ready();         // 绛夊緟鎵�鏈夋牳蹇冨垵濮嬪寲瀹屾瘯
+    cpu_wait_event_ready();         // 绛夊緟鎵鏈夋牳蹇冨垵濮嬪寲瀹屾瘯
+
     while (TRUE)
     {
-        // 姝ゅ缂栧啓闇�瑕佸惊鐜墽琛岀殑浠ｇ爜
-        //Image_Processing_And_Get_Center();
-        //Calculate_All_Errors();
+        // 此处编写需要循环执行的代码
+        //system_delay_ms(100);
+        //ips200_show_float(8*sizeof("current_L_rpm"),20*5,current_L_rpm,4,4);
+        //ips200_show_float(8*sizeof("current_R_rpm"),20*7,current_R_rpm,4,4);
+        Image_Processing_And_Get_Center();
+        Calculate_All_Errors();
         //Send_Image_To_ZF_Assistant();
-        //ips200_displayimage03x(mt9v03x_image_1, MT9V03X_1_W, MT9V03X_1_H); // 鏄剧ず鎽勫儚澶村浘鍍忓埌灞忓箷涓� 浠呰皟璇曠敤
-        //Show_Image_On_IPS200(); // 鏄剧ず浜屽�煎寲鍥惧儚鍜岃竟绾垮埌灞忓箷涓� 浠呰皟璇曠敤
-        // 姝ゅ缂栧啓闇�瑕佸惊鐜墽琛岀殑浠ｇ爜
-//        Set_Motor_PWM(25.0f, 25.0f); // 鐩存帴璁剧疆涓�涓浐瀹氱殑PWM杈撳嚭 浠呮祴璇曠敤
+        //ips200_displayimage03x(mt9v03x_image_1, MT9V03X_1_W, MT9V03X_1_H); // 显示处理后的图像到IPS200屏幕上（调试用）        printf("Type: %d, Inflection: [%d, %d]\n", current_path_type, inf_x, inf_y);
+        Show_Image_On_IPS200(); // 显示处理后的图像到IPS200屏幕上（调试用）
+        // 姝ゅ?缂栧啓闇?瑕佸惊鐜?墽琛岀殑浠ｇ爜
+        // Set_Motor_PWM(25.0f, 25.0f); // 鐩存帴璁剧疆涓?涓?浐瀹氱殑PWM杈撳嚭 浠呮祴璇曠敤
         //printf("current_L_rpm: %f\r\n", current_L_rpm);
-        printf("current_R_rpm: %f\r\n", current_R_rpm);
+        //printf("current_R_rpm: %f\r\n", current_R_rpm);
         //printf("current_L_rpm: %f\r\n", current_L_rpm);
-        system_delay_ms(1);
+        //printf("angle_Z: %f\r\n", angle_Z);
+        ips200_show_string(0, 180, "angle_Z:");
+        ips200_show_float(120,180,angle_Z,3,1);
+        ips200_show_string(0, 200, "Path Type:");
+        ips200_show_string(0, 220, "Near Error:");
+        ips200_show_string(0, 240, "Far Error:");
+        ips200_show_string(0, 260, "Gyro Z:");
+        ips200_show_float(120,260,icm_data.gyro_z,3,1);
+
+
     }
 }
 
