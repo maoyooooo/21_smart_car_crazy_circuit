@@ -58,8 +58,81 @@ static uint8_t otsu_threshold(void)
 }
 
 /**
- * @brief 图像处理及获取中线
- * @return 1=处理了新图像，0=无新图像
+ * @brief 连通域标记与小面积黑洞填充
+ * 目的：填充赛道内小于阈值的黑色元器件区域
+ */
+static void fill_small_black_holes(unsigned char binary_img[IMG_H][IMG_W], int min_area)
+{
+    unsigned char visited[IMG_H][IMG_W] = {0};
+    
+    // 遍历每个黑色像素，进行洪泛填充
+    for (int i = 1; i < IMG_H - 1; i++) 
+    {
+        for (int j = 1; j < IMG_W - 1; j++) 
+        {
+            if (binary_img[i][j] <= PATH_THRESHOLD && !visited[i][j]) 
+            {
+                // 计算连通域面积
+                int area = 0;
+                int stack_ptr = 0;
+                int stack_i[IMG_H * IMG_W], stack_j[IMG_H * IMG_W];
+                
+                stack_i[stack_ptr] = i;
+                stack_j[stack_ptr] = j;
+                stack_ptr++;
+                visited[i][j] = 1;
+                
+                // 洪泛填充，统计连通域大小
+                while (stack_ptr > 0) 
+                {
+                    stack_ptr--;
+                    int cy = stack_i[stack_ptr];
+                    int cx = stack_j[stack_ptr];
+                    area++;
+                    
+                    // 检查4邻域（或8邻域）
+                    for (int di = -1; di <= 1; di++) 
+                    {
+                        for (int dj = -1; dj <= 1; dj++) 
+                        {
+                            if (di == 0 && dj == 0) continue;
+                            if (di != 0 && dj != 0) continue;  // 仅4邻域
+                            
+                            int ny = cy + di;
+                            int nx = cx + dj;
+                            if (ny >= 0 && ny < IMG_H && nx >= 0 && nx < IMG_W &&
+                                !visited[ny][nx] && binary_img[ny][nx] <= PATH_THRESHOLD) 
+                            {
+                                visited[ny][nx] = 1;
+                                stack_i[stack_ptr] = ny;
+                                stack_j[stack_ptr] = nx;
+                                stack_ptr++;
+                            }
+                        }
+                    }
+                }
+                
+                // 如果面积小于阈值，填充为白色（赛道）
+                if (area < min_area) 
+                {
+                    for (int ii = 0; ii < IMG_H; ii++) 
+                    {
+                        for (int jj = 0; jj < IMG_W; jj++) 
+                        {
+                            if (visited[ii][jj]) 
+                            {
+                                binary_img[ii][jj] = 255;  // 填充为白色
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * @brief 改进的图像处理与中线获取
  */
 uint8_t Image_Processing_And_Get_Center(void)
 {
@@ -68,7 +141,6 @@ uint8_t Image_Processing_And_Get_Center(void)
 
     mt9v03x_finish_flag_1 = 0;
 
-    // OTSU 动态计算阈值
     uint8_t threshold = otsu_threshold();
 
     // 二值化处理
@@ -76,49 +148,10 @@ uint8_t Image_Processing_And_Get_Center(void)
         for (int j = 0; j < IMG_W; j++)
             erzhihua[i][j] = (mt9v03x_image_1[i][j] > threshold) * 255;
 
-    // ===== 新增：形态学闭运算，填充赛道内的小黑色元器件 =====
-    // 单次膨胀：将小的黑色元器件扩大
-    unsigned char temp_img[IMG_H][IMG_W];
-    for (int i = 1; i < IMG_H - 1; i++) {
-        for (int j = 1; j < IMG_W - 1; j++) {
-            // 取周围8个邻域的最大值（膨胀）
-            uint8_t max_val = erzhihua[i][j];
-            for (int di = -1; di <= 1; di++) {
-                for (int dj = -1; dj <= 1; dj++) {
-                    if (erzhihua[i + di][j + dj] > max_val) {
-                        max_val = erzhihua[i + di][j + dj];
-                    }
-                }
-            }
-            temp_img[i][j] = max_val;
-        }
-    }
-    // 复制边界
-    for (int i = 0; i < IMG_H; i++) {
-        temp_img[i][0] = erzhihua[i][0];
-        temp_img[i][IMG_W-1] = erzhihua[i][IMG_W-1];
-    }
-    for (int j = 0; j < IMG_W; j++) {
-        temp_img[0][j] = erzhihua[0][j];
-        temp_img[IMG_H-1][j] = erzhihua[IMG_H-1][j];
-    }
-    
-    // 单次腐蚀：去掉膨胀过的小细节
-    for (int i = 1; i < IMG_H - 1; i++) {
-        for (int j = 1; j < IMG_W - 1; j++) {
-            // 取周围8个邻域的最小值（腐蚀）
-            uint8_t min_val = temp_img[i][j];
-            for (int di = -1; di <= 1; di++) {
-                for (int dj = -1; dj <= 1; dj++) {
-                    if (temp_img[i + di][j + dj] < min_val) {
-                        min_val = temp_img[i + di][j + dj];
-                    }
-                }
-            }
-            erzhihua[i][j] = min_val;
-        }
-    }
-    
+    //  关键优化：填充赛道内小黑洞（元器件）
+    // min_area 可根据实际调整，建议 20-50 像素
+    fill_small_black_holes(erzhihua, 30);
+
     // 识别路径类型并提取中线
     current_path_type = recognize_path_type(erzhihua);
 

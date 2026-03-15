@@ -44,7 +44,7 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
     pit_clear_flag(CCU60_CH0);
-    Motor_Steering_Control(400.0f); // 每10ms调用一次转向控制函数，参数为基础速度（单位rpm）    
+    Motor_Steering_Control(00.0f); // 每10ms调用一次转向控制函数，参数为基础速度（单位rpm）    
 }
 
 

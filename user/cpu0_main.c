@@ -76,7 +76,8 @@ int core0_main(void)
         Image_Processing_And_Get_Center();
         Calculate_All_Errors();
         //Send_Image_To_ZF_Assistant();
-        //ips200_displayimage03x(mt9v03x_image_1, MT9V03X_1_W, MT9V03X_1_H); // 显示处理后的图像到IPS200屏幕上（调试用）        printf("Type: %d, Inflection: [%d, %d]\n", current_path_type, inf_x, inf_y);
+        //ips200_displayimage03x(mt9v03x_image_1, MT9V03X_1_W, MT9V03X_1_H); // 显示处理后的图像到IPS200屏幕上（调试用）        
+        //printf("Type: %d, Inflection: [%d, %d]\n", current_path_type, inf_x, inf_y);
         Show_Image_On_IPS200(); // 显示处理后的图像到IPS200屏幕上（调试用）
         // 姝ゅ?缂栧啓闇?瑕佸惊鐜?墽琛岀殑浠ｇ爜
         // Set_Motor_PWM(25.0f, 25.0f); // 鐩存帴璁剧疆涓?涓?浐瀹氱殑PWM杈撳嚭 浠呮祴璇曠敤
