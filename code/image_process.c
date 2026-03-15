@@ -76,12 +76,54 @@ uint8_t Image_Processing_And_Get_Center(void)
         for (int j = 0; j < IMG_W; j++)
             erzhihua[i][j] = (mt9v03x_image_1[i][j] > threshold) * 255;
 
+    // ===== 新增：形态学闭运算，填充赛道内的小黑色元器件 =====
+    // 单次膨胀：将小的黑色元器件扩大
+    unsigned char temp_img[IMG_H][IMG_W];
+    for (int i = 1; i < IMG_H - 1; i++) {
+        for (int j = 1; j < IMG_W - 1; j++) {
+            // 取周围8个邻域的最大值（膨胀）
+            uint8_t max_val = erzhihua[i][j];
+            for (int di = -1; di <= 1; di++) {
+                for (int dj = -1; dj <= 1; dj++) {
+                    if (erzhihua[i + di][j + dj] > max_val) {
+                        max_val = erzhihua[i + di][j + dj];
+                    }
+                }
+            }
+            temp_img[i][j] = max_val;
+        }
+    }
+    // 复制边界
+    for (int i = 0; i < IMG_H; i++) {
+        temp_img[i][0] = erzhihua[i][0];
+        temp_img[i][IMG_W-1] = erzhihua[i][IMG_W-1];
+    }
+    for (int j = 0; j < IMG_W; j++) {
+        temp_img[0][j] = erzhihua[0][j];
+        temp_img[IMG_H-1][j] = erzhihua[IMG_H-1][j];
+    }
+    
+    // 单次腐蚀：去掉膨胀过的小细节
+    for (int i = 1; i < IMG_H - 1; i++) {
+        for (int j = 1; j < IMG_W - 1; j++) {
+            // 取周围8个邻域的最小值（腐蚀）
+            uint8_t min_val = temp_img[i][j];
+            for (int di = -1; di <= 1; di++) {
+                for (int dj = -1; dj <= 1; dj++) {
+                    if (temp_img[i + di][j + dj] < min_val) {
+                        min_val = temp_img[i + di][j + dj];
+                    }
+                }
+            }
+            erzhihua[i][j] = min_val;
+        }
+    }
+    
     // 识别路径类型并提取中线
     current_path_type = recognize_path_type(erzhihua);
 
     return 1;
 }
-
 volatile float near_image_error = 0; // 近距离图像偏差（FAR_ROI区域）
 volatile float far_image_error = 0;  // 远距离图像偏差（FAR_ROI区域）
 
@@ -137,37 +179,36 @@ static uint8_t scan_row_tracking(uint16_t row, unsigned char binary_img[IMG_H][I
     *left_x = -1;
     *right_x = -1;
     
-    // 如果上一行没有有效边界，退回到屏幕中间开始向两边扩散搜索
     int start_l = (last_left != -1) ? last_left : (IMG_W / 2);
     int start_r = (last_right != -1) ? last_right : (IMG_W / 2);
 
-    // 搜索左边界 (允许最多跨越 3 像素的黑色元器件噪点)
+    // 搜索左边界 (允许最多跨越 2 像素的噪点，针对20cm高度)
     int black_noise_cnt = 0;
     for (int x = start_l; x >= 0; x--)
     {
         if (binary_img[row][x] <= PATH_THRESHOLD) 
         {
             black_noise_cnt++;
-            if (black_noise_cnt > 3) // 真正的黑色边界
+            if (black_noise_cnt > 2)  // 从 3 改为 2
             {
-                *left_x = x + 3; // 补偿容错像素
+                *left_x = x + 2;  // 从 +3 改为 +2
                 break;
             }
         } else {
-            black_noise_cnt = 0; // 遇到白色，清零噪点计数
+            black_noise_cnt = 0;
         }
     }
 
-    // 搜索右边界同理...
+    // 搜索右边界同理
     black_noise_cnt = 0;
     for (int x = start_r; x < IMG_W; x++)
     {
         if (binary_img[row][x] <= PATH_THRESHOLD) 
         {
             black_noise_cnt++;
-            if (black_noise_cnt > 3) 
+            if (black_noise_cnt > 2)  // 从 3 改为 2
             {
-                *right_x = x - 3; 
+                *right_x = x - 2;  // 从 -3 改为 -2
                 break;
             }
         } else {
@@ -177,7 +218,6 @@ static uint8_t scan_row_tracking(uint16_t row, unsigned char binary_img[IMG_H][I
 
     return (*left_x != -1 && *right_x != -1 && (*right_x - *left_x) >= PATH_WIDTH_MIN) ? 1 : 0;
 }
-
 /**
  * @brief 环形边框交点统计函数定义
  * 请确保该函数名与 recognize_path_type 中调用的名称完全一致
@@ -378,7 +418,7 @@ Path_TypeDef recognize_path_type(unsigned char binary_img[IMG_H][IMG_W])
     }
 
     // 3. 常规路径判定
-    if (valid_cnt < 8) return PATH_TYPE_UNKNOWN; // 增加有效行要求，防止误判
+    if (valid_cnt < 4) return PATH_TYPE_UNKNOWN; // 增加有效行要求，防止误判
     float slope = calculate_center_slope(buf_x, buf_y, valid_cnt);
 
         // --- 偏差计算逻辑开始 ---
@@ -417,7 +457,7 @@ Path_TypeDef recognize_path_type(unsigned char binary_img[IMG_H][IMG_W])
     if (f_cnt > 0) far_image_error = f_sum / (float)f_cnt;
     
     // --- 偏差计算逻辑结束 ---
-    
+    ips200_show_int(0,160, valid_cnt, 3);
     ips200_show_int(120, 200, current_path_type,1);
     ips200_show_float(120, 220, near_image_error, 3, 1);
     ips200_show_float(120, 240, far_image_error, 3, 1);

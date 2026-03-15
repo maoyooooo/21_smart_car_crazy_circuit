@@ -16,12 +16,12 @@
 #define FAR_ROI_NUM   (FAR_ROI_END - FAR_ROI_START + 1)
 
 #define PATH_THRESHOLD  100
-#define PATH_WIDTH_MIN  20
-#define EDGE_CONTINUE_CNT 3
+#define PATH_WIDTH_MIN  8
+#define EDGE_CONTINUE_CNT 2
 #define OUTLIER_THRESHOLD 10
 
 // 转弯/分支识别阈值
-#define TURN_SLOPE_LOW    0.1f   // 转弯判定最小斜率（>0.1则为转弯）
+#define TURN_SLOPE_LOW    0.2f   // 转弯判定最小斜率（>0.1则为转弯）
 #define TURN_SLOPE_HIGH   0.5f   // 大角度转弯判定阈值
 #define BRANCH_EDGE_CNT   2      // 分支判定：单行检测到≥2组边界
 #define BRANCH_VALID_ROW  5      // 分支判定：连续≥5行检测到多边界
