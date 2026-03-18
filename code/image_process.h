@@ -20,11 +20,30 @@
 #define EDGE_CONTINUE_CNT 2
 #define OUTLIER_THRESHOLD 10
 
-// 转弯/分支识别阈值
-#define TURN_SLOPE_LOW    0.2f   // 转弯判定最小斜率（>0.1则为转弯）
-#define TURN_SLOPE_HIGH   0.5f   // 大角度转弯判定阈值
+// 分支识别阈值
 #define BRANCH_EDGE_CNT   2      // 分支判定：单行检测到≥2组边界
 #define BRANCH_VALID_ROW  5      // 分支判定：连续≥5行检测到多边界
+
+// 直角弯识别阈值（直接扫二值图像，不依赖边线追踪结果）
+//
+// 原拐点检测依赖 path_right_x[y]，但 scan_row_tracking 在拐弯区域
+// 因几何形状改变（T形路口）返回 -1，导致整个检测链路数据为空。
+//
+// 新方法：直接逐行扫二值化图像，找每行最右侧白色像素位置。
+// 直角弯衍生线出现时，某些行的最右侧白色像素会到达图像右边界（x≈187）。
+// 统计这样的行数，达到 CORNER_BOUND_ROWS 即确认右转。
+//
+// 元器件过滤：元器件不会延伸到图像边界，最右侧白色像素不会触边。
+//
+// 调参说明：
+//   CORNER_BOUND_ROWS   触边行数阈值（建议 2-5）
+//                       衍生线约有 3-8 行触边，元器件 0 行触边
+//   CORNER_EDGE_TOL     触边容差（允许最右侧几列为黑，建议 2-4）
+//   CORNER_SCAN_START   开始检测的行（从下往上，建议 ROI_ROW_END 或略小）
+//
+#define CORNER_BOUND_ROWS    3   // 触边行数阈值
+#define CORNER_EDGE_TOL      3   // 触边容差（px）
+#define CORNER_SCAN_START  ROI_ROW_END  // 检测起始行（最靠近车）
 
 // 路径类型枚举
 typedef enum {
