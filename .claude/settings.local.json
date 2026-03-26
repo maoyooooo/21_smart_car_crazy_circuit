@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -d \"C:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\"/*/ 2>/dev/null | grep -v \".ads\\\\|.git\\\\|.claude\\\\|.gemini\\\\|Debug\")",
+      "Bash(ls -lh \"C:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\"/*.pdf)",
+      "Bash(find C:UsersMcGRADY -name *.c -o -name *.h)",
+      "Bash(ls:*)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_car"
+    ]
+  }
+}

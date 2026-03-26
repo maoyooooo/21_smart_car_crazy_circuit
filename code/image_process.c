@@ -545,21 +545,59 @@ Path_TypeDef recognize_path_type(unsigned char binary_img[IMG_H][IMG_W])
         {
             // --- 追踪成功 ---
 
-            // 【新增】行内填充：将赛道内部像素置白
-            // 消除形态学闭运算未能完全去除的残余元器件黑点，
-            // 避免当前行内部噪点成为上方行追踪时的虚假边界
-            fill_row_interior(binary_img, y, path_left_x[y], path_right_x[y]);
+            int width = path_right_x[y] - path_left_x[y];
 
-            path_center_x[y] = (path_left_x[y] + path_right_x[y]) / 2;
+            // ---------------- 行级异常宽度检测 ----------------
+            // 目标：把“大块元器件/多条细线”对应的异常行直接视为失败行，
+            //      交给后续插值去补，避免被误判为分支/有效赛道。
+            bool row_abnormal = false;
 
-            // 更新下一行的追踪种子（使用当前行中心，维持区域生长连续性）
-            last_l = path_center_x[y];
-            last_r = path_center_x[y];
+            // 1) 绝对宽度过大：几乎整行都被覆盖，基本不可能是真实赛道宽
+            if (width > IMG_W * 3 / 4)
+            {
+                row_abnormal = true;
+            }
 
-            // 记录真实边线坐标（供失败行预填充使用）
-            last_actual_left  = path_left_x[y];
-            last_actual_right = path_right_x[y];
-            consecutive_fail  = 0;
+            // 2) 相对宽度与最近一次真实赛道宽度相差过大
+            if (!row_abnormal && last_actual_left != -1)
+            {
+                int ref_width = last_actual_right - last_actual_left;
+                if (ref_width > 8) // 过滤极端近距离噪声
+                {
+                    // 允许 [0.5x, 2.0x] 的变化，超出则视为异常
+                    if (width < ref_width / 2 || width > ref_width * 2)
+                    {
+                        row_abnormal = true;
+                    }
+                }
+            }
+
+            if (row_abnormal)
+            {
+                // 当作失败行处理，交给插值逻辑；同时计入连续失败行
+                path_left_x[y]   = -1;
+                path_right_x[y]  = -1;
+                path_center_x[y] = -1;
+                consecutive_fail++;
+            }
+            else
+            {
+                // 【正常行】行内填充：将赛道内部像素置白
+                // 消除形态学闭运算未能完全去除的残余元器件黑点，
+                // 避免当前行内部噪点成为上方行追踪时的虚假边界
+                fill_row_interior(binary_img, y, path_left_x[y], path_right_x[y]);
+
+                path_center_x[y] = (path_left_x[y] + path_right_x[y]) / 2;
+
+                // 更新下一行的追踪种子（使用当前行中心，维持区域生长连续性）
+                last_l = path_center_x[y];
+                last_r = path_center_x[y];
+
+                // 记录真实边线坐标（供失败行预填充使用）
+                last_actual_left  = path_left_x[y];
+                last_actual_right = path_right_x[y];
+                consecutive_fail  = 0;
+            }
 
             if (y >= ROI_ROW_START && y <= ROI_ROW_END)
             {

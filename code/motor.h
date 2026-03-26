@@ -39,11 +39,6 @@ extern PID_Controller MotorR_PID;
 
 extern volatile float image_error; // 从图像处理模块获取的当前图像偏差值
 
-extern float Steer_Kp;
-extern float Steer_Kd;
-extern float Steer_Gkd;
-extern float Steer_Preview_Kp;      // 预瞄比例增益
-
 // --- 直角右转状态机参数 ---
 //
 // 四阶段状态机：IDLE → BRAKING → LOCKING → RECOVER
@@ -63,11 +58,11 @@ extern float Steer_Preview_Kp;      // 预瞄比例增益
 //
 #define TURN_BRAKE_SPEED    200.0f   // 制动阶段目标速度 RPM（接近停车，越小越稳）
 #define TURN_BRAKE_TICKS      5     // 制动帧数（×10ms=50ms），让电机实际减速
-#define TURN_TARGET_DEG     75.0f   // 目标旋转角度（略小于90°，留出惯性余量）
-#define TURN_OUTER_SPEED   350.0f   // 转弯外轮（左轮）目标转速 RPM
-#define TURN_INNER_SPEED     0.0f   // 转弯内轮（右轮）目标转速 RPM（0=原地转）
-#define TURN_GKD_BRAKE       0.5f   // 陀螺仪制动增益（抑制外轮角速度过冲）
-#define TURN_RECOVER_TICKS    5    // 转弯完成后恢复帧数（×10ms = 150ms 直行稳定期）
+#define TURN_TARGET_DEG     85.0f   // 目标旋转角度（略小于90°，留出惯性余量）
+#define TURN_OUTER_SPEED   400.0f   // 转弯外轮（左轮）目标转速 RPM
+#define TURN_INNER_SPEED    90.0f   // 转弯内轮（右轮）目标转速 RPM（0=原地转）
+#define TURN_GKD_BRAKE       0.25f   // 陀螺仪制动增益（抑制外轮角速度过冲）
+#define TURN_RECOVER_TICKS    15    // 转弯完成后恢复帧数（×10ms = 150ms 直行稳定期）
 
 typedef enum {
     TURN_RIGHT_IDLE    = 0,   // 空闲，等待摄像头信号
