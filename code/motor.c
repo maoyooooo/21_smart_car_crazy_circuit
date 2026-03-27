@@ -47,12 +47,11 @@ static inline float Motor_ClampF(float x, float lo, float hi)
 
 static const Motor_SteerConfig* Motor_GetSteerConfig(Path_TypeDef path_type)    
 {
-    // 调参只改这里即可
     static const Motor_SteerConfig cfg_default = {
-        .kp                 = 0.66f ,
-        .kd                 = 0.12f ,
-        .gkd                = 0.10f ,
-        .preview_kp         = 0.18f ,
+        .kp                 = 0.42f ,
+        .kd                 = 0.01f ,
+        .gkd                = 0.12f ,
+        .preview_kp         = 0.10f ,
         .gyro_lpf_alpha     = 0.25f ,
         .err_lpf_alpha      = 0.35f ,
         .gyro_sign          = 1.0f  ,

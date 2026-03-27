@@ -1,6 +1,6 @@
 	; Module start
 	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
-	.compiler_invocation	"ctc -f cc14536a --dep-file=motor.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc26xb -D__CPU_TC26XB__ --core=tc1.6.x --fp-model=+float -D__CPU__=tc26xb -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\code -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Configurations -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC26B -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC26B\\\\_Reg -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Asc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6 -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Timer -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\CStart -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Irq -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Dma -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12 -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\IncrEnc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\SpiMaster -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Adc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Impl -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib\\\\DataHandling -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_PinMap -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_common -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_components -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_device -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_driver -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\user -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o code/motor.src ../code/motor.c"
+	.compiler_invocation	"ctc -f cc21944a --dep-file=motor.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc26xb -D__CPU_TC26XB__ --core=tc1.6.x --fp-model=+float -D__CPU__=tc26xb -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\code -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Configurations -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Platform\\\\Tricore\\\\Compilers -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC26B -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Infra\\\\Sfr\\\\TC26B\\\\_Reg -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\If\\\\Ccu6If -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\StdIf -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Bsp -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\SysSe\\\\Math -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\Service\\\\CpuGeneric\\\\_Utilities -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Asc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Asclin\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6 -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Ccu6\\\\Timer -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\CStart -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Irq -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Cpu\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Dma -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Dma\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Flash\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12 -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\IncrEnc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gpt12\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Atom\\\\Pwm -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Gtm\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Mtu\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Port\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\SpiMaster -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Qspi\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Scu\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Src\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Stm\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Adc -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\Vadc\\\\Std -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Impl -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_Lib\\\\DataHandling -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\infineon_libraries\\\\iLLD\\\\TC26B\\\\Tricore\\\\_PinMap -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_common -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_components -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_device -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\libraries\\\\zf_driver -IC:\\\\Users\\\\McGRADY\\\\AURIX-v1.10.2-workspace\\\\21_smart_car_crazy_circuit\\\\user -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o code/motor.src ../code/motor.c"
 	.compiler_name		"ctc"
 	;source	'../code/motor.c'
 
@@ -1091,7 +1091,7 @@ Motor_SteeringLayer:	.type	func
 .L725:
 	movh	d0,#16000
 .L51:
-	movh	d15,#17352
+	movh	d15,#17327
 .L726:
 	mul.f	d15,d0,d15
 .L727:
@@ -1110,7 +1110,7 @@ Motor_SteeringLayer:	.type	func
 .L52:
 	st.w	[a12],d0
 .L730:
-	movh	d15,#17076
+	movh	d15,#16968
 .L731:
 	st.w	[a13],d15
 .L732:
@@ -1136,7 +1136,7 @@ Motor_SteeringLayer:	.type	func
 	lea	a2,[a2]@los(s_recover_tick)
 	ld.w	d0,[a2]
 .L737:
-	mov	d15,#15
+	mov	d15,#20
 .L738:
 	jlt	d0,d15,.L55
 .L739:
@@ -1368,7 +1368,7 @@ image_error:	.type	object
 	.align	4
 _999001_cfg_default:	.type	object
 	.size	_999001_cfg_default,36
-	.word	1059648963,1039516303,1036831949,1043878380,1048576000,1051931443,1065353216,1132593152
+	.word	1054280253,1008981770,1039516303,1036831949,1048576000,1051931443,1065353216,1132593152
 	.word	1114636288
 	.sdecl	'.rodata.motor._999002_cfg_cross',data,rom,cluster('_999002_cfg_cross')
 	.sect	'.rodata.motor._999002_cfg_cross'
@@ -21262,7 +21262,7 @@ s_turn_accum_deg:	.type	object
 	.byte	2
 	.word	.L92
 	.byte	3
-	.byte	'Motor_Init',0,1,130,1,6,1,1,1
+	.byte	'Motor_Init',0,1,129,1,6,1,1,1
 	.word	.L73,.L195,.L72
 	.byte	4
 	.word	.L73,.L195
@@ -21285,7 +21285,7 @@ s_turn_accum_deg:	.type	object
 .L389:
 	.byte	5,15,7,0,5,2
 	.word	.L73
-	.byte	3,131,1,1,5,23,9
+	.byte	3,130,1,1,5,23,9
 	.half	.L390-.L73
 	.byte	1,5,28,9
 	.half	.L391-.L390
@@ -21371,13 +21371,13 @@ s_turn_accum_deg:	.type	object
 	.byte	2
 	.word	.L92
 	.byte	3
-	.byte	'Motor_Control_Loop',0,1,212,1,6,1,1,1
+	.byte	'Motor_Control_Loop',0,1,211,1,6,1,1,1
 	.word	.L81,.L196,.L80
 	.byte	4
-	.byte	'target_L',0,1,212,1,31
+	.byte	'target_L',0,1,211,1,31
 	.word	.L197,.L198
 	.byte	4
-	.byte	'target_R',0,1,212,1,47
+	.byte	'target_R',0,1,211,1,47
 	.word	.L197,.L199
 	.byte	5
 	.word	.L81,.L196
@@ -21400,7 +21400,7 @@ s_turn_accum_deg:	.type	object
 .L425:
 	.byte	5,6,7,0,5,2
 	.word	.L81
-	.byte	3,211,1,1,5,31,9
+	.byte	3,210,1,1,5,31,9
 	.half	.L334-.L81
 	.byte	3,2,1,9
 	.half	.L332-.L334
@@ -21428,33 +21428,33 @@ s_turn_accum_deg:	.type	object
 	.byte	2
 	.word	.L92
 	.byte	3
-	.byte	'PID_Calculate',0,1,151,1,7
+	.byte	'PID_Calculate',0,1,150,1,7
 	.word	.L197
 	.byte	1,1,1
 	.word	.L75,.L200,.L74
 	.byte	4
-	.byte	'pid',0,1,151,1,37
+	.byte	'pid',0,1,150,1,37
 	.word	.L201,.L202
 	.byte	4
-	.byte	'target',0,1,151,1,48
+	.byte	'target',0,1,150,1,48
 	.word	.L197,.L203
 	.byte	4
-	.byte	'current',0,1,151,1,62
+	.byte	'current',0,1,150,1,62
 	.word	.L197,.L204
 	.byte	5
 	.word	.L75,.L200
 	.byte	5
 	.word	.L205,.L200
 	.byte	6
-	.byte	'integral_out',0,1,158,1,11
+	.byte	'integral_out',0,1,157,1,11
 	.word	.L197,.L206
 	.byte	6
-	.byte	'max_i_out',0,1,160,1,11
+	.byte	'max_i_out',0,1,159,1,11
 	.word	.L197,.L207
 	.byte	5
 	.word	.L13,.L200
 	.byte	6
-	.byte	'output',0,1,170,1,11
+	.byte	'output',0,1,169,1,11
 	.word	.L197,.L208
 	.byte	0,0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('PID_Calculate')
@@ -21476,7 +21476,7 @@ s_turn_accum_deg:	.type	object
 .L430:
 	.byte	5,25,7,0,5,2
 	.word	.L75
-	.byte	3,152,1,1,5,16,9
+	.byte	3,151,1,1,5,16,9
 	.half	.L431-.L75
 	.byte	1,5,8,9
 	.half	.L432-.L431
@@ -21588,13 +21588,13 @@ s_turn_accum_deg:	.type	object
 	.byte	2
 	.word	.L92
 	.byte	3
-	.byte	'Set_Motor_PWM',0,1,182,1,6,1,1,1
+	.byte	'Set_Motor_PWM',0,1,181,1,6,1,1,1
 	.word	.L77,.L209,.L76
 	.byte	4
-	.byte	'out_L',0,1,182,1,26
+	.byte	'out_L',0,1,181,1,26
 	.word	.L197,.L210
 	.byte	4
-	.byte	'out_R',0,1,182,1,39
+	.byte	'out_R',0,1,181,1,39
 	.word	.L197,.L211
 	.byte	5
 	.word	.L77,.L209
@@ -21617,7 +21617,7 @@ s_turn_accum_deg:	.type	object
 .L469:
 	.byte	5,6,7,0,5,2
 	.word	.L77
-	.byte	3,181,1,1,5,18,9
+	.byte	3,180,1,1,5,18,9
 	.half	.L470-.L77
 	.byte	3,2,1,5,15,9
 	.half	.L318-.L470
@@ -21709,39 +21709,39 @@ s_turn_accum_deg:	.type	object
 	.byte	2
 	.word	.L92
 	.byte	3
-	.byte	'Get_Steering_Delta',0,1,220,1,7
+	.byte	'Get_Steering_Delta',0,1,219,1,7
 	.word	.L197
 	.byte	1,1,1
 	.word	.L83,.L212,.L82
 	.byte	4
-	.byte	'near_err',0,1,220,1,32
+	.byte	'near_err',0,1,219,1,32
 	.word	.L197,.L213
 	.byte	4
-	.byte	'far_err',0,1,220,1,48
+	.byte	'far_err',0,1,219,1,48
 	.word	.L197,.L214
 	.byte	5
 	.word	.L83,.L212
 	.byte	6
-	.byte	'cfg',0,1,222,1,30
+	.byte	'cfg',0,1,221,1,30
 	.word	.L215,.L216
 	.byte	6
-	.byte	'gyro_z_raw',0,1,224,1,11
+	.byte	'gyro_z_raw',0,1,223,1,11
 	.word	.L197,.L217
 	.byte	5
 	.word	.L218,.L212
 	.byte	6
-	.byte	'derr',0,1,228,1,11
+	.byte	'derr',0,1,227,1,11
 	.word	.L197,.L219
 	.byte	5
 	.word	.L220,.L212
 	.byte	6
-	.byte	'base_term',0,1,231,1,11
+	.byte	'base_term',0,1,230,1,11
 	.word	.L197,.L221
 	.byte	6
-	.byte	'preview_term',0,1,232,1,11
+	.byte	'preview_term',0,1,231,1,11
 	.word	.L197,.L222
 	.byte	6
-	.byte	'steer',0,1,234,1,11
+	.byte	'steer',0,1,233,1,11
 	.word	.L197,.L223
 	.byte	7
 	.word	.L224,.L225,.L23
@@ -21756,7 +21756,7 @@ s_turn_accum_deg:	.type	object
 	.byte	0,5
 	.word	.L23,.L212
 	.byte	6
-	.byte	'step',0,1,237,1,11
+	.byte	'step',0,1,236,1,11
 	.word	.L197,.L233
 	.byte	7
 	.word	.L224,.L234,.L28
@@ -21789,7 +21789,7 @@ s_turn_accum_deg:	.type	object
 .L492:
 	.byte	5,7,7,0,5,2
 	.word	.L83
-	.byte	3,219,1,1,5,57,9
+	.byte	3,218,1,1,5,57,9
 	.half	.L493-.L83
 	.byte	3,2,1,5,24,9
 	.half	.L335-.L493
@@ -21877,7 +21877,7 @@ s_turn_accum_deg:	.type	object
 	.half	.L520-.L349
 	.byte	1,5,11,9
 	.half	.L225-.L520
-	.byte	3,191,126,1,5,5,9
+	.byte	3,192,126,1,5,5,9
 	.half	.L521-.L225
 	.byte	1,5,17,7,9
 	.half	.L522-.L521
@@ -21891,7 +21891,7 @@ s_turn_accum_deg:	.type	object
 	.half	.L24-.L524
 	.byte	3,1,1,5,39,9
 	.half	.L23-.L24
-	.byte	3,192,1,1,5,37,9
+	.byte	3,191,1,1,5,37,9
 	.half	.L525-.L23
 	.byte	1,5,63,9
 	.half	.L350-.L525
@@ -21901,7 +21901,7 @@ s_turn_accum_deg:	.type	object
 	.half	.L527-.L526
 	.byte	1,5,11,9
 	.half	.L234-.L527
-	.byte	3,190,126,1,5,5,9
+	.byte	3,191,126,1,5,5,9
 	.half	.L528-.L234
 	.byte	1,5,17,7,9
 	.half	.L529-.L528
@@ -21915,7 +21915,7 @@ s_turn_accum_deg:	.type	object
 	.half	.L29-.L531
 	.byte	3,1,1,9
 	.half	.L28-.L29
-	.byte	3,193,1,1,5,24,9
+	.byte	3,192,1,1,5,24,9
 	.half	.L532-.L28
 	.byte	1,5,5,9
 	.half	.L533-.L532
@@ -21949,10 +21949,10 @@ s_turn_accum_deg:	.type	object
 	.byte	2
 	.word	.L92
 	.byte	3
-	.byte	'Motor_Steering_Control',0,1,136,3,6,1,1,1
+	.byte	'Motor_Steering_Control',0,1,135,3,6,1,1,1
 	.word	.L91,.L235,.L90
 	.byte	4
-	.byte	'base_speed_rpm',0,1,136,3,35
+	.byte	'base_speed_rpm',0,1,135,3,35
 	.word	.L197,.L236
 	.byte	5
 	.word	.L91,.L235
@@ -21975,7 +21975,7 @@ s_turn_accum_deg:	.type	object
 .L538:
 	.byte	5,23,7,0,5,2
 	.word	.L91
-	.byte	3,138,3,1,5,1,9
+	.byte	3,137,3,1,5,1,9
 	.half	.L381-.L91
 	.byte	3,1,1,7,9
 	.half	.L125-.L381
@@ -21999,34 +21999,34 @@ s_turn_accum_deg:	.type	object
 	.byte	2
 	.word	.L92
 	.byte	3
-	.byte	'Motor_ControlTick',0,1,225,2,6,1,1,1
+	.byte	'Motor_ControlTick',0,1,224,2,6,1,1,1
 	.word	.L89,.L237,.L88
 	.byte	4
-	.byte	'base_speed_rpm',0,1,225,2,30
+	.byte	'base_speed_rpm',0,1,224,2,30
 	.word	.L197,.L238
 	.byte	5
 	.word	.L89,.L237
 	.byte	5
 	.word	.L239,.L237
 	.byte	6
-	.byte	'snap',0,1,229,2,26
+	.byte	'snap',0,1,228,2,26
 	.word	.L240,.L241
 	.byte	6
-	.byte	'target_L',0,1,232,2,11
+	.byte	'target_L',0,1,231,2,11
 	.word	.L197,.L242
 	.byte	6
-	.byte	'target_R',0,1,233,2,11
+	.byte	'target_R',0,1,232,2,11
 	.word	.L197,.L243
 	.byte	5
 	.word	.L244,.L237
 	.byte	6
-	.byte	'target_slew_rpm_per_tick',0,1,238,2,17
+	.byte	'target_slew_rpm_per_tick',0,1,237,2,17
 	.word	.L245,.L246
 	.byte	6
-	.byte	'dl',0,1,239,2,11
+	.byte	'dl',0,1,238,2,11
 	.word	.L197,.L247
 	.byte	6
-	.byte	'dr',0,1,240,2,11
+	.byte	'dr',0,1,239,2,11
 	.word	.L197,.L248
 	.byte	7
 	.word	.L224,.L249,.L57
@@ -22069,7 +22069,7 @@ s_turn_accum_deg:	.type	object
 .L542:
 	.byte	5,6,7,0,5,2
 	.word	.L89
-	.byte	3,224,2,1,5,31,9
+	.byte	3,223,2,1,5,31,9
 	.half	.L376-.L89
 	.byte	3,3,1,5,26,9
 	.half	.L239-.L376
@@ -22097,7 +22097,7 @@ s_turn_accum_deg:	.type	object
 	.half	.L550-.L549
 	.byte	1,5,11,9
 	.half	.L249-.L550
-	.byte	3,188,125,1,5,5,9
+	.byte	3,189,125,1,5,5,9
 	.half	.L551-.L249
 	.byte	1,5,17,7,9
 	.half	.L552-.L551
@@ -22111,7 +22111,7 @@ s_turn_accum_deg:	.type	object
 	.half	.L58-.L554
 	.byte	3,1,1,5,29,9
 	.half	.L57-.L58
-	.byte	3,195,2,1,5,40,9
+	.byte	3,194,2,1,5,40,9
 	.half	.L555-.L57
 	.byte	1,5,38,9
 	.half	.L556-.L555
@@ -22119,7 +22119,7 @@ s_turn_accum_deg:	.type	object
 	.half	.L557-.L556
 	.byte	1,5,11,9
 	.half	.L253-.L557
-	.byte	3,187,125,1,5,5,9
+	.byte	3,188,125,1,5,5,9
 	.half	.L558-.L253
 	.byte	1,5,17,7,9
 	.half	.L559-.L558
@@ -22133,7 +22133,7 @@ s_turn_accum_deg:	.type	object
 	.half	.L63-.L561
 	.byte	3,1,1,9
 	.half	.L62-.L63
-	.byte	3,196,2,1,5,21,9
+	.byte	3,195,2,1,5,21,9
 	.half	.L562-.L62
 	.byte	1,5,5,9
 	.half	.L563-.L562
@@ -22175,7 +22175,7 @@ s_turn_accum_deg:	.type	object
 	.byte	2
 	.word	.L92
 	.byte	3
-	.byte	'Encoder_test',0,1,202,1,6,1,1,1
+	.byte	'Encoder_test',0,1,201,1,6,1,1,1
 	.word	.L79,.L254,.L78
 	.byte	4
 	.word	.L79,.L254
@@ -22198,7 +22198,7 @@ s_turn_accum_deg:	.type	object
 .L574:
 	.byte	5,31,7,0,5,2
 	.word	.L79
-	.byte	3,203,1,1,5,1,9
+	.byte	3,202,1,1,5,1,9
 	.half	.L575-.L79
 	.byte	3,1,1,7,9
 	.half	.L135-.L575
@@ -22232,12 +22232,12 @@ s_turn_accum_deg:	.type	object
 	.byte	5
 	.word	.L67,.L255
 	.byte	6
-	.byte	'cfg_default',0,1,51,36
+	.byte	'cfg_default',0,1,50,36
 	.word	.L258
 	.byte	5,3
 	.word	_999001_cfg_default
 	.byte	6
-	.byte	'cfg_cross',0,1,63,36
+	.byte	'cfg_cross',0,1,62,36
 	.word	.L259
 	.byte	5,3
 	.word	_999002_cfg_cross
@@ -22261,7 +22261,7 @@ s_turn_accum_deg:	.type	object
 .L579:
 	.byte	5,14,7,0,5,2
 	.word	.L67
-	.byte	3,205,0,1,9
+	.byte	3,204,0,1,9
 	.half	.L580-.L67
 	.byte	3,1,1,9
 	.half	.L581-.L580
@@ -22303,17 +22303,17 @@ s_turn_accum_deg:	.type	object
 	.byte	2
 	.word	.L92
 	.byte	3
-	.byte	'Motor_UpdateRpmFromEncoder',0,1,87,13,1,1
+	.byte	'Motor_UpdateRpmFromEncoder',0,1,86,13,1,1
 	.word	.L69,.L260,.L68
 	.byte	4
 	.word	.L69,.L260
 	.byte	4
 	.word	.L261,.L260
 	.byte	5
-	.byte	'raw_L',0,1,93,11
+	.byte	'raw_L',0,1,92,11
 	.word	.L197,.L262
 	.byte	5
-	.byte	'raw_R',0,1,94,11
+	.byte	'raw_R',0,1,93,11
 	.word	.L197,.L263
 	.byte	0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('Motor_UpdateRpmFromEncoder')
@@ -22334,7 +22334,7 @@ s_turn_accum_deg:	.type	object
 .L590:
 	.byte	5,12,7,0,5,2
 	.word	.L69
-	.byte	3,216,0,1,5,20,9
+	.byte	3,215,0,1,5,20,9
 	.half	.L261-.L69
 	.byte	3,4,1,5,22,9
 	.half	.L591-.L261
@@ -22410,21 +22410,21 @@ s_turn_accum_deg:	.type	object
 	.byte	2
 	.word	.L92
 	.byte	3
-	.byte	'Motor_SpeedLoop',0,1,100,13,1,1
+	.byte	'Motor_SpeedLoop',0,1,99,13,1,1
 	.word	.L71,.L264,.L70
 	.byte	4
-	.byte	'target_L',0,1,100,35
+	.byte	'target_L',0,1,99,35
 	.word	.L197,.L265
 	.byte	4
-	.byte	'target_R',0,1,100,51
+	.byte	'target_R',0,1,99,51
 	.word	.L197,.L266
 	.byte	5
 	.word	.L71,.L264
 	.byte	6
-	.byte	'out_l',0,1,102,11
+	.byte	'out_l',0,1,101,11
 	.word	.L197,.L267
 	.byte	6
-	.byte	'out_r',0,1,103,11
+	.byte	'out_r',0,1,102,11
 	.word	.L197,.L268
 	.byte	0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('Motor_SpeedLoop')
@@ -22446,7 +22446,7 @@ s_turn_accum_deg:	.type	object
 .L616:
 	.byte	5,13,7,0,5,2
 	.word	.L71
-	.byte	3,227,0,1,5,34,9
+	.byte	3,226,0,1,5,34,9
 	.half	.L307-.L71
 	.byte	3,2,1,5,56,9
 	.half	.L617-.L307
@@ -22482,19 +22482,19 @@ s_turn_accum_deg:	.type	object
 	.byte	2
 	.word	.L92
 	.byte	3
-	.byte	'Motor_BuildSnapshot',0,1,244,1,29
+	.byte	'Motor_BuildSnapshot',0,1,243,1,29
 	.word	.L240
 	.byte	1,1
 	.word	.L85,.L269,.L84
 	.byte	4
 	.word	.L85,.L269
 	.byte	5
-	.byte	's',0,1,246,1,26
+	.byte	's',0,1,245,1,26
 	.word	.L240,.L270
 	.byte	4
 	.word	.L271,.L269
 	.byte	5
-	.byte	'cfg',0,1,251,1,30
+	.byte	'cfg',0,1,250,1,30
 	.word	.L215,.L272
 	.byte	0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('Motor_BuildSnapshot')
@@ -22515,7 +22515,7 @@ s_turn_accum_deg:	.type	object
 .L622:
 	.byte	5,29,7,0,5,2
 	.word	.L85
-	.byte	3,243,1,1,5,25,9
+	.byte	3,242,1,1,5,25,9
 	.half	.L623-.L85
 	.byte	3,3,1,5,16,9
 	.half	.L624-.L623
@@ -22603,68 +22603,68 @@ s_turn_accum_deg:	.type	object
 	.byte	2
 	.word	.L92
 	.byte	3
-	.byte	'Motor_SteeringLayer',0,1,134,2,13,1,1
+	.byte	'Motor_SteeringLayer',0,1,133,2,13,1,1
 	.word	.L87,.L273,.L86
 	.byte	4
-	.byte	'snap',0,1,134,2,61
+	.byte	'snap',0,1,133,2,61
 	.word	.L274,.L275
 	.byte	4
-	.byte	'base_speed_rpm',0,1,134,2,73
+	.byte	'base_speed_rpm',0,1,133,2,73
 	.word	.L197,.L276
 	.byte	4
-	.byte	'out_target_L',0,1,134,2,96
+	.byte	'out_target_L',0,1,133,2,96
 	.word	.L277,.L278
 	.byte	4
-	.byte	'out_target_R',0,1,134,2,117
+	.byte	'out_target_R',0,1,133,2,117
 	.word	.L277,.L279
 	.byte	5
 	.word	.L87,.L273
 	.byte	5
 	.word	.L280,.L41
 	.byte	6
-	.byte	'dt_s',0,1,165,2,21
+	.byte	'dt_s',0,1,164,2,21
 	.word	.L281,.L282
 	.byte	6
-	.byte	'yaw_rate',0,1,166,2,15
+	.byte	'yaw_rate',0,1,165,2,15
 	.word	.L197,.L283
 	.byte	5
 	.word	.L284,.L41
 	.byte	6
-	.byte	'turned_by_angle',0,1,172,2,15
+	.byte	'turned_by_angle',0,1,171,2,15
 	.word	.L197,.L285
 	.byte	5
 	.word	.L46,.L41
 	.byte	6
-	.byte	'turned_deg',0,1,177,2,15
+	.byte	'turned_deg',0,1,176,2,15
 	.word	.L197,.L286
 	.byte	5
 	.word	.L48,.L41
 	.byte	6
-	.byte	'remain_deg',0,1,188,2,19
+	.byte	'remain_deg',0,1,187,2,19
 	.word	.L197,.L287
 	.byte	6
-	.byte	'slow_start_deg',0,1,189,2,25
+	.byte	'slow_start_deg',0,1,188,2,25
 	.word	.L288,.L289
 	.byte	6
-	.byte	'min_outer_speed',0,1,190,2,25
+	.byte	'min_outer_speed',0,1,189,2,25
 	.word	.L290,.L291
 	.byte	6
-	.byte	'scale',0,1,191,2,19
+	.byte	'scale',0,1,190,2,19
 	.word	.L197,.L292
 	.byte	5
 	.word	.L51,.L41
 	.byte	6
-	.byte	'outer_speed',0,1,195,2,19
+	.byte	'outer_speed',0,1,194,2,19
 	.word	.L197,.L293
 	.byte	0,0,0,0,0,5
 	.word	.L54,.L273
 	.byte	6
-	.byte	'cfg',0,1,216,2,30
+	.byte	'cfg',0,1,215,2,30
 	.word	.L215,.L294
 	.byte	5
 	.word	.L295,.L273
 	.byte	6
-	.byte	'steer_delta',0,1,220,2,11
+	.byte	'steer_delta',0,1,219,2,11
 	.word	.L197,.L296
 	.byte	0,0,0,0,0
 	.sdecl	'.debug_abbrev',debug,cluster('Motor_SteeringLayer')
@@ -22686,7 +22686,7 @@ s_turn_accum_deg:	.type	object
 .L656:
 	.byte	5,13,7,0,5,2
 	.word	.L87
-	.byte	3,133,2,1,9
+	.byte	3,132,2,1,9
 	.half	.L360-.L87
 	.byte	3,2,1,5,9,9
 	.half	.L657-.L360
@@ -23060,7 +23060,7 @@ s_turn_accum_deg:	.type	object
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
 	.word	.L92
 	.byte	3
-	.byte	'g_turn_right_state',0,20,112,16
+	.byte	'g_turn_right_state',0,20,111,16
 	.word	.L299
 	.byte	1,5,3
 	.word	g_turn_right_state
@@ -23082,7 +23082,7 @@ s_turn_accum_deg:	.type	object
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
 	.word	.L92
 	.byte	3
-	.byte	'g_angle_z_snapshot',0,20,113,16
+	.byte	'g_angle_z_snapshot',0,20,112,16
 	.word	.L197
 	.byte	1,5,3
 	.word	g_angle_z_snapshot
@@ -23104,7 +23104,7 @@ s_turn_accum_deg:	.type	object
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
 	.word	.L92
 	.byte	3
-	.byte	'last_image_error',0,20,108,7
+	.byte	'last_image_error',0,20,107,7
 	.word	.L197
 	.byte	1,5,3
 	.word	last_image_error
@@ -23126,7 +23126,7 @@ s_turn_accum_deg:	.type	object
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
 	.word	.L92
 	.byte	3
-	.byte	's_brake_tick',0,20,114,16
+	.byte	's_brake_tick',0,20,113,16
 	.word	.L300
 	.byte	5,3
 	.word	s_brake_tick
@@ -23147,7 +23147,7 @@ s_turn_accum_deg:	.type	object
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
 	.word	.L92
 	.byte	3
-	.byte	's_recover_tick',0,20,115,16
+	.byte	's_recover_tick',0,20,114,16
 	.word	.L300
 	.byte	5,3
 	.word	s_recover_tick
@@ -23168,7 +23168,7 @@ s_turn_accum_deg:	.type	object
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
 	.word	.L92
 	.byte	3
-	.byte	's_gyro_z_filt',0,20,117,16
+	.byte	's_gyro_z_filt',0,20,116,16
 	.word	.L197
 	.byte	5,3
 	.word	s_gyro_z_filt
@@ -23189,7 +23189,7 @@ s_turn_accum_deg:	.type	object
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
 	.word	.L92
 	.byte	3
-	.byte	's_near_err_filt',0,20,118,16
+	.byte	's_near_err_filt',0,20,117,16
 	.word	.L197
 	.byte	5,3
 	.word	s_near_err_filt
@@ -23210,7 +23210,7 @@ s_turn_accum_deg:	.type	object
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
 	.word	.L92
 	.byte	3
-	.byte	's_last_near_err_filt',0,20,119,16
+	.byte	's_last_near_err_filt',0,20,118,16
 	.word	.L197
 	.byte	5,3
 	.word	s_last_near_err_filt
@@ -23231,7 +23231,7 @@ s_turn_accum_deg:	.type	object
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
 	.word	.L92
 	.byte	3
-	.byte	's_last_steer_delta',0,20,120,16
+	.byte	's_last_steer_delta',0,20,119,16
 	.word	.L197
 	.byte	5,3
 	.word	s_last_steer_delta
@@ -23252,7 +23252,7 @@ s_turn_accum_deg:	.type	object
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
 	.word	.L92
 	.byte	3
-	.byte	's_last_target_L',0,20,121,16
+	.byte	's_last_target_L',0,20,120,16
 	.word	.L197
 	.byte	5,3
 	.word	s_last_target_L
@@ -23273,7 +23273,7 @@ s_turn_accum_deg:	.type	object
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
 	.word	.L92
 	.byte	3
-	.byte	's_last_target_R',0,20,122,16
+	.byte	's_last_target_R',0,20,121,16
 	.word	.L197
 	.byte	5,3
 	.word	s_last_target_R
@@ -23294,7 +23294,7 @@ s_turn_accum_deg:	.type	object
 	.byte	'C:\\Users\\McGRADY\\AURIX-v1.10.2-workspace\\21_smart_car_crazy_circuit\\Debug\\',0,12,1,2
 	.word	.L92
 	.byte	3
-	.byte	's_turn_accum_deg',0,20,123,16
+	.byte	's_turn_accum_deg',0,20,122,16
 	.word	.L197
 	.byte	5,3
 	.word	s_turn_accum_deg
