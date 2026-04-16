@@ -45,7 +45,7 @@ IFX_INTERRUPT(cc60_pit_ch0_isr, 0, CCU6_0_CH0_ISR_PRIORITY)
 {
     interrupt_global_enable(0);                     // 开启中断嵌套
     pit_clear_flag(CCU60_CH0);
-    Motor_ControlTick(450.0f); // 10ms 控制入口：快照/转向/速度统一在一个 tick 内完成
+    Motor_ControlTick(600.0f); // 10ms 控制入口：快照/转向/速度统一在一个 tick 内完成
 }
 
 

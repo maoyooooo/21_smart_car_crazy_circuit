@@ -427,6 +427,59 @@ float calculate_center_slope(int* center_x, int* row_y, int cnt)
 }
 
 /**
+ * @brief 贝塞尔曲线补线：检测到直角弯时覆写 path_center_x，生成通过弯道的虚拟中线
+ *
+ * 二次贝塞尔曲线：B(t) = (1-t)²×P0 + 2(1-t)t×P1 + t²×P2,  t ∈ [0,1]
+ *
+ * P0 = (最后有效中线位置, ROI_ROW_END)    — 近端起点（车当前位置）
+ * P1 = (P0.x,            中间行)          — 控制点（先直走再弯，曲线自然）
+ * P2 = (P0.x + dir*SHIFT, FAR_ROI_START)  — 远端终点（偏向弯道方向）
+ *
+ * PID 跟踪这条曲线 → 自然产生差速 → 闭环转弯，不需要开环固定内外轮速
+ *
+ * @param dir  +1=右转（中线向右偏移），-1=左转（中线向左偏移）
+ */
+static void bezier_fill_corner(int dir)
+{
+    int y_start = ROI_ROW_END;
+    int y_end   = FAR_ROI_START;
+    int total   = y_start - y_end;
+    if (total <= 0) return;
+
+    // P0：近端起点 — 找最近的有效中线位置
+    int x0 = IMG_W / 2;
+    for (int y = y_start; y >= y_start - 10; y--)
+    {
+        if (path_center_x[y] > 0 && path_center_x[y] < IMG_W)
+        {
+            x0 = path_center_x[y];
+            break;
+        }
+    }
+
+    // P2：远端终点 — 偏向弯道方向
+    int x2 = x0 + dir * TURN_BEZIER_SHIFT;
+    if (x2 < 0)      x2 = 0;
+    if (x2 >= IMG_W)  x2 = IMG_W - 1;
+
+    // P1：控制点 — 偏移到 P0 和 P2 的中间偏向 P2 侧，让曲线从近端就开始弯
+    // 若 P1=P0 则曲线前半段几乎是直线，近端 ROI 看不到有效偏差
+    // 若 P1=P2 则曲线像四分之一圆，从一开始就大幅弯曲
+    int x1 = x0 + dir * TURN_BEZIER_SHIFT * 1 ;
+
+    // 用贝塞尔公式覆写 path_center_x
+    for (int y = y_start; y >= y_end; y--)
+    {
+        float t = (float)(y_start - y) / total;
+        float u = 1.0f - t;
+        int bx = (int)(u * u * x0 + 2.0f * u * t * x1 + t * t * x2 + 0.5f);
+        if (bx < 0)      bx = 0;
+        if (bx >= IMG_W)  bx = IMG_W - 1;
+        path_center_x[y] = bx;
+    }
+}
+
+/**
  * @brief 直角弯检测：直接扫二值图像最右侧白色像素（不依赖边线追踪）
  *
  * 【原拐点法失效的根本原因】
@@ -693,14 +746,8 @@ Path_TypeDef recognize_path_type(unsigned char binary_img[IMG_H][IMG_W])
     ips200_show_float(120, 240, far_image_error,  3, 1);
 
     // ---------------------------------------------------------------
-    // 阶段5：直角弯识别（拐点基线偏差法 + 八邻域横向延伸确认）
-    //
-    // 替换原"边线触边法"（CORNER_EDGE_TOUCH / CORNER_VALID_ROWS）。
-    // 原方法在以下两种场景失效：
-    //   ① 远端 FAR_ROI：垂直段仅 1-3 行 → 触边行数不足，漏检
-    //   ② 近端 NEAR_ROI：垂直段未达图像边界 → 触边条件不满足，漏检
-    // 新方法基于边线相对近端基线的跳变量，只需单行大偏差即可触发，
-    // 再通过横向白色延伸扫描（八邻域思想）排除元器件噪点，最后确认。
+    // 阶段5：直角弯识别
+    // 偏置在 motor.c 的 Motor_SteeringLayer 中完成（TURN_BIAS_PX）
     // ---------------------------------------------------------------
     return detect_corner_by_inflection(binary_img);
 }

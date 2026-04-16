@@ -48,13 +48,13 @@ static inline float Motor_ClampF(float x, float lo, float hi)
 static const Motor_SteerConfig* Motor_GetSteerConfig(Path_TypeDef path_type)    
 {
     static const Motor_SteerConfig cfg_default = {
-        .kp                 = 0.42f ,
+        .kp                 = 0.72f ,
         .kd                 = 0.01f ,
-        .gkd                = 0.12f ,
-        .preview_kp         = 0.10f ,
+        .gkd                = 0.42f ,
+        .preview_kp         = 0.15f ,
         .gyro_lpf_alpha     = 0.25f ,
         .err_lpf_alpha      = 0.35f ,
-        .gyro_sign          = 1.0f  ,
+        .gyro_sign          = 1.0f ,
         .steer_delta_limit  = 260.0f,
         .steer_slew_per_tick= 60.0f ,
     };
@@ -107,11 +107,11 @@ static void Motor_SpeedLoop(float target_L, float target_R)
 float last_image_error = 0;
 //-------------------------------------------------------------------
 
-// --- 直角右转状态机 ---
-TurnRightState g_turn_right_state = TURN_RIGHT_IDLE;
+// --- 直角转弯状态机（中线偏置 + PID 闭环）---
+TurnState      g_turn_state       = TURN_IDLE;
 float          g_angle_z_snapshot = 0.0f;
-static int     s_brake_tick       = 0;  // 制动阶段帧计数器
-static int     s_recover_tick     = 0;  // 恢复阶段帧计数器
+static float   s_turn_bias        = 0.0f;  // 中线偏置量（正=右转，负=左转）
+static int     s_recover_tick     = 0;
 
 static float   s_gyro_z_filt      = 0.0f;
 static float   s_near_err_filt    = 0.0f;
@@ -119,7 +119,7 @@ static float   s_last_near_err_filt = 0.0f;
 static float   s_last_steer_delta = 0.0f;
 static float   s_last_target_L    = 0.0f;
 static float   s_last_target_R    = 0.0f;
-static float   s_turn_accum_deg   = 0.0f;   // 仅在 LOCKING 阶段累计，避免全局航向角长期漂移影响
+static float   s_turn_accum_deg   = 0.0f;
 
 
 
@@ -260,91 +260,62 @@ static Motor_SensorSnapshot Motor_BuildSnapshot(void)
 
 static void Motor_SteeringLayer(const Motor_SensorSnapshot* snap, float base_speed_rpm, float* out_target_L, float* out_target_R)
 {
-    if (snap->path_type == PATH_TYPE_TURN_RIGHT &&
-        g_turn_right_state == TURN_RIGHT_IDLE)
+    // --- 触发转弯：检测到直角且当前空闲 ---
+    if (g_turn_state == TURN_IDLE &&
+        (snap->path_type == PATH_TYPE_TURN_RIGHT || snap->path_type == PATH_TYPE_TURN_LEFT))
     {
-        g_turn_right_state = TURN_RIGHT_BRAKING;
-        s_brake_tick       = 0;
+        g_turn_state       = TURN_ACTIVE;
+        s_turn_bias        = (snap->path_type == PATH_TYPE_TURN_RIGHT) ? TURN_BIAS_PX : -TURN_BIAS_PX;
+        g_angle_z_snapshot = snap->angle_z;
+        s_turn_accum_deg   = 0.0f;
         s_recover_tick     = 0;
     }
 
-    if (g_turn_right_state == TURN_RIGHT_BRAKING)
+    // --- 转弯执行：降速 + PID 跟贝塞尔中线 + 陀螺仪判定完成 ---
+    if (g_turn_state == TURN_ACTIVE)
     {
-        s_brake_tick++;
-        if (s_brake_tick >= TURN_BRAKE_TICKS)
-        {
-            g_turn_right_state = TURN_RIGHT_LOCKING;
-            g_angle_z_snapshot = snap->angle_z;  // 快照，不清零，避免与其它中断竞态
-            s_turn_accum_deg   = 0.0f;           // 每次入弯重置局部累计角
-        }
-        else
-        {
-            *out_target_L = TURN_BRAKE_SPEED;
-            *out_target_R = TURN_BRAKE_SPEED;
-            return;
-        }
-    }
-
-    if (g_turn_right_state == TURN_RIGHT_LOCKING)
-    {
-        // 用“局部积分角”做主判据，规避 angle_Z 长时间运行的漂移累积问题
-        // 假设 gyro_z 单位为 deg/s，控制周期 10ms
         const float dt_s = (float)CONTROL_PERIOD_MS * 0.001f;
         float yaw_rate = snap->gyro_z_filt;
-        if (yaw_rate < 0.0f) yaw_rate = -yaw_rate; // 取旋转角速度幅值，弱化极性误配影响
-        if (yaw_rate < 2.0f) yaw_rate = 0.0f;      // 小抖动死区，避免静止时积累
+        if (yaw_rate < 0.0f) yaw_rate = -yaw_rate;
+        if (yaw_rate < 2.0f) yaw_rate = 0.0f;
         s_turn_accum_deg += yaw_rate * dt_s;
 
-        // 保留 angle_Z 增量作为兜底（若 IMU瞬时异常，至少不至于完全失效）
+        // angle_Z 增量做兜底
         float turned_by_angle = snap->angle_z - g_angle_z_snapshot;
         if (turned_by_angle < -180.0f) turned_by_angle += 360.0f;
         if (turned_by_angle >  180.0f) turned_by_angle -= 360.0f;
-        if (turned_by_angle < 0.0f) turned_by_angle = 0.0f;
+        if (turned_by_angle < 0.0f) turned_by_angle = -turned_by_angle;
 
         float turned_deg = s_turn_accum_deg;
         if (turned_by_angle > turned_deg) turned_deg = turned_by_angle;
 
         if (turned_deg >= TURN_TARGET_DEG)
         {
-            g_turn_right_state = TURN_RIGHT_RECOVER;
-            s_recover_tick     = 0;
+            g_turn_state   = TURN_RECOVER;
+            s_turn_bias    = 0.0f;
+            s_recover_tick = 0;
         }
         else
         {
-            // 临近目标角度自动减速，减少 >90° 过冲：剩余角度越小，外轮目标越低
-            float remain_deg = TURN_TARGET_DEG - turned_deg;
-            const float slow_start_deg   = 20.0f;   // 剩余角度 <= 该值开始降速（可调）
-            const float min_outer_speed  = 200.0f;  // 末端最低外轮速度（太低可能卡住）
-            float scale = remain_deg / slow_start_deg;
-            if (scale > 1.0f) scale = 1.0f;
-            if (scale < 0.25f) scale = 0.25f;
-
-            float outer_speed = (TURN_OUTER_SPEED * scale) - TURN_GKD_BRAKE * snap->gyro_z_filt;
-            if (outer_speed < min_outer_speed) outer_speed = min_outer_speed;
-            *out_target_L = outer_speed;
-            *out_target_R = TURN_INNER_SPEED;
-            return;
+            // 转弯期间降速，让 PID 差速更有效
+            base_speed_rpm = TURN_SPEED_RPM;
         }
     }
 
-    if (g_turn_right_state == TURN_RIGHT_RECOVER)
+    // --- 恢复期 ---
+    if (g_turn_state == TURN_RECOVER)
     {
         s_recover_tick++;
         if (s_recover_tick >= TURN_RECOVER_TICKS)
         {
-            g_turn_right_state = TURN_RIGHT_IDLE;
+            g_turn_state = TURN_IDLE;
         }
-        // RECOVER 期间仍按正常循迹输出，但不会修改 angle_Z
     }
 
-    // ==================================================================
-    // 常规循迹（只读快照）
-    // ==================================================================
-    const Motor_SteerConfig* cfg = Motor_GetSteerConfig(snap->path_type);
-    (void)cfg; // cfg 已在 Get_Steering_Delta 内使用（包含滤波/限幅/速率）
-
-    // 保持与你现有“near + far + gyro”的结构，但输出做限幅+速率限制+滤波
-    float steer_delta = Get_Steering_Delta(snap->near_err, snap->far_err);
+    // --- 统一转向计算：中线偏置法（逐飞方案）---
+    // 转弯时直接给 near_err 加大偏移 → 饱和 steer_delta_limit → 最大差速
+    float biased_near_err = snap->near_err + s_turn_bias;
+    float steer_delta = Get_Steering_Delta(biased_near_err, snap->far_err);
     *out_target_L = base_speed_rpm + steer_delta;
     *out_target_R = base_speed_rpm - steer_delta;
 }

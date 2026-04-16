@@ -93,7 +93,7 @@
         ips200_show_string(0, 260, "Gyro Z:");
         ips200_show_float(120,260,icm_data.gyro_z,3,1);
 
-
+        system_delay_ms(10);
     }
 }
 

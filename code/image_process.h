@@ -45,6 +45,9 @@
 #define CORNER_EDGE_TOL      3   // 触边容差（px）
 #define CORNER_SCAN_START  ROI_ROW_END  // 检测起始行（最靠近车）
 
+// 贝塞尔曲线补线参数（检测到直角弯时，用曲线覆写中线，PID 跟线自然转弯）
+#define TURN_BEZIER_SHIFT   130   // 贝塞尔终点偏移量（px，越大转弯越急，建议 40-80）
+
 // 路径类型枚举
 typedef enum {
     PATH_TYPE_UNKNOWN = 0,  // 未知路径
