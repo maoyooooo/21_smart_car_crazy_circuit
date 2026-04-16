@@ -11,7 +11,7 @@
 #define ROI_ROW_START 80
 #define ROI_ROW_END   110
 #define ROI_ROW_NUM   (ROI_ROW_END - ROI_ROW_START + 1)
-#define FAR_ROI_START 40
+#define FAR_ROI_START 30
 #define FAR_ROI_END   60
 #define FAR_ROI_NUM   (FAR_ROI_END - FAR_ROI_START + 1)
 

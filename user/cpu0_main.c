@@ -49,7 +49,6 @@
     clock_init();                   // 鑾峰彇鏃堕挓棰戠巼<鍔″繀淇濈暀>
     debug_init();                   // 鍒濆鍖栭粯璁よ皟璇曚覆鍙�
     // 姝ゅ缂栧啓鐢ㄦ埛浠ｇ爜 渚嬪澶栬鍒濆鍖栦唬鐮佺瓑
-    zf_log(mt9v03x_double_init(mt9v03x_1), "mt9v03x init error");
     //wireless_uart_init();
     ips200_init(IPS200_TYPE_SPI);                 // 初始化IPS200屏幕
     ips200_clear();  
@@ -73,27 +72,25 @@
         //system_delay_ms(100);
         //ips200_show_float(8*sizeof("current_L_rpm"),20*5,current_L_rpm,4,4);
         //ips200_show_float(8*sizeof("current_R_rpm"),20*7,current_R_rpm,4,4);
-        Image_Processing_And_Get_Center();
-        Calculate_All_Errors();
         //Send_Image_To_ZF_Assistant();
         //ips200_displayimage03x(mt9v03x_image_1, MT9V03X_1_W, MT9V03X_1_H); // 显示处理后的图像到IPS200屏幕上（调试用）        
         //printf("Type: %d, Inflection: [%d, %d]\n", current_path_type, inf_x, inf_y);
-        Show_Image_On_IPS200(); // 显示处理后的图像到IPS200屏幕上（调试用）
+        //Show_Image_On_IPS200(); // 显示处理后的图像到IPS200屏幕上（调试用）
         // 姝ゅ?缂栧啓闇?瑕佸惊鐜?墽琛岀殑浠ｇ爜
         // Set_Motor_PWM(25.0f, 25.0f); // 鐩存帴璁剧疆涓?涓?浐瀹氱殑PWM杈撳嚭 浠呮祴璇曠敤
         //printf("current_L_rpm: %f\r\n", current_L_rpm);
         //printf("current_R_rpm: %f\r\n", current_R_rpm);
         //printf("current_L_rpm: %f\r\n", current_L_rpm);
         //printf("angle_Z: %f\r\n", angle_Z);
-        ips200_show_string(0, 180, "angle_Z:");
-        ips200_show_float(120,180,angle_Z,3,1);
-        ips200_show_string(0, 200, "Path Type:");
-        ips200_show_string(0, 220, "Near Error:");
-        ips200_show_string(0, 240, "Far Error:");
-        ips200_show_string(0, 260, "Gyro Z:");
-        ips200_show_float(120,260,icm_data.gyro_z,3,1);
+        // ips200_show_string(0, 180, "angle_Z:");
+        // ips200_show_float(120,180,angle_Z,3,1);
+        // ips200_show_string(0, 200, "Path Type:");
+        // ips200_show_string(0, 220, "Near Error:");
+        // ips200_show_string(0, 240, "Far Error:");
+        // ips200_show_string(0, 260, "Gyro Z:");
+        // ips200_show_float(120,260,icm_data.gyro_z,3,1);
 
-        system_delay_ms(10);
+        // system_delay_ms(10);
     }
 }
 

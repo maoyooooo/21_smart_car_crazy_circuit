@@ -49,7 +49,7 @@ extern volatile float image_error; // 从图像处理模块获取的当前图像
 // 优势：全程 PID 闭环，不存在开环甩固定内外轮速的问题。
 //       转弯激进程度由 TURN_BIAS_PX 控制。
 //
-#define TURN_BIAS_PX        200.0f   // 中线偏置量（px），饱和 steer_delta_limit 产生最大差速
+#define TURN_BIAS_PX        350.0f   // 中线偏置量（px），饱和 steer_delta_limit 产生最大差速
 #define TURN_SPEED_RPM      400.0f   // 转弯期间 base_speed RPM
 #define TURN_TARGET_DEG      80.0f   // 目标旋转角度
 #define TURN_RECOVER_TICKS    20     // 转弯完成后恢复帧数

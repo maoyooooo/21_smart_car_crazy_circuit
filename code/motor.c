@@ -48,9 +48,9 @@ static inline float Motor_ClampF(float x, float lo, float hi)
 static const Motor_SteerConfig* Motor_GetSteerConfig(Path_TypeDef path_type)    
 {
     static const Motor_SteerConfig cfg_default = {
-        .kp                 = 0.72f ,
+        .kp                 = 1.21f ,
         .kd                 = 0.01f ,
-        .gkd                = 0.42f ,
+        .gkd                = 0.86f ,
         .preview_kp         = 0.15f ,
         .gyro_lpf_alpha     = 0.25f ,
         .err_lpf_alpha      = 0.35f ,
@@ -233,7 +233,9 @@ float Get_Steering_Delta(float near_err, float far_err)
     float steer = base_term + preview_term;
 
     steer = Motor_ClampF(steer, -cfg->steer_delta_limit, cfg->steer_delta_limit);
-    float step = Motor_ClampF(steer - s_last_steer_delta, -cfg->steer_slew_per_tick, cfg->steer_slew_per_tick);
+    // 转弯时绕过 steer_slew，差速第 1 帧到位
+    float slew = (g_turn_state == TURN_ACTIVE) ? 1000.0f : cfg->steer_slew_per_tick;
+    float step = Motor_ClampF(steer - s_last_steer_delta, -slew, slew);
     s_last_steer_delta += step;
 
     last_image_error = near_err;
@@ -331,9 +333,8 @@ void Motor_ControlTick(float base_speed_rpm)
     float target_R = base_speed_rpm;
     Motor_SteeringLayer(&snap, base_speed_rpm, &target_L, &target_R);
 
-    // 2.5) Target ramp：限制目标转速变化速度，避免直角弯切换过猛导致点头/前翻
-    // 每 10ms 最大允许变化的 rpm（可按车重心/抓地调：越小越丝滑，但响应更慢）
-    const float target_slew_rpm_per_tick = 80.0f;
+    // 2.5) Target ramp：转弯时解除限制，差速立即生效
+    const float target_slew_rpm_per_tick = (g_turn_state == TURN_ACTIVE) ? 1000.0f : 80.0f;
     float dl = Motor_ClampF(target_L - s_last_target_L, -target_slew_rpm_per_tick, target_slew_rpm_per_tick);
     float dr = Motor_ClampF(target_R - s_last_target_R, -target_slew_rpm_per_tick, target_slew_rpm_per_tick);
     s_last_target_L += dl;
