@@ -86,3 +86,4 @@
 - **IDE开发环境**：AURIX Development Studio (v1.10.2)
 - **编译器**：Tasking TriCore Compiler
 - **构建方式**：在 AURIX Studio 中直接打开本项目（即工作空间下的 `21_smart_car_crazy_circuit` 目录），点击 Build 即可编译烧录。
+- 
