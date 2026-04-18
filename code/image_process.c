@@ -12,27 +12,38 @@ Path_TypeDef current_path_type = PATH_TYPE_UNKNOWN;
 // 静态缓冲区，避免栈上分配大数组（原版 temp_img 在栈上约 22KB，存在溢出风险）
 static unsigned char morph_temp[IMG_H][IMG_W];
 
+// OTSU 缓存策略：减少每帧计算开销，亮度变化时才重新计算
+#define OTSU_UPDATE_PERIOD  5    // 每 N 帧强制更新一次
+#define OTSU_MEAN_DELTA     8    // ROI 平均亮度变化超过此值时触发更新
+// OTSU 统计范围：只统计赛道所在区域（FAR_ROI_START ~ ROI_ROW_END）
+// 反光区域如果不在此范围内不会影响阈值
+#define OTSU_ROW_START  FAR_ROI_START
+#define OTSU_ROW_END    ROI_ROW_END
+
+static uint8_t cached_threshold  = 128;
+static int     otsu_frame_cnt    = 0;
+static int     last_roi_mean     = -1;
+
 /**
- * @brief OTSU 大津法计算动态二值化阈值
- * @return 最佳二值化阈值 (0-255)
+ * @brief ROI 区域 OTSU 大津法（仅统计赛道区域，抗反光）
  */
-static uint8_t otsu_threshold(void)
+static uint8_t otsu_threshold_roi(void)
 {
     uint32_t histogram[256] = {0};
-    uint32_t total_pixels = IMG_H * IMG_W;
+    uint32_t total_pixels = (OTSU_ROW_END - OTSU_ROW_START + 1) * IMG_W;
 
-    for (int i = 0; i < IMG_H; i++)
+    for (int i = OTSU_ROW_START; i <= OTSU_ROW_END; i++)
         for (int j = 0; j < IMG_W; j++)
             histogram[mt9v03x_image_1[i][j]]++;
 
     uint32_t sum_all = 0;
-    for (int t = 0; t < 256; t++)       
+    for (int t = 0; t < 256; t++)
         sum_all += t * histogram[t];
 
     uint32_t sum_bg = 0;
     uint32_t cnt_bg = 0;
     float max_variance = 0;
-    uint8_t best_threshold = 100;
+    uint8_t best_threshold = 128;
 
     for (int t = 0; t < 256; t++)
     {
@@ -57,6 +68,42 @@ static uint8_t otsu_threshold(void)
     }
 
     return best_threshold;
+}
+
+/**
+ * @brief 带缓存的 OTSU 阈值获取（减少计算量，提升帧率）
+ *
+ * 策略：
+ *   1. 每帧计算 ROI 平均亮度（很快，只需累加和除法）
+ *   2. 亮度变化 > OTSU_MEAN_DELTA 或达到强制更新周期 → 重新计算 OTSU
+ *   3. 否则直接返回缓存值
+ */
+static uint8_t otsu_threshold(void)
+{
+    // 快速计算 ROI 平均亮度
+    uint32_t roi_sum = 0;
+    int roi_pixels = (OTSU_ROW_END - OTSU_ROW_START + 1) * IMG_W;
+    for (int i = OTSU_ROW_START; i <= OTSU_ROW_END; i++)
+        for (int j = 0; j < IMG_W; j++)
+            roi_sum += mt9v03x_image_1[i][j];
+    int roi_mean = roi_sum / roi_pixels;
+
+    otsu_frame_cnt++;
+
+    // 判断是否需要更新
+    int need_update = 0;
+    if (last_roi_mean < 0)                                    need_update = 1;  // 首次
+    if (otsu_frame_cnt >= OTSU_UPDATE_PERIOD)                 need_update = 1;  // 周期到
+    if (abs(roi_mean - last_roi_mean) >= OTSU_MEAN_DELTA)     need_update = 1;  // 亮度变化
+
+    if (need_update)
+    {
+        cached_threshold = otsu_threshold_roi();
+        otsu_frame_cnt = 0;
+        last_roi_mean = roi_mean;
+    }
+
+    return cached_threshold;
 }
 
 /**
