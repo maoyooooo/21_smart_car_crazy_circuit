@@ -69,7 +69,7 @@ static uint8_t otsu_threshold_roi(void)
 
     return best_threshold;
 }
-
+ 
 /**
  * @brief 带缓存的 OTSU 阈值获取（减少计算量，提升帧率）
  *
